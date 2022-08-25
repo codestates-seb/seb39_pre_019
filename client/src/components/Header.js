@@ -1,9 +1,16 @@
 import React from "react";
 import Button from "./Button";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+
+import { Link } from 'react-router-dom'
+import useStore from "../store/store";
+
+
 
 const Header = () => {
+
+const {isLogin} = useStore()
+
   return (
     <HeaderCom>
       <div className='container'>
@@ -42,15 +49,12 @@ const Header = () => {
             alt='#'
           ></img>
         </form>
-        <div className='header_button'>
-          <Link to='/login'>
-            <Button className='button1' type={"login"} text={"Log in"}></Button>
-          </Link>
-          <Link to='/signup'>
-            <Button className='button2' text={"Sign up"} />
-          </Link>
-        </div>
+        <div className="header_button">
+          {isLogin? null:<>
+          <Link to='/login'><Button className='button1' type={"login"} text={"Log in"}></Button></Link>
+          <Link to='/signup'><Button className='button2' text={"Sign up"} /></Link></>}
       </div>
+     </div> 
     </HeaderCom>
   );
 };

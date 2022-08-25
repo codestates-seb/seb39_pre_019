@@ -6,16 +6,16 @@ import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
 import { FaFacebook } from "react-icons/fa";
 
-import stackLogo from "../../public/img/stackLogo.png";
-
 import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
+
+
     <LoginMain>
       <div className='container'>
         <Link to='/'>
-          <Img src={stackLogo} alt='stack logo' />
+          <Img src={process.env.PUBLIC_URL + './img/stackLogo.png'} alt='stack logo'/>
         </Link>
         <div className='socialLoginButton'>
           <div className='btn google'>
@@ -45,7 +45,6 @@ const Login = () => {
               maxLength='8'
               autoComplete='off'
             ></input>
-
             <div>
               <Button text={"Log in"}></Button>
             </div>
