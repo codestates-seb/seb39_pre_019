@@ -37,7 +37,7 @@ const MyPage = () => {
         </ul>
         <div className='user-main'>
           <div className='user-main-container'>
-            <h2>Summary</h2>
+            <h2>Summary!</h2>
             <div className='summary-box'>
               <aside className='summary-box1'></aside>
               <aside className='summary-box1'></aside>
