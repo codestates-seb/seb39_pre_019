@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
+import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
 
 const MyPage = () => {
   return (
+    <>
     <MypageContainer>
-      <Sidebar />
-      <div className='container1'></div>
-      <div className='container2'>
+     <Sidebar /> 
+      <div className='container1'>
         <div className='user-profile'>
           <img
             src={process.env.PUBLIC_URL + "/img/stackUserIcon.png"}
@@ -21,7 +21,6 @@ const MyPage = () => {
           <div className='menu menu-select'>Activity</div>
           <div className='menu'>Settings</div>
         </div>
-        {/* <div className='user-sidebar'> */}
         <ul className='user-sidebar'>
           <li className='sidebar'>Summary</li>
           <li className='sidebar'>Answers</li>
@@ -36,7 +35,6 @@ const MyPage = () => {
           <li className='sidebar'>Responses</li>
           <li className='sidebar'>Votes</li>
         </ul>
-
         <div className='user-main'>
           <div className='user-main-container'>
             <h2>Summary</h2>
@@ -49,6 +47,7 @@ const MyPage = () => {
         </div>
       </div>
     </MypageContainer>
+    </>
   );
 };
 
@@ -56,14 +55,20 @@ export default MyPage;
 
 const MypageContainer = styled.div`
   display: flex;
+  flex-direction: column;
   max-width: 1280px;
   margin: 0 auto;
   height: 100vh;
   color: #fff;
 
   .container1 {
+    width: 100%;
     border-left: 1px solid #4a4e51;
-    padding: 20px;
+    padding: 20px ;
+    margin:0 164px
+  }
+  .user-profile{
+    width: 100%;
   }
 
   //프로필 css
@@ -73,74 +78,62 @@ const MypageContainer = styled.div`
   .menu {
     justify-content: center;
     align-items: center;
-
-    border: 1px solid white;
-    width: 90px;
-    height: 40px;
-
+    border: none;
+    font-size: 14px;
+    padding: 7px 10px;
+    margin-left: 3px;
+    font-weight: 600;
     display: flex;
     align-items: center;
-
     border-radius: 30px;
-
-    .menu-select {
-      background-color: #ef6d1d;
-    }
-
+    color: #c4c8cc;
+    
     &:hover {
       color: #acb4b1;
-
       border-radius: 30px;
-      background-color: gray;
+      background-color: #4d4d4d
+    }
+  }
+  .menu-select {
+    font-weight: 500;
+    background-color: #f48225;
+    color: #2D2D2D;
+    &:hover{
+      background-color: #f48225;
+      color: black;
     }
   }
 
   //사이드바 css
   .sidebar {
     display: flex;
-
     align-items: center;
-
     width: 120px;
     height: 40px;
-
     border-radius: 30px;
-
     padding-left: 10px;
     margin-bottom: 5px;
     cursor: pointer;
-
     &:hover {
       color: #acb4b1;
-      /* border-right: 3px solid #f48224; */
       background-color: #3d3d3d;
       border-radius: 30px;
     }
   }
-
   //요약 박스 css
-
   .user-main-container {
     border: 1px solid white;
-    width: 1200px;
+    /* width: 1200px; */
     height: 2000px;
   }
-
   .summary-box {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    /* flex-wrap: wrap; */
-
-    /* width: 400px;
-    height: 200px; */
   }
 
   .summary-box1 {
     border: 1px solid gray;
-    /* width: 100%;
-    height: 100%; */
-
     margin: 50px;
     display: flex;
     justify-content: center;

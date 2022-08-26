@@ -1,9 +1,9 @@
 import create from 'zustand';
 
 const useStore = create((set)=>({
-    isLogin : false
-  
+    isLogin : false,
+
     
-  }))
+}))
   
-  export default useStore
+export default useStore
