@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../components/Button";
 import styled from "styled-components";
-
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
 import { FaFacebook } from "react-icons/fa";
@@ -10,28 +9,31 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-
-
     <LoginMain>
       <div className='container'>
         <Link to='/'>
-          <Img src={process.env.PUBLIC_URL + './img/stackLogo.png'} alt='stack logo'/>
+          <Img
+            src={process.env.PUBLIC_URL + "./img/stackLogo.png"}
+            alt='stack logo'
+          />
         </Link>
         <div className='socialLoginButton'>
-          <div className='btn google'>
-            <button>
+          <div className='btn'>
+            <button className='btn_google'>
               <FcGoogle /> Log in with Google
             </button>
           </div>
-          <div className='btn github'>
-            <Button text={("hi", "Log in with GitHub")}></Button>
-            <button>
+          <div className='btn'>
+            {/* <div>
+              <Button text={"Log in with GitHub"} />
+            </div> */}
+            <button className='btn_github'>
               <GoMarkGithub /> Log in with GitHub
             </button>
           </div>
-          <div className='btn facebook'>
-            <Button text={"Log in with Facebook"} />
-            <button>
+          <div className='btn'>
+            {/* <Button text={"Log in with Facebook"} /> */}
+            <button className='btn_facebook'>
               <FaFacebook /> Log in with Facebook
             </button>
           </div>
@@ -46,11 +48,14 @@ const Login = () => {
               autoComplete='off'
             ></input>
             <div>
-              <Button text={"Log in"}></Button>
+              <Link to='mypage'>
+                <Button text={"Log in"}></Button>
+              </Link>
             </div>
           </form>
         </div>
       </div>
+      Dont have an account? Sign up
     </LoginMain>
   );
 };
@@ -64,13 +69,14 @@ const LoginMain = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #fff;
+  background-color: #edeff0;
 
   .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 20px;
   }
   .socialLoginButton {
     display: flex;
@@ -78,49 +84,71 @@ const LoginMain = styled.div`
     align-items: center;
   }
   .btn {
-    margin: 10px 10px;
+    width: 100%;
   }
   form {
     /* display: flex;
     flex-direction: column;
     align-items: center; */
 
+    background-color: #fff;
+
+    box-shadow: 5px 5px 5px 5px gray;
+
     position: relative;
     float: left;
     width: 100%;
     height: auto;
-    margin-top: 20px;
+    margin-top: 10px;
+    padding: 10px 10px;
     text-align: center;
+    border-radius: 5px;
 
-    width: 100%;
-    margin-bottom: 10px;
-
-    Button {
-      width: 100%;
+    input {
+      margin-bottom: 20px;
     }
   }
 
   label {
     display: flex;
+    text-align: left;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    width: 90%;
+    height: 25px;
   }
 
   button {
-    padding: 8px 13px;
+    margin: 10px 0px;
+    padding: 8px 10px;
     border: none;
     color: #fff;
-    background-color: #1764aa;
+    /* background-color: #1764aa; */
     font-size: 14px;
 
     border-radius: 3px;
     font-weight: 600;
-    margin-left: 10px;
+
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    cursor: pointer;
+
+    box-shadow: 0.5px 0.5px 1px 1px gray;
   }
-  /* .google {
-    background-color: gray;
+  .btn_google {
+    color: #2d3032;
+    background-color: #ffffff;
   }
-  .github {
+  .btn_github {
     background-color: black;
-  } */
+  }
+  .btn_facebook {
+    background-color: #2b3f87;
+  }
 `;
 
 const Img = styled.img`
