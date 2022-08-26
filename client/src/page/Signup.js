@@ -179,9 +179,3 @@ const LoginMain = styled.div`
     padding-bottom: 10px;
   }
 `;
-
-const Img = styled.img`
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-`;

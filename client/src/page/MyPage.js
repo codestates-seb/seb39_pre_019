@@ -7,8 +7,7 @@ const MyPage = () => {
   return (
     <MypageContainer>
       <Sidebar />
-      <div className='container1'></div>
-      <div className='container2'>
+      <div className='container1'>
         <div className='user-profile'>
           <img
             src={process.env.PUBLIC_URL + "/img/stackUserIcon.png"}
@@ -21,7 +20,6 @@ const MyPage = () => {
           <div className='menu menu-select'>Activity</div>
           <div className='menu'>Settings</div>
         </div>
-        {/* <div className='user-sidebar'> */}
         <ul className='user-sidebar'>
           <li className='sidebar'>Summary</li>
           <li className='sidebar'>Answers</li>
