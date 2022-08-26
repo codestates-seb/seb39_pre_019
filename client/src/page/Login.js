@@ -49,7 +49,9 @@ const Login = () => {
               autoComplete='off'
             ></input>
             <div>
-              <Button text={"Log in"}></Button>
+              <Link to='mypage'>
+                <Button text={"Log in"}></Button>
+              </Link>
             </div>
           </form>
         </div>
@@ -111,6 +113,12 @@ const LoginMain = styled.div`
   label {
     display: flex;
     text-align: left;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    width: 90%;
+    height: 25px;
   }
 
   button {

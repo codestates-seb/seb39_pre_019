@@ -123,7 +123,8 @@ const LoginMain = styled.div`
     width: 100%;
     height: auto;
     margin-top: 10px;
-    padding: 10px 10px;
+
+    padding: 15px 10px 10px 10px;
     text-align: center;
     border-radius: 5px;
 
@@ -135,6 +136,13 @@ const LoginMain = styled.div`
   label {
     display: flex;
     text-align: left;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 90%;
+    height: 30px;
   }
 
   button {
