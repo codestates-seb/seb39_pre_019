@@ -10,7 +10,7 @@ import useStore from "../store/store";
 const Header = () => {
 
 const {isLogin} = useStore()
-
+ 
   return (
     <HeaderCom>
       <div className='container'>
@@ -62,6 +62,8 @@ const {isLogin} = useStore()
 export default Header;
 
 const HeaderCom = styled.div`
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 47px;
   border-top: 3px solid #f38125;

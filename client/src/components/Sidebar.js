@@ -42,6 +42,8 @@ const Sidebar = () => {
 export default Sidebar
 
 const SiderbarCom = styled.div`
+position: fixed;
+top: 47px;
 letter-spacing: -0.4px;
 
 .container{

@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../components/Button";
 import styled from "styled-components";
-
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
 import { FaFacebook } from "react-icons/fa";
@@ -179,3 +178,4 @@ const LoginMain = styled.div`
     padding-bottom: 10px;
   }
 `;
+
