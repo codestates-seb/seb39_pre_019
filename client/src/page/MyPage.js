@@ -7,7 +7,7 @@ const MyPage = () => {
   return (
     <>
     <MypageContainer>
-     <Sidebar /> 
+      <Sidebar />
       <div className='container1'>
         <div className='user-profile'>
           <img
