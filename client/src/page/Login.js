@@ -3,7 +3,7 @@ import Button from "../components/Button";
 import styled from "styled-components";
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
-import { FaFacebook } from "react-icons/fa";
+
 
 import { Link } from "react-router-dom";
 
@@ -12,10 +12,7 @@ const Login = () => {
     <LoginMain>
       <div className='container'>
         <Link to='/'>
-          <Img
-            src={process.env.PUBLIC_URL + "./img/stackLogo.png"}
-            alt='stack logo'
-          />
+        <svg aria-hidden="true" className="login_logo" width="32" height="37" viewBox="0 0 32 37"><path d="M26 33v-9h4v13H0V24h4v9h22Z" fill="#BCBBBB"></path><path d="m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5 0ZM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5ZM9.1 15.2l15 7 1.4-3-15-7-1.4 3Zm14 10.79.68-2.95-16.1-3.35L7 23l16.1 2.99ZM23 30H7v-3h16v3Z" fill="#F48024"></path></svg>
         </Link>
         <div className='socialLoginButton'>
           <div className='btn'>
@@ -34,7 +31,7 @@ const Login = () => {
           <div className='btn'>
             {/* <Button text={"Log in with Facebook"} /> */}
             <button className='btn_facebook'>
-              <FaFacebook /> Log in with Facebook
+            <svg aria-hidden="true" class="svg-icon iconFacebook" width="18" height="18" viewBox="0 0 18 18"><path d="M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm6.55 16v-6.2H7.46V8.4h2.09V6.61c0-2.07 1.26-3.2 3.1-3.2.88 0 1.64.07 1.87.1v2.16h-1.29c-1 0-1.19.48-1.19 1.18V8.4h2.39l-.31 2.42h-2.08V17h-2.5Z" fill="#fff"></path></svg> Log in with Facebook
             </button>
           </div>
           <form>
@@ -77,6 +74,9 @@ const LoginMain = styled.div`
     align-items: center;
     width: 100%;
     padding: 20px;
+  }
+  .login_logo{
+    margin-bottom: 15px;
   }
   .socialLoginButton {
     display: flex;
@@ -121,38 +121,32 @@ const LoginMain = styled.div`
   }
 
   button {
-    margin: 10px 0px;
+    margin-bottom: 10px;
     padding: 8px 10px;
     border: none;
-    color: #fff;
-    /* background-color: #1764aa; */
-    font-size: 14px;
-
+    font-size: 13px;
     border-radius: 3px;
-    font-weight: 600;
-
+    font-weight: 500;
     display: block;
     width: 100%;
     text-align: center;
-
     cursor: pointer;
-
-    box-shadow: 0.5px 0.5px 1px 1px gray;
   }
   .btn_google {
     color: #2d3032;
+    width: 288px;
+    height: 37px;
     background-color: #ffffff;
+    border: none;
   }
   .btn_github {
-    background-color: black;
+    background-color: #2f3337;
+    color: #fff;
+    height: 37px;
   }
   .btn_facebook {
-    background-color: #2b3f87;
+    background-color: #385499;
+    color: #fff;
   }
 `;
 
-const Img = styled.img`
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-`;

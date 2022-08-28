@@ -58,7 +58,7 @@ color:#fff;
 
 .question_container{
   width: 100%;
-  margin-left: 164px;
+  /* margin-left: 164px; */
   border-left: 1px solid #4A4E51;
 
 }
