@@ -5,15 +5,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
+//@Configuration
 public class WebConfig implements WebMvcConfigurer {
-    @Value("${config.domain}")
-    private String domain;
+//    @Value("${config.domain}")
+//    private String domain;
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("*").allowedMethods("GET", "POST", "OPTIONS").allowCredentials(true)
-                .exposedHeaders("authorization");
-    }
+//    @Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**")
+//                .allowedOrigins("*").allowedMethods("GET", "POST", "OPTIONS").allowCredentials(true)
+//                .exposedHeaders("authorization");
+//    }
 }
