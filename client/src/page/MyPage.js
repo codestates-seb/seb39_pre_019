@@ -178,9 +178,9 @@ const MypageContainer = styled.div`
   }
   //요약 박스 css
   .user_main_container {
-    border: 1px solid white;
-    /* width: 1200px; */
-    height: 2000px;
+    /* border: 1px solid white; */
+    width: 100%;
+    height: 100%;
   }
   .summary_box {
     display: flex;
