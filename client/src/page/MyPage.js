@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
 
 const MyPage = () => {
@@ -37,7 +36,7 @@ const MyPage = () => {
         </ul>
         <div className='user-main'>
           <div className='user-main-container'>
-            <h2>Summary!</h2>
+            <h2>Summary</h2>
             <div className='summary-box'>
               <aside className='summary-box1'></aside>
               <aside className='summary-box1'></aside>
