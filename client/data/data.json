@@ -1,0 +1,141 @@
+{
+  "qustions": [
+    {
+      "id": 1,
+      "title": "How to replace integer entry of a DataFrame to a string based on a range",
+      "body": "I have a set of numbers that I would like to change to a string based on if the number is within a given range.Given df (these are int, not strings):",
+      "tag": "null",
+      "votes": 0,
+      "answers": 0,
+      "views": 2
+    },
+    {
+      "id": 2,
+      "title": "create popularity algorithm with ruby",
+      "body": "I need to implement a popularity algorithm using the following relevance fields:Products table  paid (identify if the product is from a specific store)updated_at (date when product was updated)The relevance formula would be: prioritize products from paid stores and more up-to-date productsI need to populate a pop field with score based on that formula. The result would be like this",
+      "tag": "null",
+      "votes": 0,
+      "answers": 0,
+      "views": 10
+    },
+    {
+      "id": 3,
+      "title": "Warning: Undefined variable $imageSource",
+      "body": "I have just upgraded to PHP8 on my test server a few days ago and I am testing the referral form and it's giving me the below error message when submitting with or without an image inn the up",
+      "tag": "asd",
+      "votes": 0,
+      "answers": 0,
+      "views": 19
+    },
+    {
+      "id": 4,
+      "title": "Tkinter Window Background Color Not Working On MacOS",
+      "body": "Tkinter window background color does not work on my MacBook Air, but does work on my Windows 10 main PC. Here's my code: from tinter import * window = Tk() window.configure(bg =",
+      "tag": "asd",
+      "votes": 0,
+      "answers": 0,
+      "views": 30
+    },
+    {
+      "id": 5,
+      "title": "In C#, using the Mongo Driver, how can I set a last modified field",
+      "body": "Because Personio's API won't tell me when employees are created or modified which creates scalability issues for us, I'm creating a cache where I can store the Personio with metadata including",
+      "tag": "asd",
+      "votes": 0,
+      "answers": 0,
+      "views": 49
+    }
+  ],
+  "signup": [
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 1
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 2
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 3
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 4
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "dfdafsdfsdfsdfsd1@!@T",
+      "id": 5
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 6
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 7
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 8
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 9
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 10
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 11
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 12
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 13
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 14
+    },
+    {
+      "user": "s",
+      "email": "s@s.com",
+      "pwd": "Happys1!",
+      "id": 15
+    }
+  ]
+}
