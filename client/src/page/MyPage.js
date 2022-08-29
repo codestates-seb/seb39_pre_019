@@ -54,15 +54,13 @@ const MyPage = () => {
               </ul>
             </nav>
             <section className='user_main'>
-              <div className='user_main_container'>
-                <h2>Summary!</h2>
-                <div className='summary_box'>
-                  <aside className='summary_box1'>
-                    Reputation is how the community thanks you
-                  </aside>
-                  <aside className='summary_box1'></aside>
-                  <aside className='summary_box1'></aside>
-                </div>
+              <h2>Summary!</h2>
+              <div className='summary_box'>
+                <aside className='summary_box1'>
+                  Reputation is how the community thanks you
+                </aside>
+                <aside className='summary_box1'></aside>
+                <aside className='summary_box1'></aside>
               </div>
             </section>
           </div>
@@ -76,7 +74,7 @@ export default MyPage;
 
 const MypageContainer = styled.div`
   display: flex;
-  flex-direction: column;
+
   max-width: 1280px;
   margin: 0 auto;
   height: 100vh;
@@ -152,6 +150,7 @@ const MypageContainer = styled.div`
   //main contianer css
   .user_main_container {
     display: flex;
+    margin-top: 10px;
   }
 
   //사이드바 css
@@ -174,15 +173,14 @@ const MypageContainer = styled.div`
 
   .user_sidebar {
     position: sticky;
-
-    top: 10%;
+    top: 5%;
     z-index: 10;
   }
   //요약 박스 css
   .user_main_container {
-    border: 1px solid white;
-    /* width: 1200px; */
-    height: 2000px;
+    /* border: 1px solid white; */
+    width: 100%;
+    height: 100%;
   }
   .summary_box {
     display: flex;
