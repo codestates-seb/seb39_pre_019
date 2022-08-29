@@ -81,7 +81,8 @@ const Footer = () => {
 export default Footer
 
 const FooterCom = styled.div`
-background-color: #242628;
+width: 100%;
+background-color: #232629;
 .footer_container{
   padding-left: 40px;
   display: flex;

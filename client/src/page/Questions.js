@@ -1,8 +1,8 @@
 import React,{useEffect,useState} from 'react'
 import styled from 'styled-components'
-import Sidebar from '../components/Sidebar'
 import Button from '../components/Button'
 import QuestionItem from '../components/QuestionItem'
+import Layout from '../components/Layout'
  
 
 const Questions = () => {
@@ -16,8 +16,8 @@ const [data,setData] = useState([])
   },[])
 
   return (
+  <Layout children={Questions}>
     <QuestionContainer>
-      <Sidebar/>
       <div className='question_container'>
         <div className='question_title'>
           <span>ALL Questions</span>
@@ -43,6 +43,7 @@ const [data,setData] = useState([])
        </div>
       </div>
     </QuestionContainer>
+  </Layout>
   )
 }
 
@@ -53,13 +54,11 @@ display: flex;
 max-width: 1280px;
 width: 100%;
 margin: 0 auto;
-height: 140vh;
+height: 100vh;
 color:#fff;
 
 .question_container{
   width: 100%;
-  /* margin-left: 164px; */
-  border-left: 1px solid #4A4E51;
 
 }
 .question_title{

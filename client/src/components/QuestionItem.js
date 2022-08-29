@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const QuestionItem = ({title,body,id,tag,votes,answers,views}) => {
   return (
@@ -14,7 +15,9 @@ const QuestionItem = ({title,body,id,tag,votes,answers,views}) => {
         </div>
         <div className='item_rigth'>
           <div className='right_container'>
-            <div className='rigth_title'>{title}</div>
+            <Link to={`/${id}`}>
+             <div className='rigth_title'>{title}</div>
+            </Link>
             <div className='rigth_body'>{body}</div>
             <div className='rigth_footer'></div>
           </div>
