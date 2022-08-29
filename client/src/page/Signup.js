@@ -1,4 +1,3 @@
-import React from "react";
 import { useRef, useState, useEffect } from "react";
 
 import Button from "../components/Button";
@@ -63,14 +62,19 @@ const Signup = () => {
       console.log(response.accessToken);
       console.log(JSON.stringify(response));
       setSuccess(true);
+      setUser("");
+      setEmail("");
+      setPwd("");
     } catch (err) {
       console.log(err);
       if (err.response.status === 0) {
+        // 서버 껐을때
         setErrMsg("No Server Response/ Server off");
       } else if (err.response.status === 404) {
+        // 서버 주소 잘못되었을때
         setErrMsg("Server Not Found");
       } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
+        setErrMsg("Username Taken"); // 데이터 중복에 대한 케이스
       } else {
         setErrMsg("Registration Failed");
       }
@@ -119,7 +123,7 @@ const Signup = () => {
           <section>
             <h1>Success!</h1>
             <p>
-              <a href='#'>Sign In</a>
+              <a href='/login'>Sign In</a>
             </p>
           </section>
         ) : (
@@ -301,7 +305,7 @@ const LoginMain = styled.div`
   //유효성 검사 css
   .instructions {
     font-size: 0.8rem;
-    color: black;
+    color: red;
     padding: 0.1rem;
     position: relative;
     bottom: 0px;

@@ -1,12 +1,40 @@
-import React from "react";
+import { useRef, useState, useEffect } from "react";
 import Button from "../components/Button";
 import styled from "styled-components";
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
 
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
+  const emailRef = useRef();
+  const errRef = useRef();
+
+  const [email, setEmail] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    emailRef.current.focus(); // 로드될 때  첫번째 입력에 포커스를 설정
+  }, []);
+
+  useEffect(() => {
+    setErrMsg("");
+  }, [email, pwd]);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    console.log(email, pwd);
+    setSuccess(true);
+    setEmail("");
+    setPwd("");
+    // try{
+    //   const response = await axios.post()
+    // } catch()
+  };
+
   return (
     <LoginMain>
       <div className='container'>
@@ -53,25 +81,57 @@ const Login = () => {
               Log in with Facebook
             </button>
           </div>
-          <form>
-            <label htmlFor='userEmail'>Email</label>
-            <input id='userEmail' type='email'></input>
-            <label htmlFor='pwd'>Password</label>
-            <input
-              id='pwd'
-              type='password'
-              maxLength='8'
-              autoComplete='off'
-            ></input>
-            <div>
-              <Link to='mypage'>
-                <Button text={"Log in"}></Button>
-              </Link>
-            </div>
-          </form>
         </div>
+        <>
+          {success ? (
+            <section>
+              <h1>You are logged in!</h1>
+              <br />
+              <p>
+                <a href='/'>Go to Questions Page!</a>
+              </p>
+            </section>
+          ) : (
+            <section>
+              <p
+                ref={errRef}
+                className={errMsg ? "errmsg" : "offscreen"}
+                aria-live='assertive'
+              >
+                {errMsg}
+              </p>
+
+              <form onSubmit={submitHandler}>
+                <label htmlFor='userEmail'>Email</label>
+                <input
+                  id='userEmail'
+                  type='email'
+                  ref={emailRef}
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  required
+                ></input>
+                <label htmlFor='pwd'>Password</label>
+                <input
+                  id='pwd'
+                  type='password'
+                  maxLength='8'
+                  autoComplete='off'
+                  onChange={(e) => setPwd(e.target.value)}
+                  value={pwd}
+                  required
+                ></input>
+                <div>
+                  {/* <Link to='mypage'> */}
+                  <Button text={"Log in"}></Button>
+                  {/* </Link> */}
+                </div>
+              </form>
+            </section>
+          )}
+        </>
       </div>
-      Dont have an account? Sign up
+      Dont have an account? <a href='/signup'>Sign up</a>
     </LoginMain>
   );
 };
@@ -87,11 +147,14 @@ const LoginMain = styled.div`
   min-height: 100vh;
   background-color: #edeff0;
 
+  section {
+    text-align: center;
+  }
+
   .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
     padding: 20px;
   }
   .login_logo {
@@ -109,14 +172,11 @@ const LoginMain = styled.div`
     /* display: flex;
     flex-direction: column;
     align-items: center; */
-
     background-color: #fff;
-
     box-shadow: 5px 5px 5px 5px gray;
-
     position: relative;
     float: left;
-    width: 100%;
+    width: 250px;
     height: auto;
     margin-top: 10px;
     padding: 10px 10px;
@@ -137,6 +197,10 @@ const LoginMain = styled.div`
   input[type="password"] {
     width: 90%;
     height: 25px;
+  }
+
+  Button {
+    width: 90%;
   }
 
   button {
@@ -166,5 +230,18 @@ const LoginMain = styled.div`
   .btn_facebook {
     background-color: #385499;
     color: #fff;
+  }
+
+  //유효성 검사 css
+  .offscreen {
+    position: absolute;
+    left: -9999px;
+  }
+  .errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 `;
