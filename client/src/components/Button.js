@@ -5,8 +5,7 @@ const Button = ({ text, type, onClick }) => {
   return (
     <ButtonCom
       className={["myButton", `myButton_${types}`].join(" ")}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       {text}
     </ButtonCom>
   );

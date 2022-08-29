@@ -1,15 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import Sidebar from "../components/Sidebar";
-
 import { BsPencilFill } from "react-icons/bs";
 import { FaStackExchange } from "react-icons/fa";
+import Layout from "../components/Layout";
+
 
 const MyPage = () => {
   return (
-    <>
+    <Layout children={MyPage}>
       <MypageContainer>
-        <Sidebar />
         <div className='container1'>
           <div className='user_profile'>
             <div className='user_profile_img'>
@@ -68,7 +67,7 @@ const MyPage = () => {
           </div>
         </div>
       </MypageContainer>
-    </>
+    </Layout>
   );
 };
 
@@ -76,7 +75,6 @@ export default MyPage;
 
 const MypageContainer = styled.div`
   display: flex;
-  flex-direction: column;
   max-width: 1280px;
   margin: 0 auto;
   height: 100vh;
@@ -84,9 +82,7 @@ const MypageContainer = styled.div`
 
   .container1 {
     width: 100%;
-    border-left: 1px solid #4a4e51;
-    padding: 20px;
-    margin: 0 164px;
+    height: 100%;
   }
   // 유저 인포 css
   .user_profile {
@@ -152,18 +148,19 @@ const MypageContainer = styled.div`
   //main contianer css
   .user_main_container {
     display: flex;
+    margin-top: 10px;
   }
 
   //사이드바 css
   .sidebar {
-    display: flex;
+    display: flex; 
     align-items: center;
     width: 120px;
     height: 40px;
     border-radius: 30px;
     padding-left: 10px;
     margin-bottom: 5px;
-    cursor: pointer;
+     cursor: pointer;
 
     &:hover {
       color: #acb4b1;
@@ -174,7 +171,6 @@ const MypageContainer = styled.div`
 
   .user_sidebar {
     position: sticky;
-
     top: 10%;
     z-index: 10;
   }
@@ -182,7 +178,7 @@ const MypageContainer = styled.div`
   .user_main_container {
     border: 1px solid white;
     /* width: 1200px; */
-    height: 2000px;
+    /* height: 2000px; */
   }
   .summary_box {
     display: flex;
