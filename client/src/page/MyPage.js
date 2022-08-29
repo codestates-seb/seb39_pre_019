@@ -4,13 +4,21 @@ import { BsPencilFill } from "react-icons/bs";
 import { FaStackExchange } from "react-icons/fa";
 import Layout from "../components/Layout";
 
+import { ReactComponent as CakeImg } from "../assets/Cake.svg";
+import { ReactComponent as ClockImg } from "../assets/Clock.svg";
+import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
+import { ReactComponent as GraphImg } from "../assets/Graph.svg";
+import { ReactComponent as AstronautImg } from "../assets/Astronaut.svg";
+import { ReactComponent as GoldCrownImg } from "../assets/GoldCrown.svg";
+import { ReactComponent as SilverCrownImg } from "../assets/SilverCrown.svg";
+import { ReactComponent as BronzeCrownImg } from "../assets/BronzeCrown.svg";
 
 const MyPage = () => {
   return (
     <Layout children={MyPage}>
       <MypageContainer>
-        <div className='container1'>
-          <div className='user_profile'>
+        <div className='container'>
+          <div className='mypage_header'>
             <div className='user_profile_img'>
               <img
                 src={process.env.PUBLIC_URL + "/img/stackUserIcon.png"}
@@ -18,7 +26,17 @@ const MyPage = () => {
               ></img>
               <div className='user_profile_info'>
                 <h1 className='userName'> helloHailie</h1>
-                <div>Member for 4 months</div>
+                <ul className='user_profile_memo'>
+                  <li>
+                    <CakeImg /> Member for 4 months{" "}
+                  </li>
+                  <li>
+                    <ClockImg /> Last seen this week{" "}
+                  </li>
+                  <li>
+                    <CalendarImg /> Visited 48 days{" "}
+                  </li>
+                </ul>
               </div>
             </div>
             <div className='user_profile_btn'>
@@ -30,38 +48,106 @@ const MyPage = () => {
               </button>
             </div>
           </div>
-          <div className='user_menu'>
+          <div className='mypage_menu'>
             <div className='menu'>Profile</div>
             <div className='menu menu_select'>Activity</div>
             <div className='menu'>Settings</div>
           </div>
-          <div className='user_main_container'>
-            <nav>
-              <ul className='user_sidebar'>
-                <li className='sidebar'>Summary</li>
-                <li className='sidebar'>Answers</li>
-                <li className='sidebar'>Questions</li>
-                <li className='sidebar'>Tags</li>
-                <li className='sidebar'>Articles</li>
-                <li className='sidebar'>Badges</li>
-                <li className='sidebar'>Bookmarks</li>
-                <li className='sidebar'>Following</li>
-                <li className='sidebar'>Reputation</li>
-                <li className='sidebar'>All actions</li>
-                <li className='sidebar'>Responses</li>
-                <li className='sidebar'>Votes</li>
-              </ul>
-            </nav>
-            <section className='user_main'>
-              <h2>Summary!</h2>
-              <div className='summary_box'>
-                <aside className='summary_box1'>
-                  Reputation is how the community thanks you
-                </aside>
-                <aside className='summary_box1'></aside>
-                <aside className='summary_box1'></aside>
+          <div className='mypage_sidebar'>
+            <ul className='user_sidebar'>
+              <li className='sidebar'>Summary</li>
+              <li className='sidebar'>Answers</li>
+              <li className='sidebar'>Questions</li>
+              <li className='sidebar'>Tags</li>
+              <li className='sidebar'>Articles</li>
+              <li className='sidebar'>Badges</li>
+              <li className='sidebar'>Bookmarks</li>
+              <li className='sidebar'>Following</li>
+              <li className='sidebar'>Reputation</li>
+              <li className='sidebar'>All actions</li>
+              <li className='sidebar'>Responses</li>
+              <li className='sidebar'>Votes</li>
+            </ul>
+          </div>
+          <div className='mypage_main'>
+            <h2>Summary</h2>
+            <div className='main_container'>
+              <div className='summary'>
+                <div>
+                  <GraphImg />
+                  <h3>Reputation is how the community thanks you</h3>
+                  <p>
+                    When users upvote your helpful posts, you'll earn reputation
+                    and unlock new privileges.
+                  </p>
+                  <p>
+                    Learn more about
+                    <a href='/help/whats-reputation'>reputation</a>
+                    and
+                    <a href='/help/privileges'>privileges</a>
+                  </p>
+                </div>
+                <div>
+                  <h2>Badges</h2>
+                </div>
+                <div>
+                  <AstronautImg />
+                  <h2>Measure your impact</h2>
+                  <p>
+                    Your posts and helpful actions here help hundreds or
+                    thousands of people searching for help.
+                  </p>
+                </div>
               </div>
-            </section>
+              <div className='answers'>
+                <div className='answers_container'>
+                  <h2>Answers</h2>
+                  <div className='question_button'>
+                    <button>Score</button>
+                    <button>Activity</button>
+                    <button className='last'>Newest</button>
+                  </div>
+                </div>
+                <div>You have not answered any questions</div>
+              </div>
+              <div className='tags'>
+                <h2>Tags</h2>
+                <div>You have not answered any questions</div>
+                <h2>Badges</h2>
+              </div>
+              <div className='badges'>
+                <div>
+                  <GoldCrownImg />
+                  <h3>
+                    You don’t have a gold badge yet. Write an answer that scores
+                    100 or more to earn your first.
+                  </h3>
+                  <button>Browse Questions</button>
+                </div>
+                <div>
+                  <SilverCrownImg />
+                  <h3>
+                    You don’t have a silver badge yet. Ask a question that
+                    scores 25 or more to earn your first.
+                  </h3>
+                  <button>Browse Questions</button>
+                </div>
+                <div>
+                  <BronzeCrownImg />
+                  <h2>Measure your impact</h2>
+                  <p>
+                    Your posts and helpful actions here help hundreds or
+                    thousands of people searching for help.
+                  </p>
+                </div>
+              </div>
+              {/* <div className='bookmarks'>Bookmarks</div>
+              <div className='followed_posts'>Followed posts</div>
+              <div className='accounts'>Accounts</div>
+              <div className='active_bounties'>Active bounties</div>
+              <div className='articles'>Articles</div>
+              <div className='votes_cast'>Votes cast</div> */}
+            </div>
           </div>
         </div>
       </MypageContainer>
@@ -72,20 +158,48 @@ const MyPage = () => {
 export default MyPage;
 
 const MypageContainer = styled.div`
-  display: flex;
+  /* display: flex;
   max-width: 1280px;
   margin: 0 auto;
   height: 100vh;
-  color: #fff;
+  color: #fff; */
 
-  .container1 {
-    width: 100%;
-    height: 100%;
+  .container {
+    display: grid;
+    grid-gap: 10px;
+    height: 100vh;
+    grid-template-columns: 170px 1fr;
+    grid-template-rows: 200px 80px 1fr;
+    grid-template-areas: "mypage_header mypage_header" "mypage_menu mypage_menu" "mypage_sidebar mypage_main ";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #e1e4e6;
   }
+
+  .container > div {
+    /* background-color: pink; */
+    padding: 20px;
+    /* border: 1px solid red; */
+  }
+  .mypage_header {
+    grid-area: mypage_header;
+  }
+  .mypage_menu {
+    grid-area: mypage_menu;
+  }
+  .mypage_sidebar {
+    grid-area: mypage_sidebar;
+  }
+  .mypage_main {
+    grid-area: mypage_main;
+  }
+
   // 유저 인포 css
-  .user_profile {
+  .mypage_header {
     display: flex;
-    margin: 20px 20px;
     position: relative;
   }
   .user_profile_img {
@@ -106,12 +220,19 @@ const MypageContainer = styled.div`
       }
     }
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 10px;
+    top: 20px;
+  }
+  .user_profile_memo {
+    display: flex;
+    justify-content: space-around;
+    margin-left: -40px;
+    padding-right: 0;
+    width: 500px;
   }
 
   //프로필 css
-  .user_menu {
+  .mypage_menu {
     display: flex;
   }
   .menu {
@@ -143,27 +264,21 @@ const MypageContainer = styled.div`
     }
   }
 
-  //main contianer css
-  .user_main_container {
-    display: flex;
-    margin-top: 10px;
-  }
-
   //사이드바 css
   .sidebar {
-    display: flex; 
+    display: flex;
     align-items: center;
-    width: 120px;
+    width: 130px;
     height: 40px;
-    border-radius: 30px;
-    padding-left: 10px;
-    margin-bottom: 5px;
-     cursor: pointer;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: -40px;
+    margin-top: 0;
 
     &:hover {
       color: #acb4b1;
       background-color: #3d3d3d;
-      border-radius: 30px;
+      border-radius: 20px;
     }
   }
 
@@ -171,42 +286,115 @@ const MypageContainer = styled.div`
     position: sticky;
     top: 5%;
     z-index: 10;
+    padding-top: 0;
   }
-  //요약 박스 css
-  .user_main_container {
-    /* border: 1px solid white; */
-    width: 100%;
+  //메인 페이지 css
+
+  .main_container {
+    display: grid;
+    /* grid-gap: 20px; */
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-rows: 1fr;
+    grid-template-areas: "summary" "answers" "tags" "badges" "bookmarks" "followed_posts" "accounts" "active_bounties" "articles" "votes_cast";
+  }
+  .main_container > div {
+    /* background-color: green; */
+    padding: -10px;
     height: 100%;
+    /* border: 1px solid pink; */
   }
-  .summary_box {
+  .summary {
+    grid-area: summary;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
   }
-
-  .summary_box1 {
-    border: 1px solid gray;
-    margin: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 20px;
-    min-height: 200px;
-    flex-basis: 150px;
+  .summary > div {
+    border: 1px solid silver;
     flex-grow: 1;
+    margin: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .answers {
+    grid-area: answers;
   }
 
-  /* // 태블릿 : 1200px ~ 768px :: 768px 미만 적용되는 css
-  @media only screen and (max-width: 768px) {
-    .summary-box1 {
-      flex-wrap: wrap;
+  .answers > div:nth-last-child(1) {
+    border: 1px solid silver;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .answers_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tags {
+    grid-area: tags;
+  }
+  .tags > div {
+    border: 1px solid silver;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .badges {
+    grid-area: badges;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .badges > div {
+    border: 1px solid silver;
+    padding: 10px;
+  }
+  .badges > div:nth-child(n + 1) {
+    border: 1px solid silver;
+    flex-grow: 1;
+    margin: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* .bookmarks {
+    grid-area: bookmarks;
+  }
+  .followed_posts {
+    grid-area: followed_posts;
+  }
+  .accounts {
+    grid-area: accounts;
+  }
+  .active_bounties {
+    grid-area: active_bounties;
+  }
+  .articles {
+    grid-area: articles;
+  }
+  .votes_cast {
+    grid-area: votes_cast;
+  } */
+
+  button {
+    background-color: #2d2d2d;
+    padding: 10px;
+    color: #c4c8cc;
+    border: 1px solid #7d858d;
+    cursor: pointer;
+    &:hover {
+      background-color: #353738;
+    }
+    buttonfirst-child {
+      border-radius: 4px 0 0 4px;
+      background-color: #404245;
+      font-weight: 600;
+    }
+    .last {
+      border-radius: 0 4px 4px 0;
     }
   }
-  // PC : 1200px 이상 :: 1200px 미만 적용되는 css
-  @media only screen and (max-width: 1200px) {
-    .summary-box1 {
-      flex-wrap: wrap;
-    }
-  } */
 `;
