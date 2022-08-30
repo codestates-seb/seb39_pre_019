@@ -1,8 +1,5 @@
 package com.preProject.controller;
 
-<<<<<<< HEAD
-public class LoginController {
-=======
 import com.preProject.commonDto.SingleResponseDto;
 import com.preProject.domain.User;
 import com.preProject.dto.user.UserPostDto;
@@ -26,5 +23,4 @@ import javax.validation.Valid;
 public class LoginController {
 
 
->>>>>>> 7ab51b6bab2394f663a5789e5e7c27238b55af47
 }
