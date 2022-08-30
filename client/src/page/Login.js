@@ -3,9 +3,8 @@ import Button from "../components/Button";
 import styled from "styled-components";
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
-
 import { Link } from "react-router-dom";
-import axios from "axios";
+
 
 const Login = () => {
   const emailRef = useRef();

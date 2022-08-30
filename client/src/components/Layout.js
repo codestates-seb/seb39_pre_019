@@ -6,12 +6,14 @@ import Footer from './Footer'
 const Layout = ({children}) => {
   return (
     <LayOut>
-      <div className='layout_header'>
-        <Sidebar/>
-        <div className='layout_main'>{children}</div>
-      </div>
-      <div className='layout_bottom'>
-        <Footer/>
+      <div className='wrap'>
+        <div className='layout_header'>
+          <Sidebar/>
+          <div className='layout_main'>{children}</div>
+        </div>
+        <div className='layout_bottom'>
+          <Footer/>
+        </div>
       </div>
     </LayOut>
   )
@@ -20,20 +22,25 @@ const Layout = ({children}) => {
 export default Layout
 
 const LayOut = styled.div`
-display: flex;
-justify-content: space-between;
-flex-direction: column;
-
+height: 100vh;
+.wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
 .layout_header{
   display: flex;
   max-width: 1280px;
+  margin: 0 auto;
   width: 100%;
   height: 100vh;
-  margin: 0 auto;
 }
 .layout_main{
   width: 100%;
+  height: 100%;
   border-left: 1px solid #4A4E51;;
 }
+
 `
 

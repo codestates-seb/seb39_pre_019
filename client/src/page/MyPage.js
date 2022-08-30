@@ -161,6 +161,7 @@ const MyPage = () => {
 export default MyPage;
 
 const MypageContainer = styled.div`
+  display: flex;
   /* display: flex;
   max-width: 1280px;
   margin: 0 auto;
@@ -291,6 +292,14 @@ const MypageContainer = styled.div`
     z-index: 10;
     padding-top: 0;
   }
+  //요약 박스 css
+  .user_main_container {
+    border: 1px solid white;
+    /* width: 1200px; */
+    /* height: 2000px; */
+    /* border: 1px solid white; */
+    width: 100%;
+    height: 100%;
   //메인 페이지 css
 
   .main_container {
@@ -400,4 +409,6 @@ const MypageContainer = styled.div`
       border-radius: 0 4px 4px 0;
     }
   }
+}
 `;
+

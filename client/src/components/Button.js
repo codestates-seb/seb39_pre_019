@@ -33,9 +33,11 @@ const ButtonCom = styled.button`
   }
 
   &.myButton_Ask {
-    padding: 13px;
+    background-color: #0964AA !important;
+    padding: 11px;
+    letter-spacing: -0.4px;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     color: #fff;
   }
 
