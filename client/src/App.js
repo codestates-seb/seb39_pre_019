@@ -6,6 +6,8 @@ import Questions from './page/Questions';
 import { BrowserRouter,Routes,Route} from 'react-router-dom'
 import MyPage from './page/MyPage';
 import DetailQuestion from './components/DetailQuestion';
+import UserEdit from "./page/UserEdit";
+
 
 function App() {
   return (
@@ -16,8 +18,9 @@ function App() {
           <Route path='/' element={<Questions />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
-          <Route path='/login/mypage' element={<MyPage />}></Route>
+          <Route path='/mypage' element={<MyPage />}></Route>
           <Route path='/:id' element={<DetailQuestion />}></Route>
+          <Route path='/mypage/userEdit' element={<UserEdit />}></Route>
         </Routes>
     </BrowserRouter>
   );
