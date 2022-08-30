@@ -141,9 +141,9 @@ const Login = () => {
                   required
                 ></input>
                 <div>
-                  <Link to='mypage'>
-                    <Button text={"Log in"}></Button>
-                  </Link>
+                  {/* <Link to='mypage'> */}
+                  <Button text={"Log in"}></Button>
+                  {/* </Link> */}
                 </div>
               </form>
             </section>
@@ -197,7 +197,7 @@ const LoginMain = styled.div`
   form {
     /* display: flex;
     flex-direction: column;
-    align-items: center; */
+    text-align: center; */
     background-color: #fff;
     box-shadow: 5px 5px 5px 5px gray;
     position: relative;
@@ -208,6 +208,7 @@ const LoginMain = styled.div`
     padding: 10px 10px;
     text-align: center;
     border-radius: 5px;
+    /* margin: 0; */
 
     input {
       margin-bottom: 20px;
@@ -223,10 +224,6 @@ const LoginMain = styled.div`
   input[type="password"] {
     width: 90%;
     height: 25px;
-  }
-
-  Button {
-    width: 90%;
   }
 
   button {

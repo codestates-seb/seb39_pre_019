@@ -12,6 +12,7 @@ import { ReactComponent as AstronautImg } from "../assets/Astronaut.svg";
 import { ReactComponent as GoldCrownImg } from "../assets/GoldCrown.svg";
 import { ReactComponent as SilverCrownImg } from "../assets/SilverCrown.svg";
 import { ReactComponent as BronzeCrownImg } from "../assets/BronzeCrown.svg";
+import { Link } from "react-router-dom";
 
 const MyPage = () => {
   return (
@@ -40,9 +41,11 @@ const MyPage = () => {
               </div>
             </div>
             <div className='user_profile_btn'>
-              <button>
-                <BsPencilFill /> Edit profile
-              </button>
+              <Link to='userEdit'>
+                <button>
+                  <BsPencilFill /> Edit profile
+                </button>
+              </Link>
               <button>
                 <FaStackExchange /> Network profile
               </button>
