@@ -30,68 +30,87 @@ const Login = () => {
     setSuccess(true);
     setEmail("");
     setPwd("");
-    // try{
-    //   const response = await axios.post()
-    // } catch()
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/login",
+        JSON.stringify({ email, pwd }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      console.log(JSON.stringify(response?.data));
+    } catch (err) {
+      if (!err.response) {
+        setErrMsg("No Server Response");
+      } else if (err.response.status === 400) {
+        setErrMsg("Missing Email or Password");
+      } else if (err.response.status === 401) {
+        setErrMsg("Inauthorized");
+      } else {
+        setErrMsg("Login Failed");
+      }
+    }
+    errRef.current.focus(); //스크린 리더 assertive로 넘어가기
   };
 
   return (
     <LoginMain>
-      <div className='container'>
-        <Link to='/'>
-          <svg
-            aria-hidden='true'
-            className='login_logo'
-            width='32'
-            height='37'
-            viewBox='0 0 32 37'
-          >
-            <path d='M26 33v-9h4v13H0V24h4v9h22Z' fill='#BCBBBB'></path>
-            <path
-              d='m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5 0ZM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5ZM9.1 15.2l15 7 1.4-3-15-7-1.4 3Zm14 10.79.68-2.95-16.1-3.35L7 23l16.1 2.99ZM23 30H7v-3h16v3Z'
-              fill='#F48024'
-            ></path>
-          </svg>
-        </Link>
-        <div className='socialLoginButton'>
-          <div className='btn'>
-            <button className='btn_google'>
-              <FcGoogle /> Log in with Google
-            </button>
-          </div>
-          <div className='btn'>
-            <button className='btn_github'>
-              <GoMarkGithub /> Log in with GitHub
-            </button>
-          </div>
-          <div className='btn'>
-            <button className='btn_facebook'>
+      <>
+        {success ? (
+          <section>
+            <h1>You are logged in!</h1>
+            <br />
+            <p>
+              <Link to='/'>Go to Questions Page!</Link>
+            </p>
+          </section>
+        ) : (
+          <div className='container'>
+            <Link to='/'>
               <svg
                 aria-hidden='true'
-                class='svg-icon iconFacebook'
-                width='18'
-                height='18'
-                viewBox='0 0 18 18'
+                className='login_logo'
+                width='32'
+                height='37'
+                viewBox='0 0 32 37'
               >
+                <path d='M26 33v-9h4v13H0V24h4v9h22Z' fill='#BCBBBB'></path>
                 <path
-                  d='M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm6.55 16v-6.2H7.46V8.4h2.09V6.61c0-2.07 1.26-3.2 3.1-3.2.88 0 1.64.07 1.87.1v2.16h-1.29c-1 0-1.19.48-1.19 1.18V8.4h2.39l-.31 2.42h-2.08V17h-2.5Z'
-                  fill='#fff'
+                  d='m21.5 0-2.7 2 9.9 13.3 2.7-2L21.5 0ZM26 18.4 13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5ZM9.1 15.2l15 7 1.4-3-15-7-1.4 3Zm14 10.79.68-2.95-16.1-3.35L7 23l16.1 2.99ZM23 30H7v-3h16v3Z'
+                  fill='#F48024'
                 ></path>
-              </svg>{" "}
-              Log in with Facebook
-            </button>
-          </div>
-        </div>
-        <>
-          {success ? (
-            <section>
-              <h1>You are logged in!</h1>
-              <br />
-              <p>
-                <a href='/'>Go to Questions Page!</a>
-              </p>
-            </section>
-          ) : (
+              </svg>
+            </Link>
+            <div className='socialLoginButton'>
+              <div className='btn'>
+                <button className='btn_google'>
+                  <FcGoogle /> Log in with Google
+                </button>
+              </div>
+              <div className='btn'>
+                <button className='btn_github'>
+                  <GoMarkGithub /> Log in with GitHub
+                </button>
+              </div>
+              <div className='btn'>
+                <button className='btn_facebook'>
+                  <svg
+                    aria-hidden='true'
+                    class='svg-icon iconFacebook'
+                    width='18'
+                    height='18'
+                    viewBox='0 0 18 18'
+                  >
+                    <path
+                      d='M3 1a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3Zm6.55 16v-6.2H7.46V8.4h2.09V6.61c0-2.07 1.26-3.2 3.1-3.2.88 0 1.64.07 1.87.1v2.16h-1.29c-1 0-1.19.48-1.19 1.18V8.4h2.39l-.31 2.42h-2.08V17h-2.5Z'
+                      fill='#fff'
+                    ></path>
+                  </svg>{" "}
+                  Log in with Facebook
+                </button>
+              </div>
+            </div>
             <section>
               <p
                 ref={errRef}
@@ -128,10 +147,17 @@ const Login = () => {
                 </div>
               </form>
             </section>
-          )}
-        </>
-      </div>
-      Dont have an account? <a href='/signup'>Sign up</a>
+            <div className='login_footer'>
+              Dont have an account? <Link to='/signup'>Sign up</Link> <br />
+              <br />
+              Are you an employer?{" "}
+              <a href='https://talent.stackoverflow.com/users/login'>
+                Sign up on Talent
+              </a>
+            </div>
+          </div>
+        )}
+      </>
     </LoginMain>
   );
 };
@@ -171,7 +197,7 @@ const LoginMain = styled.div`
   form {
     /* display: flex;
     flex-direction: column;
-    align-items: center; */
+    text-align: center; */
     background-color: #fff;
     box-shadow: 5px 5px 5px 5px gray;
     position: relative;
@@ -182,6 +208,7 @@ const LoginMain = styled.div`
     padding: 10px 10px;
     text-align: center;
     border-radius: 5px;
+    /* margin: 0; */
 
     input {
       margin-bottom: 20px;
@@ -197,10 +224,6 @@ const LoginMain = styled.div`
   input[type="password"] {
     width: 90%;
     height: 25px;
-  }
-
-  Button {
-    width: 90%;
   }
 
   button {
@@ -230,6 +253,13 @@ const LoginMain = styled.div`
   .btn_facebook {
     background-color: #385499;
     color: #fff;
+  }
+
+  .login_footer {
+    margin-top: 20px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
   }
 
   //유효성 검사 css

@@ -10,6 +10,7 @@ import { FaCheckDouble } from "react-icons/fa";
 import { IoIosPricetags } from "react-icons/io";
 import { BsFillTrophyFill } from "react-icons/bs";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 
@@ -17,7 +18,7 @@ const Signup = () => {
   const userRef = useRef();
   const errRef = useRef();
 
-  const [user, setUser] = useState("");
+  const [displayName, setDisplayName] = useState("");
 
   const [email, setEmail] = useState("");
 
@@ -41,7 +42,7 @@ const Signup = () => {
 
   useEffect(() => {
     setErrMsg("");
-  }, [user, email, pwd]);
+  }, [displayName, email, pwd]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -52,7 +53,7 @@ const Signup = () => {
     try {
       const response = await axios.post(
         "http://localhost:3001/signup",
-        JSON.stringify({ user, email, pwd }),
+        JSON.stringify({ displayName, email, pwd }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -62,7 +63,7 @@ const Signup = () => {
       console.log(response.accessToken);
       console.log(JSON.stringify(response));
       setSuccess(true);
-      setUser("");
+      setDisplayName("");
       setEmail("");
       setPwd("");
     } catch (err) {
@@ -100,33 +101,33 @@ const Signup = () => {
         </p>
         <p>Collaborate and share knowledge with a private group for FREE.</p>
       </div>
+      {success ? (
+        <section>
+          <h1>Success!</h1>
+          <p>
+            <Link to='/login'>Sign In</Link>
+          </p>
+        </section>
+      ) : (
+        <div className='container'>
+          <div className='socialLoginButton'>
+            <div className='btn'>
+              <button className='btn_google'>
+                <FcGoogle /> Log in with Google
+              </button>
+            </div>
+            <div className='btn'>
+              <button className='btn_github'>
+                <GoMarkGithub /> Log in with GitHub
+              </button>
+            </div>
+            <div className='btn'>
+              <button className='btn_facebook'>
+                <FaFacebook /> Log in with Facebook
+              </button>
+            </div>
+          </div>
 
-      <div className='container'>
-        <div className='socialLoginButton'>
-          <div className='btn'>
-            <button className='btn_google'>
-              <FcGoogle /> Log in with Google
-            </button>
-          </div>
-          <div className='btn'>
-            <button className='btn_github'>
-              <GoMarkGithub /> Log in with GitHub
-            </button>
-          </div>
-          <div className='btn'>
-            <button className='btn_facebook'>
-              <FaFacebook /> Log in with Facebook
-            </button>
-          </div>
-        </div>
-        {success ? (
-          <section>
-            <h1>Success!</h1>
-            <p>
-              <a href='/login'>Sign In</a>
-            </p>
-          </section>
-        ) : (
           <section>
             <p
               ref={errRef}
@@ -141,8 +142,8 @@ const Signup = () => {
                 id='displayName'
                 type='text'
                 ref={userRef}
-                onChange={(e) => setUser(e.target.value)}
-                value={user}
+                onChange={(e) => setDisplayName(e.target.value)}
+                value={displayName}
                 required
               />
               <label htmlFor='userEmail'>Email</label>
@@ -199,8 +200,8 @@ const Signup = () => {
               </p>
             </form>
           </section>
-        )}
-      </div>
+        </div>
+      )}
     </LoginMain>
   );
 };
@@ -235,6 +236,7 @@ const LoginMain = styled.div`
   }
   .btn {
     width: 100%;
+    border: none;
   }
   form {
     /* display: flex;
@@ -275,14 +277,11 @@ const LoginMain = styled.div`
     color: #fff;
     background-color: #1764aa;
     font-size: 14px;
-
     border-radius: 3px;
     font-weight: 600;
-
     display: block;
     width: 100%;
     text-align: center;
-
     cursor: pointer;
 
     box-shadow: 0.5px 0.5px 1px 1px gray;
@@ -290,6 +289,7 @@ const LoginMain = styled.div`
   .btn_google {
     color: #2d3032;
     background-color: #ffffff;
+    border: none;
   }
   .btn_github {
     background-color: black;
