@@ -300,6 +300,7 @@ const MypageContainer = styled.div`
     /* border: 1px solid white; */
     width: 100%;
     height: 100%;
+  }
   //메인 페이지 css
 
   .main_container {
@@ -411,4 +412,3 @@ const MypageContainer = styled.div`
   }
 }
 `;
-

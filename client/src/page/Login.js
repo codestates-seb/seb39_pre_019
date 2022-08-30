@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 
 const Login = () => {
   const emailRef = useRef();
@@ -272,5 +272,9 @@ const LoginMain = styled.div`
     font-weight: bold;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
+  }
+  Button {
+    margin-left: 0px;
+    margin-top: 10px;
   }
 `;
