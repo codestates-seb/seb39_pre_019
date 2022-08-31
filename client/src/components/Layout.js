@@ -22,8 +22,10 @@ const Layout = ({children}) => {
 export default Layout
 
 const LayOut = styled.div`
-height: 100vh;
+height: auto;
+min-height: 100%;
 .wrap{
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,13 +36,18 @@ height: 100vh;
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
-  height: 100vh;
 }
 .layout_main{
   width: 100%;
   height: 100%;
   border-left: 1px solid #4A4E51;;
 }
-
+.layout_bottom{
+  /* position: absolute; */
+  /* bottom: 0; */
+  /* width: 100%; */
+  /* left: 0; */
+  /* height: 100%;   */
+}
 `
 
