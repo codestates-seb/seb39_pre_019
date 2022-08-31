@@ -15,7 +15,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Question {
+public class Question extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +28,6 @@ public class Question {
     @Column(nullable = false)
 
     private String body;
-
-//    @Column
-//    private List<String> tag;
 
     // 질문 등록, 수정
     public Question(long id, String title, String body) {
