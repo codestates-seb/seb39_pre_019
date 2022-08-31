@@ -12,6 +12,8 @@ import { BsFillTrophyFill } from "react-icons/bs";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import Login from "./Login";
+
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 
 const Signup = () => {
@@ -22,7 +24,7 @@ const Signup = () => {
 
   const [email, setEmail] = useState("");
 
-  const [pwd, setPwd] = useState("");
+  const [password, setPassword] = useState("");
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
@@ -34,26 +36,26 @@ const Signup = () => {
   }, []);
 
   useEffect(() => {
-    const result = PWD_REGEX.test(pwd);
+    const result = PWD_REGEX.test(password);
     // console.log(result);
     // console.log(pwd);
     setValidPwd(result);
-  }, [pwd]);
+  }, [password]);
 
   useEffect(() => {
     setErrMsg("");
-  }, [displayName, email, pwd]);
+  }, [displayName, email, password]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (!PWD_REGEX.test(pwd)) {
+    if (!PWD_REGEX.test(password)) {
       setErrMsg("Invalid Entry");
       return;
     }
     try {
       const response = await axios.post(
         "http://localhost:3001/signup",
-        JSON.stringify({ displayName, email, pwd }),
+        JSON.stringify({ displayName, email, password }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -65,7 +67,7 @@ const Signup = () => {
       setSuccess(true);
       setDisplayName("");
       setEmail("");
-      setPwd("");
+      setPassword("");
     } catch (err) {
       console.log(err);
       if (err.response.status === 0) {
@@ -84,125 +86,126 @@ const Signup = () => {
   };
 
   return (
-    <LoginMain>
-      <div className='side-info'>
-        <h2>Join the Stack Overflow community</h2>
-        <p>
-          <RiQuestionnaireFill /> Get unstuck — ask a question
-        </p>
-        <p>
-          <FaCheckDouble /> Unlock new privileges like voting and commenting
-        </p>
-        <p>
-          <IoIosPricetags /> Save your favorite tags, filters, and jobs
-        </p>
-        <p>
-          <BsFillTrophyFill /> Earn reputation and badges
-        </p>
-        <p>Collaborate and share knowledge with a private group for FREE.</p>
-      </div>
+    <>
       {success ? (
-        <section>
-          <h1>Success!</h1>
-          <p>
-            <Link to='/login'>Sign In</Link>
-          </p>
-        </section>
+        <Login />
       ) : (
-        <div className='container'>
-          <div className='socialLoginButton'>
-            <div className='btn'>
-              <button className='btn_google'>
-                <FcGoogle /> Log in with Google
-              </button>
-            </div>
-            <div className='btn'>
-              <button className='btn_github'>
-                <GoMarkGithub /> Log in with GitHub
-              </button>
-            </div>
-            <div className='btn'>
-              <button className='btn_facebook'>
-                <FaFacebook /> Log in with Facebook
-              </button>
-            </div>
+        <LoginMain>
+          <div className='side-info'>
+            <h2>Join the Stack Overflow community</h2>
+            <p>
+              <RiQuestionnaireFill /> Get unstuck — ask a question
+            </p>
+            <p>
+              <FaCheckDouble /> Unlock new privileges like voting and commenting
+            </p>
+            <p>
+              <IoIosPricetags /> Save your favorite tags, filters, and jobs
+            </p>
+            <p>
+              <BsFillTrophyFill /> Earn reputation and badges
+            </p>
+            <p>
+              Collaborate and share knowledge with a private group for FREE.
+            </p>
           </div>
 
-          <section>
-            <p
-              ref={errRef}
-              className={errMsg ? "errmsg" : "offscreen"}
-              aria-live='assertive'
-            >
-              {errMsg}
-            </p>
-            <form onSubmit={submitHandler}>
-              <label htmlFor='displayName'>Display name</label>
-              <input
-                id='displayName'
-                type='text'
-                ref={userRef}
-                onChange={(e) => setDisplayName(e.target.value)}
-                value={displayName}
-                required
-              />
-              <label htmlFor='userEmail'>Email</label>
-              <input
-                id='userEmail'
-                type='email'
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                required
-              />
-              <label htmlFor='pwd'>Password</label>
-              <input
-                id='pwd'
-                type='password'
-                autoComplete='off'
-                onChange={(e) => setPwd(e.target.value)}
-                value={pwd}
-                required
-                aria-describedby='pwdnote'
-                aria-invalid={validPwd ? "false" : "true"}
-                onFocus={() => setPwdFocus(true)}
-                onBlur={() => setPwdFocus(false)}
-              />
+          <div className='container'>
+            <div className='socialLoginButton'>
+              <div className='btn'>
+                <button className='btn_google'>
+                  <FcGoogle /> Log in with Google
+                </button>
+              </div>
+              <div className='btn'>
+                <button className='btn_github'>
+                  <GoMarkGithub /> Log in with GitHub
+                </button>
+              </div>
+              <div className='btn'>
+                <button className='btn_facebook'>
+                  <FaFacebook /> Log in with Facebook
+                </button>
+              </div>
+            </div>
+
+            <section>
               <p
-                id='pwdnote'
-                className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
+                ref={errRef}
+                className={errMsg ? "errmsg" : "offscreen"}
+                aria-live='assertive'
               >
-                Passwords must contain 8 to 24 characters, including uppercase
-                and lowercase letters and a number.
-                <br />
+                {errMsg}
               </p>
-              <div className='checkbox'>
-                <input type='checkbox'></input>
-                Opt-in to receive occasional product updates, user research
-                invitations, company announcements, and digests.
-              </div>
-              <div>
-                <Button text={"Sign up"}></Button>
-              </div>
-              <p className='policy'>
-                By clicking “Sign up”, you agree to our{" "}
-                <a href='https://stackoverflow.com/legal/terms-of-service/public'>
-                  terms of service
-                </a>
-                ,{" "}
-                <a href='https://stackoverflow.com/legal/privacy-policy'>
-                  privacy policy
-                </a>{" "}
-                and{" "}
-                <a href='https://stackoverflow.com/legal/cookie-policy'>
-                  cookie policy
-                </a>
-                .
-              </p>
-            </form>
-          </section>
-        </div>
+              <form onSubmit={submitHandler}>
+                <label htmlFor='displayName'>Display name</label>
+                <input
+                  id='displayName'
+                  type='text'
+                  ref={userRef}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                  value={displayName}
+                  required
+                />
+                <label htmlFor='userEmail'>Email</label>
+                <input
+                  id='userEmail'
+                  type='email'
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  required
+                />
+                <label htmlFor='pwd'>Password</label>
+                <input
+                  id='pwd'
+                  type='password'
+                  autoComplete='off'
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  required
+                  aria-describedby='pwdnote'
+                  aria-invalid={validPwd ? "false" : "true"}
+                  onFocus={() => setPwdFocus(true)}
+                  onBlur={() => setPwdFocus(false)}
+                />
+                <p
+                  id='pwdnote'
+                  className={
+                    pwdFocus && !validPwd ? "instructions" : "offscreen"
+                  }
+                >
+                  Passwords must contain 8 to 24 characters, including uppercase
+                  and lowercase letters and a number.
+                  <br />
+                </p>
+                <div className='checkbox'>
+                  <input type='checkbox'></input>
+                  Opt-in to receive occasional product updates, user research
+                  invitations, company announcements, and digests.
+                </div>
+                <div>
+                  <Button text={"Sign up"}></Button>
+                </div>
+                <p className='policy'>
+                  By clicking “Sign up”, you agree to our{" "}
+                  <a href='https://stackoverflow.com/legal/terms-of-service/public'>
+                    terms of service
+                  </a>
+                  ,{" "}
+                  <a href='https://stackoverflow.com/legal/privacy-policy'>
+                    privacy policy
+                  </a>{" "}
+                  and{" "}
+                  <a href='https://stackoverflow.com/legal/cookie-policy'>
+                    cookie policy
+                  </a>
+                </p>
+              </form>
+            </section>
+          </div>
+        </LoginMain>
       )}
-    </LoginMain>
+    </>
   );
 };
 

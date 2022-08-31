@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const Button = ({ text, type, onClick }) => {
-  const types = ["red", "login", "Ask"].includes(type) ? type : "default";
+  const types = ["red", "login", "Ask","contri"].includes(type) ? type : "default";
   return (
     <ButtonCom
       className={["myButton", `myButton_${types}`].join(" ")}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       {text}
     </ButtonCom>
   );
@@ -33,12 +34,16 @@ const ButtonCom = styled.button`
   }
 
   &.myButton_Ask {
-    background-color: #0964AA !important;
+    background-color: #0964aa !important;
     padding: 11px;
     letter-spacing: -0.4px;
     font-weight: 600;
     font-size: 13px;
     color: #fff;
+  }
+  &.myButton_contri{
+    background-color: #435360;
+    font-size: 13px;
   }
 
   &.myButton_login {

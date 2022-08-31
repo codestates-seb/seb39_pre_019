@@ -1,17 +1,21 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 import Button from "../components/Button";
 import styled from "styled-components";
 import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
+import AuthContext from "../context/AuthProvider";
 
 const Login = () => {
+  const { setAuth } = useContext(AuthContext);
+
   const emailRef = useRef();
   const errRef = useRef();
 
   const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
+  const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -21,26 +25,31 @@ const Login = () => {
 
   useEffect(() => {
     setErrMsg("");
-  }, [email, pwd]);
+  }, [email, password]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(email, pwd);
-    setSuccess(true);
-    setEmail("");
-    setPwd("");
+
     try {
       const response = await axios.post(
         "http://localhost:3001/login",
-        JSON.stringify({ email, pwd }),
+        JSON.stringify({ email, password }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
       console.log(JSON.stringify(response?.data));
+      const accessToken = response?.data?.accessToken;
+      const roles = response?.data?.roles;
+      setAuth({ email, password, accessToken, roles });
+
+      // console.log(email, password);
+      setEmail("");
+      setPassword("");
+      setSuccess(true);
     } catch (err) {
-      if (!err.response) {
+      if (!err?.response) {
         setErrMsg("No Server Response");
       } else if (err.response.status === 400) {
         setErrMsg("Missing Email or Password");
@@ -135,8 +144,8 @@ const Login = () => {
                   type='password'
                   maxLength='8'
                   autoComplete='off'
-                  onChange={(e) => setPwd(e.target.value)}
-                  value={pwd}
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
                   required
                 ></input>
                 <div>
@@ -272,5 +281,9 @@ const LoginMain = styled.div`
     font-weight: bold;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
+  }
+  Button {
+    margin-left: 0px;
+    margin-top: 10px;
   }
 `;

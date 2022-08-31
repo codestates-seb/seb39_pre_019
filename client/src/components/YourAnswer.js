@@ -1,25 +1,39 @@
 import styled from 'styled-components'
 import Button from './Button'
-import React,{useState} from 'react'
+import React,{useState,useRef} from 'react'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import  useStore  from '../store/store'
 
 const YourAnswer = () => {
-
+  const {id} = useParams()
+  const textRef = useRef()
+  // const [toggleSubmit,setToggleSubmit] = useState(true)
+  const {setIsAnswer,toggleSubmit,setToggleSubmit} = useStore()
   const [content, setContent] = useState('')
-
   const handleContent = (e) =>{
     setContent(e.target.value)
   }
-  
   const onSubmit = () => {
-    axios({
-      url:'/answer',
-      method:'post',
-      data:{
-        content: content,
-      }
-    })
-    .then((res)=>console.log(res))
+    if(content.length < 10 && toggleSubmit){
+     return textRef.current.focus()
+    }
+    if(toggleSubmit){
+     return axios({
+        url:`http://localhost:3001/qustions/${id}`,
+        method:'patch',
+        data:{
+          'anwser' : content,
+        }
+      })
+      .then((data)=>{
+        setIsAnswer();
+        setToggleSubmit();
+        window.scrollTo(0,0);
+        setContent('')
+      })
+    }
+    return alert('댓글은 1개만 달수 있습니다.')
   }
   
 
@@ -27,7 +41,7 @@ const YourAnswer = () => {
     <AnswerForm>
       <p>Your Answer</p>
       <form>
-        <textarea onChange={handleContent}></textarea>
+        <textarea ref={textRef} value={content} onChange={handleContent}></textarea>
       </form>
       <div className='button'>
         <Button type={'Ask'} text={'Post Your Answer'} onClick={onSubmit}/>
@@ -58,8 +72,8 @@ const AnswerForm = styled.div`
      color: #E7E9EB;
    }
    .button{
+     margin: 30px 0;
      margin-left: -10px;
-     margin-top: 10px;
 
    }
 `

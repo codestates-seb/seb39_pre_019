@@ -44,6 +44,7 @@ const HeaderCom = styled.div`
   background-color: #393939;
   box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.1), 0 1px 4px hsla(0, 0%, 0%, 0.1),0 2px 8px hsla(0, 0%, 0%, 0.1);
   z-index: 100;
+
   // 위에 박스 쉐도우는 참고 자료로 가지고 있어도 좋을듯 하다.
   .header_wrap {
     max-width: 1280px;

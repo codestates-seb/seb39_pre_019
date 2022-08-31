@@ -11,20 +11,22 @@ import {ReactComponent as Clock} from '../assets/Clock.svg'
 import {ReactComponent as Pencil} from '../assets/Pencil.svg'
 import {ReactComponent as Star} from '../assets/Star.svg'
 import YourAnswer from './YourAnswer'
+import  useStore  from '../store/store'
 
 
  
 
 const DetailQuestion = () => {
+  const {isAnswer , setIsAnswer} = useStore()
   const {id} = useParams()
   const [detail,setdetail] = useState([])
+
 
   useEffect(()=>{
     axios(`http://localhost:3001/qustions/${id}`)
     .then((data)=>setdetail({...data.data}))
-  },[])
-  const {title,body,views,votes,answers} = detail
-
+  },[isAnswer])
+  const {title,body,views,votes,anwser} = detail
   return (
   <Layout children={DetailQuestion}>
     <DetailQues>
@@ -49,7 +51,6 @@ const DetailQuestion = () => {
         </div>
       </div>
       <div className='border'></div>
-
       <div className='detail_main'>
         <div className='vote_wrap'>
           <div className='up_Down'>
@@ -62,11 +63,9 @@ const DetailQuestion = () => {
            <div><Clock/></div>
           </div>
         </div>
-
         <div className='body_container'>
           <pre>{body}</pre>
         </div>
-
         <div className='box_container'>
           <div className='box_top'>
             <div className='box_title'>The Overflow Blog</div>
@@ -104,6 +103,52 @@ const DetailQuestion = () => {
           </div>
         </div>
       </div>
+
+      <div>{isAnswer?<>
+        <div className='detail_header'>
+        <div className='header_title'>
+          <span>Answer</span>
+        </div>
+      </div>
+      <div className='detail_main'>
+        <div className='vote_wrap'>
+          <div className='up_Down'>
+            <Up/>
+              <span>{votes}</span>
+            <Down/>
+          </div>
+          <div className='vote_icons'>
+           <div><Clock/></div>
+          </div>
+        </div>
+        <div className='body_container'>
+          <pre>{anwser}</pre>
+          <div className='answer_body'>
+            <div className='answer_list'>
+              <ul>
+                <li>Share</li>
+                <li>Edit</li>
+                <li>Delete</li>
+                <li>Flag</li>
+              </ul>
+              <span>Add a comment</span>
+            </div>
+            <div className='answer_myinfo'>
+              <div className='myinfo_title'>answerd just now</div>
+              <div className='myinfo_img_Name'>
+                <img src='https://lh3.googleusercontent.com/a/AItbvmnpskpjH0ERiT2akEdlvgNsniN6akY23nJHhwgA=k-s48' width='24'></img>
+                <span>userName</span>
+              </div>
+              <div className='contribute_btn'>
+                <Button text={'New contributor'} type={'contri'}/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div></>:null}</div>
+      
+      
+      
 
 
       <div className='detail_answer'>
@@ -181,13 +226,59 @@ const DetailQues = styled.div`
 }
   .body_container{
     flex:5;
+    flex-direction: column;
     color: #E7E9EB;
     font-size: 15px;
     padding: 0 10px;
     & pre{
       white-space: pre-line;
     }
-    
+  .answer_body{
+    padding: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .answer_list{
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    justify-content: space-between;
+    margin-top: -10px;
+    & span{
+      color:#838C95;
+    }
+    & ul{
+      display: flex;
+      margin-left: -40px;
+      & li{
+        margin-right: 7px;
+        color: #ACB3B9;
+        font-weight: 500;
+      }
+    }
+  }
+  .answer_myinfo{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    .myinfo_title{
+      color:#ACB3B9;
+      font-weight: 500;
+    }
+    .myinfo_img_Name{
+      margin: 5px 0;
+      display: flex;
+      & img{
+        border-radius: 3px;
+        margin-right: 5px;
+      }
+    }
+    .contribute_btn{
+      margin-left: -10px;
+      margin-top: 10px;
+    }
+  }
 
   }
   .box_container{
