@@ -27,9 +27,6 @@ public class Question extends BaseTime {
     @Column(nullable = false)
     private String body;
 
-//    @Column
-//    private List<String> tag;
-
     // 질문 등록, 수정
     public Question(long id, String title, String body) {
         this.id = id;
