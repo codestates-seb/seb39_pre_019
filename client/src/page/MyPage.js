@@ -5,7 +5,7 @@ import { FaStackExchange } from "react-icons/fa";
 import Layout from "../components/Layout";
 
 import { ReactComponent as CakeImg } from "../assets/Cake.svg";
-import { ReactComponent as ClockImg } from "../assets/Clock.svg";
+import { ReactComponent as ClockImg } from "../assets/Clock2.svg";
 import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
 import { ReactComponent as GraphImg } from "../assets/Graph.svg";
 import { ReactComponent as AstronautImg } from "../assets/Astronaut.svg";

@@ -46,7 +46,7 @@ const EditProfile = () => {
 
     try {
       const response = await axios.post(
-        //patch 적용 전
+        //patch 적용 전 (해당 유저 고유한 id로 patch)
         "http://localhost:3001/editProfile",
         JSON.stringify(inputData),
         {
