@@ -1,10 +1,10 @@
-package com.preProject.mapper;
+package com.preProject.user.mapper;
 
-import com.preProject.domain.User;
-import com.preProject.dto.user.UserLoginDto;
-import com.preProject.dto.user.UserPatchDto;
-import com.preProject.dto.user.UserPostDto;
-import com.preProject.dto.user.UserResponseDto;
+import com.preProject.user.domain.User;
+import com.preProject.user.dto.UserLoginDto;
+import com.preProject.user.dto.UserPatchDto;
+import com.preProject.user.dto.UserPostDto;
+import com.preProject.user.dto.UserResponseDto;
 import org.mapstruct.Mapper;
 
 import java.util.List;

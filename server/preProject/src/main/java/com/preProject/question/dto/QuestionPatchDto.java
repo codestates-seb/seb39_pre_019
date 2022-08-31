@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class QuestionPatchDto {
+
     private long id;
     private String title;
     private String body;

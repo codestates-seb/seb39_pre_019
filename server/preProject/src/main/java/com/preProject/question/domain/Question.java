@@ -1,8 +1,8 @@
 package com.preProject.question.domain;
 
-
 import com.preProject.audit.BaseTime;
-import com.preProject.domain.User;
+import com.preProject.user.domain.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,10 +12,10 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Question extends BaseTime {
+@Entity
+public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,8 @@ public class Question extends BaseTime {
     private String title;
 
     @Lob
-    @Column(length = 50, nullable = false)
+    @Column(nullable = false)
+
     private String body;
 
 //    @Column
@@ -45,5 +46,5 @@ public class Question extends BaseTime {
     public void setUser(User user) {
         this.user = user;
     }
-
 }
+

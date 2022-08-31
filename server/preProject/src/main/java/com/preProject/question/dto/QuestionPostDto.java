@@ -1,15 +1,19 @@
 package com.preProject.question.dto;
 
-import com.preProject.domain.User;
+
+import com.preProject.user.domain.User;
+
 import lombok.Getter;
 
 import javax.validation.constraints.Positive;
 
 @Getter
 public class QuestionPostDto {
-    public Long id;
-    public String title;
-    public String body;
+
+    private Long id;
+    private String title;
+    private String body;
+
 //    public List<String> tag;
 
     @Positive
@@ -22,5 +26,4 @@ public class QuestionPostDto {
         user.setId(userid);
         return user;
     }
-
 }

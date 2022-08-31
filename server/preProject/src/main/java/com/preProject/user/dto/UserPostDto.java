@@ -1,4 +1,4 @@
-package com.preProject.dto.user;
+package com.preProject.user.dto;
 
 import com.preProject.audit.BaseTime;
 import lombok.AllArgsConstructor;

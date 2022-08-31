@@ -1,6 +1,7 @@
-package com.preProject.domain;
+package com.preProject.answer.domain;
 
 import com.preProject.audit.BaseTime;
+import com.preProject.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
