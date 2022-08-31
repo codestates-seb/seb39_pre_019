@@ -1,5 +1,6 @@
 package com.preProject.question.domain;
 
+import com.preProject.audit.BaseTime;
 import com.preProject.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Question {
+public class Question extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
