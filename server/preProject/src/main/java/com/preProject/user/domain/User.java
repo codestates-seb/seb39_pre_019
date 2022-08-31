@@ -1,4 +1,4 @@
-package com.preProject.domain;
+package com.preProject.user.domain;
 
 import com.preProject.audit.BaseTime;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,5 @@
-package com.preProject.dto.user;
+package com.preProject.user.dto;
 
-import com.preProject.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

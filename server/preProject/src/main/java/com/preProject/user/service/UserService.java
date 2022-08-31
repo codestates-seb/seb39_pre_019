@@ -1,16 +1,13 @@
-package com.preProject.service;
+package com.preProject.user.service;
 
-import com.preProject.domain.User;
+import com.preProject.user.domain.User;
 import com.preProject.exception.BusinessLogicException;
 import com.preProject.exception.ExceptionCode;
-import com.preProject.repository.UserRepository;
+import com.preProject.user.repository.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;

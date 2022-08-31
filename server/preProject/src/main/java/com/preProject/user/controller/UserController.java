@@ -1,17 +1,15 @@
-package com.preProject.controller;
+package com.preProject.user.controller;
 
 import com.preProject.commonDto.MultipleResponseDto;
 import com.preProject.commonDto.SingleResponseDto;
-import com.preProject.domain.User;
-import com.preProject.dto.user.UserPatchDto;
-import com.preProject.dto.user.UserPostDto;
-import com.preProject.dto.user.UserResponseDto;
-import com.preProject.mapper.UserMapper;
-import com.preProject.service.UserService;
+import com.preProject.user.domain.User;
+import com.preProject.user.dto.UserPatchDto;
+import com.preProject.user.dto.UserPostDto;
+import com.preProject.user.dto.UserResponseDto;
+import com.preProject.user.mapper.UserMapper;
+import com.preProject.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
