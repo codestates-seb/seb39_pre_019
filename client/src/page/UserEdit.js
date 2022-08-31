@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { BsPencilFill } from "react-icons/bs";
 import { FaStackExchange } from "react-icons/fa";
 import Layout from "../components/Layout";
+import EditProfile from "../components/EditProfile";
 
 import { ReactComponent as CakeImg } from "../assets/Cake.svg";
 import { ReactComponent as ClockImg } from "../assets/Clock.svg";
@@ -70,8 +71,11 @@ const UserEdit = () => {
             </ul>
           </div>
           <div className='userEdit_main'>
-            <h1>Edit your profile</h1>
-            <hr />
+            <div>
+              <h1>Edit your profile</h1>
+              <hr />
+            </div>
+            <EditProfile />
           </div>
         </div>
       </UserEditContainer>

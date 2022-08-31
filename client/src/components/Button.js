@@ -5,7 +5,8 @@ const Button = ({ text, type, onClick }) => {
   return (
     <ButtonCom
       className={["myButton", `myButton_${types}`].join(" ")}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       {text}
     </ButtonCom>
   );
@@ -33,7 +34,7 @@ const ButtonCom = styled.button`
   }
 
   &.myButton_Ask {
-    background-color: #0964AA !important;
+    background-color: #0964aa !important;
     padding: 11px;
     letter-spacing: -0.4px;
     font-weight: 600;

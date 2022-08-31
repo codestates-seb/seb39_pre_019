@@ -1,3 +1,4 @@
+
 import React,{useEffect,useState} from 'react'
 import styled from 'styled-components'
 import Button from '../components/Button'
@@ -6,18 +7,18 @@ import Layout from '../components/Layout'
 import { Link } from 'react-router-dom'
  
 
+
 const Questions = () => {
+  const [data, setData] = useState([]);
 
-const [data,setData] = useState([])
-
-  useEffect(()=>{
-    fetch('http://localhost:3001/qustions')
-    .then((json)=>json.json())
-    .then((data)=>setData(data))
-  },[])
+  useEffect(() => {
+    fetch("http://localhost:3001/qustions")
+      .then((json) => json.json())
+      .then((data) => setData(data));
+  }, []);
 
   return (
-  <Layout children={Questions}>
+    <Layout children={Questions}>
     <QuestionContainer>
       <div className='question_container'>
         <div className='question_title'>
@@ -45,10 +46,10 @@ const [data,setData] = useState([])
       </div>
     </QuestionContainer>
   </Layout>
-  )
-}
+  );
+};
 
-export default Questions
+export default Questions;
 
 const QuestionContainer = styled.div`
 display: flex;
