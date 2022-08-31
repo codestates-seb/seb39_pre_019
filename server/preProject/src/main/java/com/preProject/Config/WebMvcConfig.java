@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-//    @Value("${config.domain}")
+    //    @Value("${config.domain}")
 //    private String domain;
 //
     @Override

@@ -1,15 +1,19 @@
 package com.preProject.question.dto;
 
+
 import com.preProject.user.domain.User;
+
 import lombok.Getter;
 
 import javax.validation.constraints.Positive;
 
 @Getter
 public class QuestionPostDto {
+
     private Long id;
     private String title;
     private String body;
+
 //    public List<String> tag;
 
     @Positive
