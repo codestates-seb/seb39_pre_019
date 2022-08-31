@@ -81,13 +81,13 @@ const Footer = () => {
 export default Footer
 
 const FooterCom = styled.div`
-width: 100%;
+/* width: 100%; */
 background-color: #232629;
 .footer_container{
   padding-left: 40px;
   display: flex;
   max-width: 1280px;
-  width: 100%;
+  /* width: 100%; */
   margin: 0 auto;
 }
 .footer_left{

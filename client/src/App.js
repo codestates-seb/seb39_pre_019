@@ -7,6 +7,7 @@ import { BrowserRouter,Routes,Route} from 'react-router-dom'
 import MyPage from './page/MyPage';
 import DetailQuestion from './components/DetailQuestion';
 import UserEdit from "./page/UserEdit";
+import AskPage from './page/AskPage';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/mypage' element={<MyPage />}></Route>
           <Route path='/:id' element={<DetailQuestion />}></Route>
           <Route path='/mypage/userEdit' element={<UserEdit />}></Route>
+          <Route path='/askpage' element={<AskPage />}></Route>
         </Routes>
     </BrowserRouter>
   );

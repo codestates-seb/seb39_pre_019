@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Button from '../components/Button'
 import QuestionItem from '../components/QuestionItem'
 import Layout from '../components/Layout'
+import { Link } from 'react-router-dom'
  
 
 const Questions = () => {
@@ -21,7 +22,7 @@ const [data,setData] = useState([])
       <div className='question_container'>
         <div className='question_title'>
           <span>ALL Questions</span>
-          <Button type={'Ask'} text={'Ask Question'}></Button>
+       <Link to={'/askpage'}><Button type={'Ask'} text={'Ask Question'}></Button></Link>
         </div>
         <div className='question_filter'>
           <span>22,932,650 questions</span>
@@ -54,7 +55,7 @@ display: flex;
 max-width: 1280px;
 width: 100%;
 margin: 0 auto;
-height: 100vh;
+height: 100%;
 color:#fff;
 
 .question_container{
