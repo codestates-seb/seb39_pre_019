@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BsPencilFill } from "react-icons/bs";
@@ -9,6 +8,7 @@ import { ReactComponent as CakeImg } from "../assets/Cake.svg";
 import { ReactComponent as ClockImg } from "../assets/Clock2.svg";
 import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
 import { ReactComponent as GraphImg } from "../assets/Graph.svg";
+import { ReactComponent as LocationImg } from "../assets/Location.svg";
 
 import { ReactComponent as AstronautImg } from "../assets/Astronaut.svg";
 import { ReactComponent as GoldCrownImg } from "../assets/GoldCrown.svg";
@@ -26,7 +26,7 @@ const MyPage = () => {
       .then((response) => response.json())
       .then((item) => setData(item));
     console.log(data);
-  }, [data]);
+  }, []);
 
   return (
     <Layout children={MyPage}>
@@ -35,24 +35,37 @@ const MyPage = () => {
           <div className='mypage_header'>
             <div className='user_profile_img'>
               <img
-                src={process.env.PUBLIC_URL + "/img/stackUserIcon.png"}
+                // src={process.env.PUBLIC_URL + "/img/stackUserIcon.png"}
+                src={
+                  data.profileImg
+                    ? data.profileImg
+                    : process.env.PUBLIC_URL + "/img/stackUserIcon.png"
+                }
                 alt='user icon'
               ></img>
-              <div className='user_profile_info'>
+            </div>
+            <div className='user_profile_info'>
+              <div>
                 <h1 className='userName'>{data.displayName}</h1>
-                <ul className='user_profile_memo'>
-                  <li>
-                    <CakeImg /> Member for 4 months{" "}
-                  </li>
-                  <li>
-                    <ClockImg /> Last seen this week{" "}
-                  </li>
-                  <li>
-                    <CalendarImg /> Visited 48 days{" "}
-                  </li>
-                  <li>{data.location}</li>
-                </ul>
+                {data.title ? <h2>{data.title}</h2> : null}
               </div>
+              <ul className='user_profile_memo'>
+                <li>
+                  <CakeImg /> Member for 4 months{" "}
+                </li>
+                <li>
+                  <ClockImg /> Last seen this week{" "}
+                </li>
+                <li>
+                  <CalendarImg /> Visited 48 days{" "}
+                </li>
+              </ul>
+              <ul className='user_profile_memo'>
+                <li>
+                  <LocationImg />
+                  {data.location}
+                </li>
+              </ul>
             </div>
             <div className='user_profile_btn'>
               <Link to='userEdit'>
@@ -71,7 +84,7 @@ const MyPage = () => {
             <div className='menu'>Settings</div>
           </div>
           <div className='mypage_sidebar'>
-            <ul className='user_sidebar'>
+            <ul>
               <li>Summary</li>
               <li>Answers</li>
               <li>Questions</li>
@@ -176,11 +189,6 @@ export default MyPage;
 
 const MypageContainer = styled.div`
   display: flex;
-  /* display: flex;
-  max-width: 1280px;
-  margin: 0 auto;
-  height: 100vh;
-  color: #fff; */
 
   .container {
     display: grid;
@@ -202,34 +210,56 @@ const MypageContainer = styled.div`
     padding: 20px;
     /* border: 1px solid red; */
   }
+
+  //유저 프로필 인포 css
   .mypage_header {
     grid-area: mypage_header;
-  }
-  .mypage_menu {
-    grid-area: mypage_menu;
-  }
-  .mypage_sidebar {
-    grid-area: mypage_sidebar;
-  }
-  .mypage_main {
-    grid-area: mypage_main;
+    display: flex;
+
+    .user_profile_img {
+      display: flex;
+    }
+
+    .user_profile_info {
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h1 {
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+      h2 {
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .user_profile_memo {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-left: -40px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
   }
 
-  // 유저 인포 css
-  .mypage_header {
-    display: flex;
-    position: relative;
-  }
-  .user_profile_img {
-    display: flex;
-  }
-  .user_profile_info {
-    margin-left: 20px;
-  }
+  // 유저 인포 edit 버튼 css
   .user_profile_btn {
+    display: flex;
+    align-items: baseline;
+    justify-content: end;
+
+    position: absolute;
+    right: 130px;
+    top: 20px;
+
     button {
       background-color: #2d2d2d;
       padding: 10px;
+      margin-right: 5px;
       color: #c4c8cc;
       border: 1px solid #7d858d;
       cursor: pointer;
@@ -237,41 +267,70 @@ const MypageContainer = styled.div`
         background-color: #353738;
       }
     }
-    position: absolute;
-    right: 10px;
-    top: 20px;
   }
-  .user_profile_memo {
+
+  // 유저 프로필 하단 버튼 css
+  .mypage_menu {
+    grid-area: mypage_menu;
     display: flex;
-    justify-content: space-around;
-    margin-left: -40px;
-    padding-right: 0;
-    width: 500px;
+
+    .menu {
+      justify-content: center;
+      align-items: center;
+      border: none;
+      font-size: 14px;
+      padding: 7px 10px;
+      margin-left: 3px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      border-radius: 30px;
+      color: #c4c8cc;
+
+      &:hover {
+        color: #acb4b1;
+        border-radius: 30px;
+        background-color: #4d4d4d;
+      }
+    }
+  }
+
+  // 미니 사이드 바 css
+  .mypage_sidebar {
+    grid-area: mypage_sidebar;
+
+    ul {
+      position: sticky;
+      top: 5%;
+      z-index: 10;
+
+      li {
+        display: flex;
+        align-items: center;
+        padding: 7px 0px 7px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-left: -40px;
+        font-size: 15px;
+        color: #e7e9eb;
+        font-weight: 500;
+
+        &:hover {
+          color: #fff;
+          background-color: #3d3d3d;
+          border-radius: 20px;
+        }
+      }
+    }
+  }
+
+  // 메인 css
+  .mypage_main {
+    grid-area: mypage_main;
   }
 
   //프로필 css
-  .mypage_menu {
-    display: flex;
-  }
-  .menu {
-    justify-content: center;
-    align-items: center;
-    border: none;
-    font-size: 14px;
-    padding: 7px 10px;
-    margin-left: 3px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    border-radius: 30px;
-    color: #c4c8cc;
 
-    &:hover {
-      color: #acb4b1;
-      border-radius: 30px;
-      background-color: #4d4d4d;
-    }
-  }
   .menu_select {
     font-weight: 500;
     background-color: #f48225;
@@ -281,32 +340,6 @@ const MypageContainer = styled.div`
       color: black;
     }
   }
-
-  //사이드바 css
-  .user_sidebar {
-    position: sticky;
-    top: 5%;
-    z-index: 10;
-
-    & li {
-    display: flex;
-    align-items: center;
-    padding: 7px 0px 7px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-left: -40px;
-    font-size: 13px;
-    color: #e7e9eb;
-    font-weight: 500;
-
-    &:hover {
-      color: #fff;
-      background-color: #3d3d3d;
-      border-radius: 20px;
-    }
-  }
-  }
-  
 
   //요약 박스 css
   .user_main_container {
@@ -426,4 +459,4 @@ const MypageContainer = styled.div`
       border-radius: 0 4px 4px 0;
     }
   }
-`
+`;
