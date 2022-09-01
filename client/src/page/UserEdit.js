@@ -165,8 +165,8 @@ const UserEditContainer = styled.div`
     justify-content: center;
     align-items: center;
     border: none;
-    font-size: 14px;
-    padding: 7px 10px;
+    font-size: 13px;
+    padding: 0px 10px;
     margin-left: 3px;
     font-weight: 600;
     display: flex;
@@ -180,7 +180,6 @@ const UserEditContainer = styled.div`
     }
   }
   .menu_select {
-    font-weight: 500;
     background-color: #f48225;
     color: #2d2d2d;
     &:hover {
@@ -220,4 +219,23 @@ const UserEditContainer = styled.div`
     font-weight: 800;
     margin-top: 20px;
   }
+
+  .sidebar {
+    display: flex;
+    align-items: center;
+    /* width: 200px;
+    height: 38px; */
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: -40px;
+    margin-top: 0;
+
+    &:hover {
+      color: #acb4b1;
+      background-color: #3d3d3d;
+      border-radius: 20px;
+    }
+  }
+
 `;

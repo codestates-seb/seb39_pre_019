@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BsPencilFill } from "react-icons/bs";
@@ -8,10 +9,12 @@ import { ReactComponent as CakeImg } from "../assets/Cake.svg";
 import { ReactComponent as ClockImg } from "../assets/Clock2.svg";
 import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
 import { ReactComponent as GraphImg } from "../assets/Graph.svg";
+
 import { ReactComponent as AstronautImg } from "../assets/Astronaut.svg";
 import { ReactComponent as GoldCrownImg } from "../assets/GoldCrown.svg";
 import { ReactComponent as SilverCrownImg } from "../assets/SilverCrown.svg";
 import { ReactComponent as BronzeCrownImg } from "../assets/BronzeCrown.svg";
+
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -305,7 +308,6 @@ const MypageContainer = styled.div`
   }
   
 
- 
   //요약 박스 css
   .user_main_container {
     border: 1px solid white;
@@ -424,5 +426,4 @@ const MypageContainer = styled.div`
       border-radius: 0 4px 4px 0;
     }
   }
-}
-`;
+`
