@@ -3,13 +3,20 @@ import Button from "../components/Button";
 import styled from "styled-components";
 import Resizer from "react-image-file-resizer";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const EditProfile = () => {
+import useStore from "../store/store";
+
+const EditProfile = ({ userData }) => {
+  const { setDisplayNameStore } = useStore();
+
   const [profileImg, setProfileImg] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [location, setLocation] = useState("");
   const [title, setTitle] = useState("");
   const [aboutMe, setAboutMe] = useState("");
+
+  const navigate = useNavigate();
 
   const photoHandler = (event) => {
     let fileInput = false;
@@ -42,22 +49,25 @@ const EditProfile = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const inputData = { profileImg, displayName, location, title, aboutMe };
+    axios
+      .patch("http://localhost:3001/user", {
+        profileImg,
+        displayName,
+        location,
+        title,
+        aboutMe,
+      })
+      .then((response) => {
+        console.log(JSON.stringify(response?.data));
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+    navigate("/mypage");
+  };
 
-    try {
-      const response = await axios.post(
-        //patch 적용 전 (해당 유저 고유한 id로 patch)
-        "http://localhost:3001/editProfile",
-        JSON.stringify(inputData),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(JSON.stringify(response?.data));
-    } catch (err) {
-      alert(err.message);
-    }
+  const changeHandler = () => {
+    userData(profileImg, displayName, location, title, aboutMe);
   };
 
   return (
@@ -76,7 +86,8 @@ const EditProfile = () => {
               type='text'
               id='displayName'
               onChange={(e) => setDisplayName(e.target.value)}
-              value={displayName}
+              // value={displayName || ""}
+              defaultValue={userData.displayName}
             ></input>
           </div>
           <div className='edit_main_item'>
@@ -85,7 +96,8 @@ const EditProfile = () => {
               type='text'
               id='location'
               onChange={(e) => setLocation(e.target.value)}
-              value={location}
+              // value={location}
+              defaultValue={userData.location}
             ></input>
           </div>
           <div className='edit_main_item'>
@@ -94,7 +106,8 @@ const EditProfile = () => {
               type='text'
               id='title'
               onChange={(e) => setTitle(e.target.value)}
-              value={title}
+              // value={title}
+              defaultValue={userData.title}
             ></input>
           </div>
           <div className='edit_main_item'>
@@ -102,11 +115,12 @@ const EditProfile = () => {
             <textarea
               id='aboutMe'
               onChange={(e) => setAboutMe(e.target.value)}
-              value={aboutMe}
+              // value={aboutMe}
+              defaultValue={userData.aboutMe}
             ></textarea>
           </div>
         </div>
-        <Button text={"Save profile"}></Button>
+        <Button text={"Save profile"} onClick={changeHandler}></Button>
       </form>
     </EditProfileform>
   );

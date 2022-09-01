@@ -1,5 +1,5 @@
-import React from "react";
 
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BsPencilFill } from "react-icons/bs";
 import { FaStackExchange } from "react-icons/fa";
@@ -16,8 +16,18 @@ import { ReactComponent as SilverCrownImg } from "../assets/SilverCrown.svg";
 import { ReactComponent as BronzeCrownImg } from "../assets/BronzeCrown.svg";
 
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const MyPage = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/user/`)
+      .then((response) => response.json())
+      .then((item) => setData(item));
+    console.log(data);
+  }, [data]);
+
   return (
     <Layout children={MyPage}>
       <MypageContainer>
@@ -29,7 +39,7 @@ const MyPage = () => {
                 alt='user icon'
               ></img>
               <div className='user_profile_info'>
-                <h1 className='userName'> helloHailie</h1>
+                <h1 className='userName'>{data.displayName}</h1>
                 <ul className='user_profile_memo'>
                   <li>
                     <CakeImg /> Member for 4 months{" "}
@@ -40,6 +50,7 @@ const MyPage = () => {
                   <li>
                     <CalendarImg /> Visited 48 days{" "}
                   </li>
+                  <li>{data.location}</li>
                 </ul>
               </div>
             </div>
@@ -61,18 +72,18 @@ const MyPage = () => {
           </div>
           <div className='mypage_sidebar'>
             <ul className='user_sidebar'>
-              <li >Summary</li>
-              <li >Answers</li>
-              <li >Questions</li>
-              <li >Tags</li>
-              <li >Articles</li>
-              <li >Badges</li>
-              <li >Bookmarks</li>
-              <li >Following</li>
-              <li >Reputation</li>
-              <li >All actions</li>
-              <li >Responses</li>
-              <li >Votes</li>
+              <li>Summary</li>
+              <li>Answers</li>
+              <li>Questions</li>
+              <li>Tags</li>
+              <li>Articles</li>
+              <li>Badges</li>
+              <li>Bookmarks</li>
+              <li>Following</li>
+              <li>Reputation</li>
+              <li>All actions</li>
+              <li>Responses</li>
+              <li>Votes</li>
             </ul>
           </div>
           <div className='mypage_main'>
@@ -276,30 +287,26 @@ const MypageContainer = styled.div`
     position: sticky;
     top: 5%;
     z-index: 10;
-    padding-top: 0;
+
     & li {
-      display: flex;
-      align-items: center;
-      /* width: 130px;
-      height: 40px; */
-      padding-left: 15px;
-      padding-top: 7px;
-      padding-bottom: 7px;
+    display: flex;
+    align-items: center;
+    padding: 7px 0px 7px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: -40px;
+    font-size: 13px;
+    color: #e7e9eb;
+    font-weight: 500;
+
+    &:hover {
+      color: #fff;
+      background-color: #3d3d3d;
       border-radius: 20px;
-      cursor: pointer;
-      margin-left: -40px;
-      /* margin-top: 5px; */
-      font-size: 13px;
-      color: #e7e9eb;
-      font-weight: 500;
-  
-      &:hover {
-        color: #fff;
-        background-color: #3d3d3d;
-        border-radius: 20px;
-      }
     }
   }
+  }
+  
 
   //요약 박스 css
   .user_main_container {

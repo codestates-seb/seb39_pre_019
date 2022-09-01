@@ -64,9 +64,9 @@
       "id": 1
     },
     {
-      "user": "s",
+      "displayName": "dfasdf",
       "email": "s@s.com",
-      "pwd": "Happys1!",
+      "password": "fdfadfF2",
       "id": 2
     }
   ],
@@ -77,8 +77,8 @@
       "id": 1
     },
     {
-      "email": "s@s.com",
-      "pwd": "dfasdf",
+      "email": "dfsdfas@cone.dfd",
+      "password": "sd",
       "id": 2
     },
     {
@@ -87,7 +87,7 @@
       "id": 3
     }
   ],
-  "editProfile": [
+  "profileInfo": [
     {
       "profileImg": "",
       "displayName": "ddd",
@@ -103,6 +103,45 @@
       "title": "ddd",
       "aboutMe": "ddd",
       "id": 2
+    },
+    {
+      "inputData": {
+        "profileImg": "",
+        "displayName": "1",
+        "location": "2",
+        "title": "3",
+        "aboutMe": "4"
+      },
+      "id": 3
+    },
+    {
+      "inputData": ["", "1", "2", "3", "4"],
+      "id": 4
+    },
+    {
+      "profileImg": "",
+      "displayName": "0",
+      "location": "9",
+      "title": "8",
+      "aboutMe": "7",
+      "id": 5
+    },
+    {
+      "profileImg": "",
+      "displayName": "1",
+      "location": "2",
+      "title": "3",
+      "aboutMe": "4",
+      "id": 6
     }
-  ]
+  ],
+  "user": {
+    "displayName": "?",
+    "email": "ddd@ddd.com",
+    "password": "tjkldjfsdT3242",
+    "profileImg": "",
+    "location": "",
+    "title": "",
+    "aboutMe": ""
+  }
 }
