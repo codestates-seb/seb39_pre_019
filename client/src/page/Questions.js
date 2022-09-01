@@ -1,15 +1,31 @@
-
 import React,{useEffect,useState} from 'react'
 import styled from 'styled-components'
 import Button from '../components/Button'
 import QuestionItem from '../components/QuestionItem'
 import Layout from '../components/Layout'
-import { Link } from 'react-router-dom'
- 
+import { Link,useParams } from 'react-router-dom'
+import axios from 'axios'
 
 
 const Questions = () => {
   const [data, setData] = useState([]);
+  const {id} = useParams()
+  const onSubmit =() => {
+    axios({
+      url:`http://ec2-54-180-159-8.ap-northeast-2.compute.amazonaws.com:8080/questions/ask`,
+      method:'post',
+      data:{
+        "title":'!',
+        "body":'안녕하세요!',
+        "votes": 0,
+        "answer_num": 0,
+        "userid":"1"
+    }
+  })
+}
+  
+    
+  
 
   useEffect(() => {
     fetch("http://localhost:3001/qustions")
@@ -36,6 +52,7 @@ const Questions = () => {
           <button>Unanswered</button>
           <button className='last'>More</button>
           <button className='last_box'>Filter</button>
+          <button onClick={onSubmit}>Submit</button>
           </div>
         </div>
         <div>

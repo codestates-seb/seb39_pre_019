@@ -10,7 +10,6 @@ import { FaCheckDouble } from "react-icons/fa";
 import { IoIosPricetags } from "react-icons/io";
 import { BsFillTrophyFill } from "react-icons/bs";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 import Login from "./Login";
 
@@ -21,13 +20,10 @@ const Signup = () => {
   const errRef = useRef();
 
   const [displayName, setDisplayName] = useState("");
-
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
-
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -52,37 +48,37 @@ const Signup = () => {
       setErrMsg("Invalid Entry");
       return;
     }
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/signup",
-        JSON.stringify({ displayName, email, password }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
+
+    axios
+      .post("http://localhost:3001/user", {
+        displayName,
+        email,
+        password,
+      })
+      .then((response) => {
+        // console.log(response);
+        // console.log(response.accessToken);
+        // console.log(JSON.stringify(response));
+        setSuccess(true);
+        setDisplayName("");
+        setEmail("");
+        setPassword("");
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response.status === 0) {
+          // 서버 껐을때
+          setErrMsg("No Server Response/ Server off");
+        } else if (err.response.status === 404) {
+          // 서버 주소 잘못되었을때
+          setErrMsg("Server Not Found");
+        } else if (err.response?.status === 409) {
+          setErrMsg("Username Taken"); // 데이터 중복에 대한 케이스
+        } else {
+          setErrMsg("Registration Failed");
         }
-      );
-      console.log(response.data);
-      console.log(response.accessToken);
-      console.log(JSON.stringify(response));
-      setSuccess(true);
-      setDisplayName("");
-      setEmail("");
-      setPassword("");
-    } catch (err) {
-      console.log(err);
-      if (err.response.status === 0) {
-        // 서버 껐을때
-        setErrMsg("No Server Response/ Server off");
-      } else if (err.response.status === 404) {
-        // 서버 주소 잘못되었을때
-        setErrMsg("Server Not Found");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken"); // 데이터 중복에 대한 케이스
-      } else {
-        setErrMsg("Registration Failed");
-      }
-      errRef.current.focus();
-    }
+        errRef.current.focus();
+      });
   };
 
   return (

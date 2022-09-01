@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BsPencilFill } from "react-icons/bs";
 import { FaStackExchange } from "react-icons/fa";
@@ -9,7 +9,18 @@ import { ReactComponent as CakeImg } from "../assets/Cake.svg";
 import { ReactComponent as ClockImg } from "../assets/Clock.svg";
 import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
 
+// import useStore from "../store/store";
+
 const UserEdit = () => {
+  const [userData, setUserData] = useState([]);
+  //const { displayName } = useStore();
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/user/`)
+      .then((response) => response.json())
+      .then((item) => setUserData(item));
+  }, [userData]);
+
   return (
     <Layout children={UserEdit}>
       <UserEditContainer>
@@ -21,7 +32,7 @@ const UserEdit = () => {
                 alt='user icon'
               ></img>
               <div className='user_profile_info'>
-                <h1 className='userName'> helloHailie</h1>
+                <h1 className='userName'>{userData.displayName}</h1>
                 <ul className='user_profile_memo'>
                   <li>
                     <CakeImg /> Member for 4 months{" "}
@@ -32,6 +43,7 @@ const UserEdit = () => {
                   <li>
                     <CalendarImg /> Visited 48 days{" "}
                   </li>
+                  <li>{userData.location}</li>
                 </ul>
               </div>
             </div>
@@ -52,22 +64,22 @@ const UserEdit = () => {
           <div className='userEdit_sidebar'>
             <ul className='userEdit_sidebar'>
               <div className='userEdit_sidebar_title'>PERSONAL INFORMATION</div>
-              <li className='sidebar'>Edit profile</li>
-              <li className='sidebar'>Delete profile</li>
+              <li>Edit profile</li>
+              <li>Delete profile</li>
               <div className='userEdit_sidebar_title'>EMAIL SETTINGS</div>
-              <li className='sidebar'>Edit email settings</li>
-              <li className='sidebar'>Tag watching & ignoring</li>
-              <li className='sidebar'>Community digests</li>
-              <li className='sidebar'>Question subscriptions</li>
+              <li>Edit email settings</li>
+              <li>Tag watching & ignoring</li>
+              <li>Community digests</li>
+              <li>Question subscriptions</li>
               <div className='userEdit_sidebar_title'>SITE SETTINGS</div>
-              <li className='sidebar'>Preferences</li>
-              <li className='sidebar'>Flair</li>
-              <li className='sidebar'>Hide communities</li>
+              <li>Preferences</li>
+              <li>Flair</li>
+              <li>Hide communities</li>
               <div className='userEdit_sidebar_title'>ACCESS</div>
-              <li className='sidebar'>Your Collectives</li>
-              <li className='sidebar'>Your Iogins</li>
+              <li>Your Collectives</li>
+              <li>Your Iogins</li>
               <div className='userEdit_sidebar_title'>APPS & INTEGRATIONS</div>
-              <li className='sidebar'>Authorized applications</li>
+              <li>Authorized applications</li>
             </ul>
           </div>
           <div className='userEdit_main'>
@@ -75,7 +87,7 @@ const UserEdit = () => {
               <h1>Edit your profile</h1>
               <hr />
             </div>
-            <EditProfile />
+            <EditProfile userData={userData} />
           </div>
         </div>
       </UserEditContainer>
@@ -88,15 +100,16 @@ const UserEditContainer = styled.div`
   .container {
     display: grid;
     grid-gap: 10px;
-    height: 100vh;
+    height: 100%;
     grid-template-columns: 300px 1fr;
     grid-template-rows: 200px 80px 1fr;
     grid-template-areas: "mypage_header mypage_header" "mypage_menu mypage_menu" "mypage_sidebar mypage_main ";
     color: #e1e4e6;
+    & > div {
+      padding: 20px;
+    }
   }
-  .container > div {
-    padding: 20px;
-  }
+
   .userEdit_header {
     grid-area: mypage_header;
   }
@@ -152,8 +165,8 @@ const UserEditContainer = styled.div`
     justify-content: center;
     align-items: center;
     border: none;
-    font-size: 14px;
-    padding: 7px 10px;
+    font-size: 13px;
+    padding: 0px 10px;
     margin-left: 3px;
     font-weight: 600;
     display: flex;
@@ -163,12 +176,10 @@ const UserEditContainer = styled.div`
 
     &:hover {
       color: #acb4b1;
-      border-radius: 30px;
       background-color: #4d4d4d;
     }
   }
   .menu_select {
-    font-weight: 500;
     background-color: #f48225;
     color: #2d2d2d;
     &:hover {
@@ -182,17 +193,39 @@ const UserEditContainer = styled.div`
     position: sticky;
     top: 5%;
     z-index: 10;
+
+    & li {
+      display: flex;
+      align-items: center;
+      padding: 7px 0px 7px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-left: -40px;
+      font-size: 13px;
+      color: #e7e9eb;
+      font-weight: 500;
+
+      &:hover {
+        color: #fff;
+        background-color: #3d3d3d;
+        border-radius: 20px;
+      }
+    }
   }
   .userEdit_sidebar_title {
+    padding: 7px 0px 7px 15px;
+
     margin-left: -40px;
     font-weight: 800;
     margin-top: 20px;
   }
+
   .sidebar {
     display: flex;
     align-items: center;
-    width: 200px;
-    height: 38px;
+    /* width: 200px;
+    height: 38px; */
+    padding: 10px;
     border-radius: 20px;
     cursor: pointer;
     margin-left: -40px;
@@ -204,4 +237,5 @@ const UserEditContainer = styled.div`
       border-radius: 20px;
     }
   }
+
 `;
