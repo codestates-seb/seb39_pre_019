@@ -17,16 +17,49 @@ import  useStore  from '../store/store'
  
 
 const DetailQuestion = () => {
-  const {isAnswer , setIsAnswer} = useStore()
+  const {isAnswer , setIsAnswer,setToggleSubmit} = useStore()
   const {id} = useParams()
   const [detail,setdetail] = useState([])
+  const [isEdit,setIsEdit] = useState(false) 
+  const [text,setText] = useState('')
 
+  const handleEdit = () => {
+    setIsEdit(!isEdit)
+  }
+  const handleText = (e) => {
+    setText(e.target.value)
+  }
+  const onSubmit = () => {
+    axios({
+      url:`http://localhost:3001/qustions/${id}`,
+      method:'patch',
+      data:{
+        'anwser' : text,
+      }
+    })
+    .then((data)=>setdetail({...data.data}))
+    setIsEdit(!isEdit)
+  }
+  const onDelete = () => {
+    axios({
+      url:`http://localhost:3001/qustions/${id}`,
+      method:'patch',
+      data:{
+        'anwser' : '',
+      }
+    })
+    .then(()=>{
+      setIsAnswer()
+      setToggleSubmit()
+    })
+  }
 
   useEffect(()=>{
     axios(`http://localhost:3001/qustions/${id}`)
     .then((data)=>setdetail({...data.data}))
   },[isAnswer])
   const {title,body,views,votes,anwser} = detail
+
   return (
   <Layout children={DetailQuestion}>
     <DetailQues>
@@ -122,14 +155,16 @@ const DetailQuestion = () => {
           </div>
         </div>
         <div className='body_container'>
-          <pre>{anwser}</pre>
+          <pre>{isEdit?<textarea onChange={handleText} className='editText'>{anwser}</textarea>:<>{anwser}</>}</pre>
           <div className='answer_body'>
             <div className='answer_list'>
               <ul>
-                <li>Share</li>
-                <li>Edit</li>
-                <li>Delete</li>
-                <li>Flag</li>
+                {isEdit?<>
+                <li onClick={onSubmit}>Save</li>
+                <li onClick={handleEdit}>Cancle</li>
+                </>:<><li>Share</li>
+                <li onClick={handleEdit}>Edit</li>
+                <li onClick={onDelete}>Delete</li></>}
               </ul>
               <span>Add a comment</span>
             </div>
@@ -255,6 +290,7 @@ const DetailQues = styled.div`
         margin-right: 7px;
         color: #ACB3B9;
         font-weight: 500;
+        cursor: pointer;
       }
     }
   }

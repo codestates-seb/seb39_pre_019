@@ -88,15 +88,18 @@ const UserEditContainer = styled.div`
   .container {
     display: grid;
     grid-gap: 10px;
-    height: 100vh;
+    height: 100%;
     grid-template-columns: 300px 1fr;
     grid-template-rows: 200px 80px 1fr;
     grid-template-areas: "mypage_header mypage_header" "mypage_menu mypage_menu" "mypage_sidebar mypage_main ";
     color: #e1e4e6;
+    & > div{
+      padding:20px;
+    }
   }
-  .container > div {
+  /* .container > div {
     padding: 20px;
-  }
+  } */
   .userEdit_header {
     grid-area: mypage_header;
   }
@@ -152,8 +155,8 @@ const UserEditContainer = styled.div`
     justify-content: center;
     align-items: center;
     border: none;
-    font-size: 14px;
-    padding: 7px 10px;
+    font-size: 13px;
+    padding: 0px 10px;
     margin-left: 3px;
     font-weight: 600;
     display: flex;
@@ -163,12 +166,10 @@ const UserEditContainer = styled.div`
 
     &:hover {
       color: #acb4b1;
-      border-radius: 30px;
       background-color: #4d4d4d;
     }
   }
   .menu_select {
-    font-weight: 500;
     background-color: #f48225;
     color: #2d2d2d;
     &:hover {
@@ -191,8 +192,9 @@ const UserEditContainer = styled.div`
   .sidebar {
     display: flex;
     align-items: center;
-    width: 200px;
-    height: 38px;
+    /* width: 200px;
+    height: 38px; */
+    padding: 10px;
     border-radius: 20px;
     cursor: pointer;
     margin-left: -40px;

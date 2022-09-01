@@ -1,4 +1,5 @@
 import React from "react";
+
 import styled from "styled-components";
 import { BsPencilFill } from "react-icons/bs";
 import { FaStackExchange } from "react-icons/fa";
@@ -8,10 +9,12 @@ import { ReactComponent as CakeImg } from "../assets/Cake.svg";
 import { ReactComponent as ClockImg } from "../assets/Clock2.svg";
 import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
 import { ReactComponent as GraphImg } from "../assets/Graph.svg";
+
 import { ReactComponent as AstronautImg } from "../assets/Astronaut.svg";
 import { ReactComponent as GoldCrownImg } from "../assets/GoldCrown.svg";
 import { ReactComponent as SilverCrownImg } from "../assets/SilverCrown.svg";
 import { ReactComponent as BronzeCrownImg } from "../assets/BronzeCrown.svg";
+
 import { Link } from "react-router-dom";
 
 const MyPage = () => {
@@ -58,18 +61,18 @@ const MyPage = () => {
           </div>
           <div className='mypage_sidebar'>
             <ul className='user_sidebar'>
-              <li className='sidebar'>Summary</li>
-              <li className='sidebar'>Answers</li>
-              <li className='sidebar'>Questions</li>
-              <li className='sidebar'>Tags</li>
-              <li className='sidebar'>Articles</li>
-              <li className='sidebar'>Badges</li>
-              <li className='sidebar'>Bookmarks</li>
-              <li className='sidebar'>Following</li>
-              <li className='sidebar'>Reputation</li>
-              <li className='sidebar'>All actions</li>
-              <li className='sidebar'>Responses</li>
-              <li className='sidebar'>Votes</li>
+              <li >Summary</li>
+              <li >Answers</li>
+              <li >Questions</li>
+              <li >Tags</li>
+              <li >Articles</li>
+              <li >Badges</li>
+              <li >Bookmarks</li>
+              <li >Following</li>
+              <li >Reputation</li>
+              <li >All actions</li>
+              <li >Responses</li>
+              <li >Votes</li>
             </ul>
           </div>
           <div className='mypage_main'>
@@ -171,7 +174,7 @@ const MypageContainer = styled.div`
   .container {
     display: grid;
     grid-gap: 10px;
-    height: 100vh;
+    height: 100%;
     grid-template-columns: 170px 1fr;
     grid-template-rows: 200px 80px 1fr;
     grid-template-areas: "mypage_header mypage_header" "mypage_menu mypage_menu" "mypage_sidebar mypage_main ";
@@ -269,29 +272,35 @@ const MypageContainer = styled.div`
   }
 
   //사이드바 css
-  .sidebar {
-    display: flex;
-    align-items: center;
-    width: 130px;
-    height: 40px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-left: -40px;
-    margin-top: 0;
-
-    &:hover {
-      color: #acb4b1;
-      background-color: #3d3d3d;
-      border-radius: 20px;
-    }
-  }
-
   .user_sidebar {
     position: sticky;
     top: 5%;
     z-index: 10;
     padding-top: 0;
+    & li {
+      display: flex;
+      align-items: center;
+      /* width: 130px;
+      height: 40px; */
+      padding-left: 15px;
+      padding-top: 7px;
+      padding-bottom: 7px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-left: -40px;
+      /* margin-top: 5px; */
+      font-size: 13px;
+      color: #e7e9eb;
+      font-weight: 500;
+  
+      &:hover {
+        color: #fff;
+        background-color: #3d3d3d;
+        border-radius: 20px;
+      }
+    }
   }
+
   //요약 박스 css
   .user_main_container {
     border: 1px solid white;
@@ -410,5 +419,4 @@ const MypageContainer = styled.div`
       border-radius: 0 4px 4px 0;
     }
   }
-}
-`;
+`

@@ -8,7 +8,7 @@
       "votes": 0,
       "answer_num": 0,
       "views": 2,
-      "anwser": "asdasdasdasdas"
+      "anwser": "ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅇ"
     },
     {
       "id": 2,
@@ -17,7 +17,8 @@
       "tag": "null",
       "votes": 0,
       "answer_num": 0,
-      "views": 10
+      "views": 10,
+      "anwser": ""
     },
     {
       "id": 3,
@@ -45,6 +46,14 @@
       "votes": 0,
       "answer_num": 0,
       "views": 49
+    },
+    {
+      "title": "asdasda",
+      "body": "sdasdasdasd",
+      "votes": 0,
+      "answer_num": 0,
+      "views": 0,
+      "id": 6
     }
   ],
   "signup": [
@@ -59,48 +68,6 @@
       "email": "s@s.com",
       "pwd": "Happys1!",
       "id": 2
-    },
-    {
-      "displayName": "s",
-      "email": "s@s.com",
-      "pwd": "sdfjlsfasdafE~fd22",
-      "id": 3
-    },
-    {
-      "displayName": "df",
-      "email": "s@s.com",
-      "password": "dfdS212#",
-      "id": 4
-    },
-    {
-      "displayName": "s",
-      "email": "s@s.com",
-      "password": "dfd3#21dfsd@3ddF",
-      "id": 5
-    },
-    {
-      "displayName": "s",
-      "email": "s@s.com",
-      "password": "sTjsals2735",
-      "id": 6
-    },
-    {
-      "displayName": "s",
-      "email": "s@s.com",
-      "password": "Tjsals2735!",
-      "id": 7
-    },
-    {
-      "displayName": "s",
-      "email": "s@s.com",
-      "password": "Tjsals2735",
-      "id": 8
-    },
-    {
-      "displayName": "s",
-      "email": "s@s.com",
-      "password": "Tjsals38323~",
-      "id": 9
     }
   ],
   "login": [
@@ -118,102 +85,6 @@
       "email": "s@s.com",
       "pwd": "11",
       "id": 3
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "2323",
-      "id": 4
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "dfsd",
-      "id": 5
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "dfasdfa",
-      "id": 6
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "dfd",
-      "id": 7
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "df",
-      "id": 8
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "333",
-      "id": 9
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "dd",
-      "id": 10
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "22",
-      "id": 11
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "dd",
-      "id": 12
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "dd",
-      "id": 13
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "d",
-      "id": 14
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "d",
-      "id": 15
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "33",
-      "id": 16
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "33",
-      "id": 17
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "33",
-      "id": 18
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "Happys1!",
-      "id": 19
-    },
-    {
-      "email": "s@s.com",
-      "password": "ee",
-      "id": 20
-    },
-    {
-      "email": "dfasdf@cond.dfd",
-      "password": "d",
-      "id": 21
-    }
-  ],
-  "answer": [
-    {
-      "content": "content",
-      "id": 1
     }
   ],
   "editProfile": [
