@@ -5,12 +5,15 @@ import { FcGoogle } from "react-icons/fc";
 import { GoMarkGithub } from "react-icons/go";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-import AuthContext from "../context/AuthProvider";
+// import AuthContext from "../context/AuthProvider";
+import useStore from "../store/store";
 
 const Login = () => {
-  const { setAuth } = useContext(AuthContext);
-
+  // const { setAuth } = useContext(AuthContext);
+  const { setIsLogin } = useStore();
+  const navigate = useNavigate();
   const emailRef = useRef();
   const errRef = useRef();
 
@@ -30,50 +33,45 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/login",
-        JSON.stringify({ email, password }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
+    axios
+      .post("http://localhost:3001/login", { email, password })
+      .then((response) => {
+        console.log(JSON.stringify(response?.data));
+        const accessToken = response?.data?.accessToken;
+        const roles = response?.data?.roles;
+        // setAuth({ email, password, accessToken, roles });
+        setIsLogin();
+        setEmail("");
+        setPassword("");
+        setSuccess(true);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        if (!err?.response) {
+          setErrMsg("No Server Response");
+        } else if (err.response.status === 400) {
+          setErrMsg("Missing Email or Password");
+        } else if (err.response.status === 401) {
+          setErrMsg("Inauthorized");
+        } else {
+          setErrMsg("Login Failed");
         }
-      );
-      console.log(JSON.stringify(response?.data));
-      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.roles;
-      setAuth({ email, password, accessToken, roles });
-
-      // console.log(email, password);
-      setEmail("");
-      setPassword("");
-      setSuccess(true);
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg("No Server Response");
-      } else if (err.response.status === 400) {
-        setErrMsg("Missing Email or Password");
-      } else if (err.response.status === 401) {
-        setErrMsg("Inauthorized");
-      } else {
-        setErrMsg("Login Failed");
-      }
-    }
-    errRef.current.focus(); //스크린 리더 assertive로 넘어가기
+        errRef.current.focus(); //스크린 리더 assertive로 넘어가기
+      });
   };
 
   return (
     <LoginMain>
       <>
-        {success ? (
-          <section>
-            <h1>You are logged in!</h1>
-            <br />
-            <p>
-              <Link to='/'>Go to Questions Page!</Link>
-            </p>
-          </section>
-        ) : (
+        {success ? null : ( // <Questions />
+          // <section>
+          //   <h1>You are logged in!</h1>
+          //   <br />
+          //   <p>
+          //     <Link to='/'>Go to Questions Page!</Link>
+          //   </p>
+          // </section>
           <div className='container'>
             <Link to='/'>
               <svg
