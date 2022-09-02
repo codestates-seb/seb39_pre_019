@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const Button = ({ text, type, onClick }) => {
-  const types = ["red", "login", "Ask", "contri", "logout", "cancel"].includes(
+
+  const types = ["red", "login", "Ask", "contri", "logout", "cancel","mypage"].includes(
     type
   )
     ? type
@@ -36,7 +37,15 @@ const ButtonCom = styled.button`
 
   &:hover {
   }
-
+  &.myButton_mypage{
+    background-color: #b3d3ea;
+    color: #0964aa;
+    &:hover{
+      background-color: #0964aa;
+      color: #fff;
+    }
+    
+  }
   &.myButton_Ask {
     background-color: #0964aa !important;
     padding: 11px;

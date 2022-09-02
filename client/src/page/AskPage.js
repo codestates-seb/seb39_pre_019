@@ -28,14 +28,12 @@ const onSubmit = () =>{
     return bodyRef.current.focus()
   }
   axios({
-    url:`http://localhost:3001/qustions/`,
+    url:`http://localhost:3001/qustions`,
     method:'post',
     data:{
       "title":title,
       "body":body,
-      "votes": 0,
-      "answer_num": 0,
-      "views":0
+      "userid": "3"
     }
   })
   navigate('/')

@@ -73,7 +73,7 @@ const LogoutMain = styled.div`
   main {
     height: 414px;
     width: 526px;
-    max-width: calc(var(--s-step) * 5) 
+    max-width: calc(var(--s-step) * 5);
     margin: 0;
     background-color: transparent;
     border-left: 0;
