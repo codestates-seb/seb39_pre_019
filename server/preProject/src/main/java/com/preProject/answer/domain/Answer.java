@@ -1,7 +1,7 @@
 package com.preProject.answer.domain;
 
 import com.preProject.audit.BaseTime;
-import com.preProject.user.domain.User;
+import com.preProject.member.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +22,7 @@ public class Answer extends BaseTime {
 
     @ManyToOne
     @JoinColumn(name = "userId", nullable = false)
-    private User user;
+    private Member member;
 
     @Column(nullable = false)
     @Lob

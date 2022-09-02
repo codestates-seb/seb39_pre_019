@@ -1,4 +1,4 @@
-package com.preProject.Config;
+package com.preProject.member.dto.Config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.view.MustacheViewResolver;

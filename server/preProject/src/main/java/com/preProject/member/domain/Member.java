@@ -1,4 +1,4 @@
-package com.preProject.user.domain;
+package com.preProject.member.domain;
 
 import com.preProject.audit.BaseTime;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class User extends BaseTime {
+public class Member extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +49,7 @@ public class User extends BaseTime {
 
     @Enumerated(value = EnumType.STRING)
     @Column
-    private UserStatus userStatus = UserStatus.USER_ACTIVE;
+    private Role role;
 
     //    @OneToMany(mappedBy = "user")
 //    private List<Answer> answers = new ArrayList<>();
@@ -59,14 +59,14 @@ public class User extends BaseTime {
 
 
     //회원가입 시 사용
-    public User(long id, String displayName, String email, String password) {
+    public Member(long id, String displayName, String email, String password) {
         this.id = id;
         this.displayName = displayName;
         this.email = email;
         this.password = password;
     }
     //로그인 시 사용
-    public User(String email, String password) {
+    public Member(String email, String password) {
         this.email = email;
         this.password = password;
     }
@@ -76,16 +76,8 @@ public class User extends BaseTime {
         this.password = password;
     }
 
-    public enum UserStatus {
-        USER_ACTIVE("활동중"),
-        USER_SLEEP("휴면 상태"),
-        USER_QUIT("탈퇴 상태");
-
-        @Getter
-        private String status;
-
-        UserStatus(String status) {
-            this.status = status;
-        }
+    public enum Role {
+        ROLE_ADMIN,
+        ROLE_USER
     }
 }

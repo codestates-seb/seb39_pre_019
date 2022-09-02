@@ -1,6 +1,6 @@
 package com.preProject.question.dto;
 
-import com.preProject.user.domain.User;
+import com.preProject.member.domain.Member;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +16,7 @@ public class QuestionResponseDto {
 
     private Long userId;
 
-    public void setUser(User user) {
-        this.userId = user.getId();
+    public void setUser(Member member) {
+        this.userId = member.getId();
     }
 }
