@@ -8,6 +8,7 @@ import MyPage from "./page/MyPage";
 import DetailQuestion from "./components/DetailQuestion";
 import UserEdit from "./page/UserEdit";
 import AskPage from './page/AskPage';
+import Logout from "./page/Logout";
 
 function App() {
   return (

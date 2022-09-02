@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React,{useState,useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams , Link ,useNavigate} from 'react-router-dom'
 import styled from 'styled-components'
 import Layout from './Layout'
 import Button from './Button'
@@ -12,14 +12,17 @@ import {ReactComponent as Pencil} from '../assets/Pencil.svg'
 import {ReactComponent as Star} from '../assets/Star.svg'
 import YourAnswer from './YourAnswer'
 import  useStore  from '../store/store'
+import Answer from './Answer'
 
 
  
 
 const DetailQuestion = () => {
-  const {isAnswer , setIsAnswer,setToggleSubmit} = useStore()
+  const navigate = useNavigate()
+  const {isChange} = useStore()
   const {id} = useParams()
   const [detail,setdetail] = useState([])
+  const [answers,setAnswer] = useState([])
   const [isEdit,setIsEdit] = useState(false) 
   const [text,setText] = useState('')
 
@@ -34,39 +37,43 @@ const DetailQuestion = () => {
       url:`http://localhost:3001/qustions/${id}`,
       method:'patch',
       data:{
-        'anwser' : text,
+        'body' : text,
       }
     })
     .then((data)=>setdetail({...data.data}))
     setIsEdit(!isEdit)
   }
+
   const onDelete = () => {
     axios({
       url:`http://localhost:3001/qustions/${id}`,
-      method:'patch',
-      data:{
-        'anwser' : '',
-      }
+      method:'delete',
     })
     .then(()=>{
-      setIsAnswer()
-      setToggleSubmit()
+      navigate('/')
     })
   }
 
   useEffect(()=>{
-    axios(`http://localhost:3001/qustions/${id}`)
-    .then((data)=>setdetail({...data.data}))
-  },[isAnswer])
-  const {title,body,views,votes,anwser} = detail
+    axios
+    .all([axios.get(`http://localhost:3001/qustions/${id}`),
+          axios.get(`http://localhost:3001/answer`)])
+          .then(
+            axios.spread((res1,res2)=>{
+              setdetail(res1.data)
+              setAnswer(res2.data)
+            })
+          )
+  },[isChange])
 
+  const {title,body,votes} = detail
   return (
   <Layout children={DetailQuestion}>
     <DetailQues>
       <div className='detail_header'>
         <div className='header_title'>
           <span>{title}</span>
-          <Button text={'Ask Question'} type={'Ask'}/>
+          <Link to={'/askpage'}><Button type={'Ask'} text={'Ask Question'}></Button></Link>
         </div>
         <div className='header_info'>
           <div>
@@ -97,7 +104,18 @@ const DetailQuestion = () => {
           </div>
         </div>
         <div className='body_container'>
-          <pre>{body}</pre>
+          <pre>{isEdit?<textarea onChange={handleText} className='editText'>{body}</textarea>:<>{body}</>}</pre>
+          <div className='answer_list'>
+              <ul>
+                {isEdit?<>
+                <li onClick={onSubmit}>Save</li>
+                <li onClick={handleEdit}>Cancle</li>
+                </>:<><li>Share</li>
+                <li onClick={handleEdit}>Edit</li>
+                <li onClick={onDelete}>Delete</li></>}
+              </ul>
+              <span>Add a comment</span>
+            </div>
         </div>
         <div className='box_container'>
           <div className='box_top'>
@@ -136,56 +154,18 @@ const DetailQuestion = () => {
           </div>
         </div>
       </div>
-
-      <div>{isAnswer?<>
-        <div className='detail_header'>
+      <div className='detail_header'>
         <div className='header_title'>
           <span>Answer</span>
         </div>
       </div>
-      <div className='detail_main'>
-        <div className='vote_wrap'>
-          <div className='up_Down'>
-            <Up/>
-              <span>{votes}</span>
-            <Down/>
-          </div>
-          <div className='vote_icons'>
-           <div><Clock/></div>
-          </div>
-        </div>
-        <div className='body_container'>
-          <pre>{isEdit?<textarea onChange={handleText} className='editText'>{anwser}</textarea>:<>{anwser}</>}</pre>
-          <div className='answer_body'>
-            <div className='answer_list'>
-              <ul>
-                {isEdit?<>
-                <li onClick={onSubmit}>Save</li>
-                <li onClick={handleEdit}>Cancle</li>
-                </>:<><li>Share</li>
-                <li onClick={handleEdit}>Edit</li>
-                <li onClick={onDelete}>Delete</li></>}
-              </ul>
-              <span>Add a comment</span>
-            </div>
-            <div className='answer_myinfo'>
-              <div className='myinfo_title'>answerd just now</div>
-              <div className='myinfo_img_Name'>
-                <img src='https://lh3.googleusercontent.com/a/AItbvmnpskpjH0ERiT2akEdlvgNsniN6akY23nJHhwgA=k-s48' width='24'></img>
-                <span>userName</span>
-              </div>
-              <div className='contribute_btn'>
-                <Button text={'New contributor'} type={'contri'}/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div></>:null}</div>
-      
-      
-      
 
-
+{/* 앤서,유어앤서 부분 ! */}
+      <div>
+        {answers.filter((it)=>it.question_id === id).map((answers)=>(
+          <Answer answers={answers} key={answers.id}/>
+        ))}
+      </div>
       <div className='detail_answer'>
         <YourAnswer/>
       </div>
@@ -348,5 +328,15 @@ const DetailQues = styled.div`
     & li{
     margin-left: 7px;
     }
+  }
+  .editText{
+    background-color: transparent;
+     width: 90%;
+     height: 150px;
+     font-size: 18px;
+     padding: 10px;
+     color: #E7E9EB;
+     resize: none;
+     border-radius: 3px;
   }
 `

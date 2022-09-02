@@ -2,15 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const QuestionItem = ({title,body,id,tag,votes,answers,views}) => {
+const QuestionItem = ({title,body,id}) => {
   return (
     <QuestionsItem>
       <div className='container'>
         <div className='item_left'>
           <div className='pBox'>
-          <p className='pLeft'>{votes} votes</p>
-          <p>{answers} answers</p>
-          <p className='pLeft'>{views} views</p>
+          <p className='pLeft'>0 votes</p>
+          <p>0 answers</p>
+          <p className='pLeft'>0 views</p>
         </div>
         </div>
         <div className='item_rigth'>

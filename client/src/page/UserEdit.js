@@ -4,16 +4,13 @@ import { BsPencilFill } from "react-icons/bs";
 import { FaStackExchange } from "react-icons/fa";
 import Layout from "../components/Layout";
 import EditProfile from "../components/EditProfile";
-
 import { ReactComponent as CakeImg } from "../assets/Cake.svg";
 import { ReactComponent as ClockImg } from "../assets/Clock.svg";
 import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
 
-// import useStore from "../store/store";
-
 const UserEdit = () => {
   const [userData, setUserData] = useState([]);
-  //const { displayName } = useStore();
+
 
   useEffect(() => {
     fetch(`http://localhost:3001/user/`)
