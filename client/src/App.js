@@ -7,22 +7,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MyPage from "./page/MyPage";
 import DetailQuestion from "./components/DetailQuestion";
 import UserEdit from "./page/UserEdit";
-import AskPage from './page/AskPage';
+import AskPage from "./page/AskPage";
+import Logout from "./page/Logout";
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
-       <Header />
-        <Routes>
-          <Route path='/' element={<Questions />}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/signup' element={<Signup />}></Route>
-          <Route path='/mypage' element={<MyPage />}></Route>
-          <Route path='/:id' element={<DetailQuestion />}></Route>
-          <Route path='/mypage/userEdit' element={<UserEdit />}></Route>
-          <Route path='/askpage' element={<AskPage />}></Route>
-        </Routes>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Questions />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/signup' element={<Signup />}></Route>
+        <Route path='/mypage' element={<MyPage />}></Route>
+        <Route path='/:id' element={<DetailQuestion />}></Route>
+        <Route path='/mypage/userEdit' element={<UserEdit />}></Route>
+        <Route path='/askpage' element={<AskPage />}></Route>
+        <Route path='/logout' element={<Logout />}></Route>
+      </Routes>
     </BrowserRouter>
   );
 }
