@@ -1,7 +1,7 @@
 package com.preProject.question.domain;
 
 import com.preProject.audit.BaseTime;
-import com.preProject.user.domain.User;
+import com.preProject.member.domain.Member;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,10 +38,10 @@ public class Question extends BaseTime {
 
     @ManyToOne
     @JoinColumn(name = "userid", nullable = false)
-    private User user;
+    private Member member;
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setMember(Member member) {
+        this.member = member;
     }
 }
 
