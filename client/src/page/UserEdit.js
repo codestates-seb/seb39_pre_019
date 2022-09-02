@@ -5,8 +5,9 @@ import { FaStackExchange } from "react-icons/fa";
 import Layout from "../components/Layout";
 import EditProfile from "../components/EditProfile";
 import { ReactComponent as CakeImg } from "../assets/Cake.svg";
-import { ReactComponent as ClockImg } from "../assets/Clock.svg";
+import { ReactComponent as ClockImg } from "../assets/Clock2.svg";
 import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
+import { ReactComponent as LocationImg } from "../assets/Location.svg";
 
 const UserEdit = () => {
   const [userData, setUserData] = useState([]);
@@ -16,7 +17,7 @@ const UserEdit = () => {
     fetch(`http://localhost:3001/user/`)
       .then((response) => response.json())
       .then((item) => setUserData(item));
-  }, [userData]);
+  }, []);
 
   return (
     <Layout children={UserEdit}>
@@ -25,11 +26,19 @@ const UserEdit = () => {
           <div className='userEdit_header'>
             <div className='user_profile_img'>
               <img
-                src={process.env.PUBLIC_URL + "/img/stackUserIcon.png"}
+                // src={process.env.PUBLIC_URL + "/img/stackUserIcon.png"}
+                src={
+                  userData.profileImg
+                    ? userData.profileImg
+                    : process.env.PUBLIC_URL + "/img/stackUserIcon.png"
+                }
                 alt='user icon'
               ></img>
               <div className='user_profile_info'>
-                <h1 className='userName'>{userData.displayName}</h1>
+                <div>
+                  <h1 className='userName'>{userData.displayName}</h1>
+                  {userData.title ? <h2>{userData.title}</h2> : null}
+                </div>
                 <ul className='user_profile_memo'>
                   <li>
                     <CakeImg /> Member for 4 months{" "}
@@ -40,7 +49,12 @@ const UserEdit = () => {
                   <li>
                     <CalendarImg /> Visited 48 days{" "}
                   </li>
-                  <li>{userData.location}</li>
+                </ul>
+                <ul className='user_profile_memo'>
+                  <li>
+                    <LocationImg />
+                    {userData.location}
+                  </li>
                 </ul>
               </div>
             </div>
@@ -107,34 +121,58 @@ const UserEditContainer = styled.div`
     }
   }
 
+  //유저 프로필 인포 css
   .userEdit_header {
     grid-area: mypage_header;
-  }
-  .userEdit_menu {
-    grid-area: mypage_menu;
-  }
-  .userEdit_sidebar {
-    grid-area: mypage_sidebar;
-  }
-  .userEdit_main {
-    grid-area: mypage_main;
+    display: flex;
+
+    & .user_profile_img {
+      display: flex;
+    }
+
+    & .user_profile_info {
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      & h1 {
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+      & h2 {
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+    }
+
+    & .user_profile_memo {
+      display: flex;
+      width: 100%;
+      margin-left: -40px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+
+      & li {
+        margin-right: 10px;
+      }
+    }
   }
 
-  // 유저 인포 css
-  .userEdit_header {
-    display: flex;
-    position: relative;
-  }
-  .user_profile_img {
-    display: flex;
-  }
-  .user_profile_info {
-    margin-left: 20px;
-  }
+  // 유저 인포 edit 버튼 css
   .user_profile_btn {
-    button {
+    display: flex;
+    align-items: baseline;
+    justify-content: end;
+
+    position: absolute;
+    right: 130px;
+    top: 20px;
+
+    & button {
       background-color: #2d2d2d;
       padding: 10px;
+      margin-right: 5px;
       color: #c4c8cc;
       border: 1px solid #7d858d;
       cursor: pointer;
@@ -142,16 +180,37 @@ const UserEditContainer = styled.div`
         background-color: #353738;
       }
     }
-    position: absolute;
-    right: 10px;
-    top: 20px;
   }
-  .user_profile_memo {
-    display: flex;
-    justify-content: space-around;
-    margin-left: -40px;
-    padding-right: 0;
-    width: 500px;
+
+  .userEdit_menu {
+    grid-area: mypage_menu;
+  }
+  .userEdit_sidebar {
+    grid-area: mypage_sidebar;
+    position: sticky;
+    top: 5%;
+    z-index: 10;
+
+    & li {
+      display: flex;
+      align-items: center;
+      padding: 7px 0px 7px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-left: -40px;
+      font-size: 13px;
+      color: #e7e9eb;
+      font-weight: 500;
+
+      &:hover {
+        color: #fff;
+        background-color: #3d3d3d;
+        border-radius: 20px;
+      }
+    }
+  }
+  .userEdit_main {
+    grid-area: mypage_main;
   }
 
   //프로필 css
@@ -234,5 +293,4 @@ const UserEditContainer = styled.div`
       border-radius: 20px;
     }
   }
-
 `;

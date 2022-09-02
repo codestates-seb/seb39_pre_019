@@ -5,10 +5,10 @@ import Resizer from "react-image-file-resizer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import useStore from "../store/store";
+//import useStore from "../store/store";
 
 const EditProfile = ({ userData }) => {
-  const { setDisplayNameStore } = useStore();
+  //const { setDisplayNameStore } = useStore();
 
   const [profileImg, setProfileImg] = useState("");
   const [displayName, setDisplayName] = useState("");

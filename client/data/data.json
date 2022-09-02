@@ -4,6 +4,7 @@
       "id": 1,
       "title": "How to replace integer entry of a DataFrame to a string based on a range",
       "body": "I have a set of numbers that I would like to change to a "
+
     },
     {
       "id": 2,
@@ -122,5 +123,16 @@
       "aboutMe": "4",
       "id": 6
     }
-  ]
+  ],
+  "user": {
+    "displayName": "hailie",
+    "email": "s@s.com",
+    "password": "Tjdlkafj342",
+    "profileImg": "",
+    "location": "seoul",
+    "title": "good!!!!",
+    "aboutMe": ""
+  }
 }
+
+
