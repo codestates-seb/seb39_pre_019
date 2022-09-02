@@ -10,6 +10,8 @@ import UserEdit from "./page/UserEdit";
 import AskPage from "./page/AskPage";
 import Logout from "./page/Logout";
 
+import LogoutModal from "./components/LogoutModal";
+
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +26,7 @@ function App() {
         <Route path='/mypage/userEdit' element={<UserEdit />}></Route>
         <Route path='/askpage' element={<AskPage />}></Route>
         <Route path='/logout' element={<Logout />}></Route>
+        <Route path='/logoutModal' element={<LogoutModal />}></Route>
       </Routes>
     </BrowserRouter>
   );
