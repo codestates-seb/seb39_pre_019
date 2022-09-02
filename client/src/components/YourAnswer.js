@@ -9,32 +9,31 @@ const YourAnswer = () => {
   const {id} = useParams()
   const textRef = useRef()
   // const [toggleSubmit,setToggleSubmit] = useState(true)
-  const {setIsAnswer,toggleSubmit,setToggleSubmit} = useStore()
+  const {setIsChange} = useStore()
   const [content, setContent] = useState('')
   const handleContent = (e) =>{
     setContent(e.target.value)
   }
   const onSubmit = () => {
-    if(content.length < 10 && toggleSubmit){
-     return textRef.current.focus()
+    if(content.length === 0){
+      return textRef.current.focus()
     }
-    if(toggleSubmit){
      return axios({
-        url:`http://localhost:3001/qustions/${id}`,
-        method:'patch',
+        url:`http://localhost:3001/answer/`,
+        method:'post',
         data:{
-          'anwser' : content,
+          "answer": content,
+          "question_id":id,
         }
       })
       .then((data)=>{
-        setIsAnswer();
-        setToggleSubmit();
         window.scrollTo(0,0);
         setContent('')
+        setIsChange()
       })
     }
-    return alert('댓글은 1개만 달수 있습니다.')
-  }
+   
+  
   
 
   return (

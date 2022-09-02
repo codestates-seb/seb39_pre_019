@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 const Button = ({ text, type, onClick }) => {
-  const types = ["red", "login", "Ask","contri"].includes(type) ? type : "default";
+
+  const types = ["red", "login", "Ask", "contri", "logout", "cancel","mypage"].includes(
+    type
+  )
+    ? type
+    : "default";
   return (
     <ButtonCom
       className={["myButton", `myButton_${types}`].join(" ")}
@@ -32,7 +37,15 @@ const ButtonCom = styled.button`
 
   &:hover {
   }
-
+  &.myButton_mypage{
+    background-color: #b3d3ea;
+    color: #0964aa;
+    &:hover{
+      background-color: #0964aa;
+      color: #fff;
+    }
+    
+  }
   &.myButton_Ask {
     background-color: #0964aa !important;
     padding: 11px;
@@ -41,7 +54,7 @@ const ButtonCom = styled.button`
     font-size: 13px;
     color: #fff;
   }
-  &.myButton_contri{
+  &.myButton_contri {
     background-color: #435360;
     font-size: 13px;
   }
@@ -51,5 +64,25 @@ const ButtonCom = styled.button`
     font-weight: 500;
     border: 1px solid #1764aa;
     color: #1764aa;
+  }
+
+  &.myButton_logout {
+    background-color: #1764aa;
+    font-weight: 600;
+    border: 1px solid #1764aa;
+    margin: 2px;
+    padding: 10.4px;
+  }
+  &.myButton_cancel {
+    background-color: black;
+    font-weight: 600;
+    border: 1px solid black;
+    margin: 2px;
+    padding: 10.4px;
+    color: #1764aa;
+
+    &:hover {
+      background-color: #7893a9;
+    }
   }
 `;
