@@ -46,38 +46,6 @@
       "votes": 0,
       "answer_num": 0,
       "views": 49
-    },
-    {
-      "title": "asdasda",
-      "body": "sdasdasdasd",
-      "votes": 0,
-      "answer_num": 0,
-      "views": 0,
-      "id": 6
-    },
-    {
-      "title": "dfa",
-      "body": "dfdsads",
-      "votes": 0,
-      "answer_num": 0,
-      "views": 0,
-      "id": 7
-    },
-    {
-      "title": "232341324",
-      "body": "fdgadf",
-      "votes": 0,
-      "answer_num": 0,
-      "views": 0,
-      "id": 8
-    },
-    {
-      "title": "234",
-      "body": "ㄱㅅ",
-      "votes": 0,
-      "answer_num": 0,
-      "views": 0,
-      "id": 9
     }
   ],
   "signup": [
@@ -109,66 +77,6 @@
       "email": "s@s.com",
       "pwd": "11",
       "id": 3
-    },
-    {
-      "email": "hi@hi.com",
-      "password": "tjkdlafd",
-      "id": 4
-    },
-    {
-      "email": "seonmin@seonmin.com",
-      "password": "tkljdfkl",
-      "id": 5
-    },
-    {
-      "email": "s@s.com",
-      "password": "dfdff",
-      "id": 6
-    },
-    {
-      "email": "s@s.com",
-      "password": "dfasdsdf",
-      "id": 7
-    },
-    {
-      "email": "dfasdf@cond.dfd",
-      "password": "dfas",
-      "id": 8
-    },
-    {
-      "email": "dfasdf@cond.dfd",
-      "password": "fdafs",
-      "id": 9
-    },
-    {
-      "email": "s@s.com",
-      "password": "dfads",
-      "id": 10
-    },
-    {
-      "email": "s@s.com",
-      "password": "dfsdf",
-      "id": 11
-    },
-    {
-      "email": "s@s.com",
-      "password": "ㅇfsa",
-      "id": 12
-    },
-    {
-      "email": "s@s.com",
-      "password": "dfsdfas",
-      "id": 13
-    },
-    {
-      "email": "s@s.com",
-      "password": "ㄴdfasdf",
-      "id": 14
-    },
-    {
-      "email": "s@s.com",
-      "password": "dfd",
-      "id": 15
     }
   ],
   "profileInfo": [
@@ -187,42 +95,6 @@
       "title": "ddd",
       "aboutMe": "ddd",
       "id": 2
-    },
-    {
-      "inputData": {
-        "profileImg": "",
-        "displayName": "1",
-        "location": "2",
-        "title": "3",
-        "aboutMe": "4"
-      },
-      "id": 3
-    },
-    {
-      "inputData": [
-        "",
-        "1",
-        "2",
-        "3",
-        "4"
-      ],
-      "id": 4
-    },
-    {
-      "profileImg": "",
-      "displayName": "0",
-      "location": "9",
-      "title": "8",
-      "aboutMe": "7",
-      "id": 5
-    },
-    {
-      "profileImg": "",
-      "displayName": "1",
-      "location": "2",
-      "title": "3",
-      "aboutMe": "4",
-      "id": 6
     }
   ],
   "user": {

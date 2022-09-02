@@ -238,11 +238,14 @@ const MypageContainer = styled.div`
 
     .user_profile_memo {
       display: flex;
-      justify-content: space-between;
       width: 100%;
       margin-left: -40px;
       margin-top: 5px;
       margin-bottom: 10px;
+
+      & li {
+        margin-right: 10px;
+      }
     }
   }
 
