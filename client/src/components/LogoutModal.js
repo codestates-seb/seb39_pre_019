@@ -8,7 +8,7 @@ const LogoutModal = () => {
     <LogoutModalMain>
       <div className='mainContentHeader'>
         <h5>
-          <a href='/'>CURRENT COMMUNITY</a>
+          <a href='#'>CURRENT COMMUNITY</a>
         </h5>
       </div>
       <div className='mainContent'>
@@ -21,8 +21,8 @@ const LogoutModal = () => {
               </a>
             </h5>
             <div>
-              <a href='/'>help</a>
-              <a href='/'>chat</a>
+              <a href='#'>help</a>
+              <a href='#'>chat</a>
               <Link to='/logout'>log out</Link>
             </div>
           </li>
@@ -30,7 +30,7 @@ const LogoutModal = () => {
             <div>
               <BsArrowReturnRight color='#fff' />
             </div>
-            <a href='/'>
+            <a href='#'>
               <StackLogoImg /> Meta Stack Overflow
             </a>
           </li>
@@ -38,7 +38,7 @@ const LogoutModal = () => {
       </div>
       <div className='mainContentHeader'>
         <h5>
-          <a href='/'>CURRENT COMMUNITY</a>
+          <a href='/'>YOUR COMMUNITIES</a>
         </h5>
         <a href='/'>edit</a>
       </div>
@@ -95,7 +95,7 @@ const LogoutModalMain = styled.div`
       padding: 0;
     }
 
-    li: first-child {
+    li:first-child {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -112,9 +112,10 @@ const LogoutModalMain = styled.div`
       }
     }
 
-    li: last-child {
+    li:last-child {
       display: flex;
       flex-direction: row;
+      padding-bottom: 8px;
     }
   }
 
