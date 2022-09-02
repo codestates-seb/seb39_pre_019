@@ -5,9 +5,9 @@ const useStore = create((set) => ({
   data: [],
   isLogin: false,
   setIsLogin: () => set((state) => ({ isLogin: !state.isLogin })),
-  displayName: "",
-  setDisplayNameStore: (input) =>
-    set((state) => ({ ...(state.displayName + input) })),
+  //   displayName: "",
+  //   setDisplayNameStore: (input) =>
+  //     set((state) => ({ ...(state.displayName + input) })),
   isAnswer: false,
   toggleSubmit: true,
   setToggleSubmit: () =>

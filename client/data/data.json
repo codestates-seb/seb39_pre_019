@@ -8,7 +8,7 @@
       "votes": 0,
       "answer_num": 0,
       "views": 2,
-      "anwser": "ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅇ"
+      "anwser": "fdafdfsdfsdfa"
     },
     {
       "id": 2,
@@ -46,14 +46,6 @@
       "votes": 0,
       "answer_num": 0,
       "views": 49
-    },
-    {
-      "title": "asdasda",
-      "body": "sdasdasdasd",
-      "votes": 0,
-      "answer_num": 0,
-      "views": 0,
-      "id": 6
     }
   ],
   "signup": [
@@ -103,45 +95,15 @@
       "title": "ddd",
       "aboutMe": "ddd",
       "id": 2
-    },
-    {
-      "inputData": {
-        "profileImg": "",
-        "displayName": "1",
-        "location": "2",
-        "title": "3",
-        "aboutMe": "4"
-      },
-      "id": 3
-    },
-    {
-      "inputData": ["", "1", "2", "3", "4"],
-      "id": 4
-    },
-    {
-      "profileImg": "",
-      "displayName": "0",
-      "location": "9",
-      "title": "8",
-      "aboutMe": "7",
-      "id": 5
-    },
-    {
-      "profileImg": "",
-      "displayName": "1",
-      "location": "2",
-      "title": "3",
-      "aboutMe": "4",
-      "id": 6
     }
   ],
   "user": {
-    "displayName": "?",
-    "email": "ddd@ddd.com",
-    "password": "tjkldjfsdT3242",
+    "displayName": "hailie",
+    "email": "s@s.com",
+    "password": "Tjdlkafj342",
     "profileImg": "",
-    "location": "",
-    "title": "",
+    "location": "seoul",
+    "title": "good!!!!",
     "aboutMe": ""
   }
 }
