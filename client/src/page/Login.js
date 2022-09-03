@@ -178,11 +178,9 @@ const LoginMain = styled.div`
   align-items: center;
   min-height: 100vh;
   background-color: #edeff0;
-
   section {
     text-align: center;
   }
-
   .container {
     display: flex;
     flex-direction: column;
@@ -215,23 +213,19 @@ const LoginMain = styled.div`
     text-align: center;
     border-radius: 5px;
     /* margin: 0; */
-
     input {
       margin-bottom: 20px;
     }
   }
-
   label {
     display: flex;
     text-align: left;
   }
-
   input[type="email"],
   input[type="password"] {
     width: 90%;
     height: 25px;
   }
-
   button {
     margin-bottom: 10px;
     padding: 8px 10px;
@@ -260,14 +254,12 @@ const LoginMain = styled.div`
     background-color: #385499;
     color: #fff;
   }
-
   .login_footer {
     margin-top: 20px;
     /* display: flex;
     flex-direction: column;
     align-items: center; */
   }
-
   //유효성 검사 css
   .offscreen {
     position: absolute;
