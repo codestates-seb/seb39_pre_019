@@ -9,7 +9,8 @@ import DetailQuestion from "./components/DetailQuestion";
 import UserEdit from "./page/UserEdit";
 import AskPage from "./page/AskPage";
 import Logout from "./page/Logout";
-
+import AnswerView from "./page/AnswerView";
+import QuestionView from "./page/QuestionView";
 import LogoutModal from "./components/LogoutModal";
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
         <Route path='/askpage' element={<AskPage />}></Route>
         <Route path='/logout' element={<Logout />}></Route>
         <Route path='/logoutModal' element={<LogoutModal />}></Route>
+        <Route path='/answerview' element={<AnswerView />}></Route>
+        <Route path='/questionview' element={<QuestionView />}></Route>
       </Routes>
     </BrowserRouter>
   );

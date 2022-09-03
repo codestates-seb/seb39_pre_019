@@ -38,7 +38,7 @@ const Header = () => {
               </Link>
               <Button
                 text={"Logout"}
-                type={"logout"}
+                // type={"logout"} 버튼 폼이 살짝 달라서 지움
                 onClick={openModalHandler}
               ></Button>
             </>
