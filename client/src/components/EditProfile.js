@@ -58,7 +58,7 @@ const EditProfile = ({ userData }) => {
         aboutMe,
       })
       .then((response) => {
-        console.log(JSON.stringify(response?.data));
+        //console.log(JSON.stringify(response?.data));
       })
       .catch((err) => {
         alert(err.message);

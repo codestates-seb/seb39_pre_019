@@ -1,10 +1,22 @@
 import styled from "styled-components";
 import Button from "../components/Button";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { FaStackExchange } from "react-icons/fa";
 import { SiSuperuser } from "react-icons/si";
 
+import useStore from "../store/store";
+
 const Logout = () => {
+  const { setIsLogin } = useStore();
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    setIsLogin();
+    navigate("/");
+  };
+
   return (
     <LogoutMain>
       <main>
@@ -49,8 +61,14 @@ const Logout = () => {
             <label htmlFor='checkbox'>Log out on all devices</label>
           </div>
           <div>
-            <Button type={"logout"} text={"Log out"}></Button>
-            <Button type={"cancel"} text={"Cancel"}></Button>
+            <Button
+              type={"logout"}
+              text={"Log out"}
+              onClick={logoutHandler}
+            ></Button>
+            <Link to='/'>
+              <Button type={"cancel"} text={"Cancel"}></Button>
+            </Link>
           </div>
           <div>
             If you’re on a shared computer, remember to log out of your Open ID
@@ -64,11 +82,11 @@ const Logout = () => {
 export default Logout;
 
 const LogoutMain = styled.div`
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   main {
     height: 414px;
@@ -77,53 +95,51 @@ const LogoutMain = styled.div`
     margin: 0;
     background-color: transparent;
     border-left: 0;
-    border-right: 0;  
-
+    border-right: 0;
 
     & div:nth-child(1) {
-    color: white;
-    font-size: 1.61538462rem;
-    font-weight: bold;
-    margin-bottom: 24px;
-    text-align: center;
+      color: white;
+      font-size: 1.61538462rem;
+      font-weight: bold;
+      margin-bottom: 24px;
+      text-align: center;
+    }
   }
-  }
-  
-  .logout_block{
-    padding:20px 24px 24px 24px;
+
+  .logout_block {
+    padding: 20px 24px 24px 24px;
     background-color: #151515;
     margin: 0 105px 24px 105px;
     border-radius: 10px;
 
     & div:last-child {
-    margin-top: 32px;
-    color: #acb3b9;
-    font-size: 12px;
+      margin-top: 32px;
+      color: #acb3b9;
+      font-size: 12px;
     }
   }
 
-   .logout_block_list {
+  .logout_block_list {
     display: flex;
     flex-direction: column;
     list-style: none;
     margin: 0 0 16px 0;
     padding: 0;
-    font-size:  1.11384615rem;;
-    
-    & li{
+    font-size: 1.11384615rem;
+
+    & li {
       margin-bottom: 10px;
     }
 
     & a {
-    color: #33a7ff
+      color: #33a7ff;
     }
-
   }
 
-  .checkbox{
-  margin-bottom: 16px;
-  & label{
-    color:white;
-  }
+  .checkbox {
+    margin-bottom: 16px;
+    & label {
+      color: white;
+    }
   }
 `;
