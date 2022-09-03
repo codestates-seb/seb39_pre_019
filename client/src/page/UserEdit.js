@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Layout from "../components/Layout";
 import EditProfile from "../components/EditProfile";
 import MypageHeader from "../components/MypageHeader";
+import { Link } from "react-router-dom";
+import MypageMenuBtn from "../components/MypageMenuBtn";
 
 const UserEdit = () => {
   const [userData, setUserData] = useState([]);
@@ -21,9 +23,10 @@ const UserEdit = () => {
             <MypageHeader />
           </div>
           <div className='userEdit_menu'>
-            <div className='menu'>Profile</div>
+            <MypageMenuBtn />
+            {/* <div className='menu'>Profile</div>
             <div className='menu '>Activity</div>
-            <div className='menu menu_select'>Settings</div>
+            <div className='menu menu_select'>Settings</div> */}
           </div>
           <div className='userEdit_sidebar'>
             <ul className='userEdit_sidebar_box'>
@@ -84,8 +87,9 @@ const UserEditContainer = styled.div`
   .userEdit_menu {
     grid-area: mypage_menu;
     display: flex;
-
-    .menu {
+    width: 100%;
+    text-align: center;
+    /* .menu {
       justify-content: center;
       align-items: center;
       border: none;
@@ -111,7 +115,7 @@ const UserEditContainer = styled.div`
         background-color: #f48225;
         color: black;
       }
-    }
+    } */
   }
 
   //메인 css

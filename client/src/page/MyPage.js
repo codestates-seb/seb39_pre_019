@@ -9,6 +9,7 @@ import { ReactComponent as AstronautImg } from "../assets/Astronaut.svg";
 import { ReactComponent as GoldCrownImg } from "../assets/GoldCrown.svg";
 import { ReactComponent as SilverCrownImg } from "../assets/SilverCrown.svg";
 import { ReactComponent as BronzeCrownImg } from "../assets/BronzeCrown.svg";
+import MypageMenuBtn from "../components/MypageMenuBtn";
 
 const MyPage = () => {
   return (
@@ -19,9 +20,10 @@ const MyPage = () => {
             <MypageHeader />
           </div>
           <div className='mypage_menu'>
-            <div className='menu'>Profile</div>
+            <MypageMenuBtn />
+            {/* <div className='menu'>Profile</div>
             <div className='menu menu_select'>Activity</div>
-            <div className='menu'>Settings</div>
+            <div className='menu'>Settings</div> */}
           </div>
           <div className='mypage_sidebar'>
             <ul>
@@ -138,7 +140,7 @@ const MypageContainer = styled.div`
     display: grid;
     grid-gap: 0px;
     height: 100%;
-    grid-template-columns: 170px 1fr;
+    grid-template-columns: 200px 1fr;
     grid-template-rows: 200px 80px 1fr;
     grid-template-areas: "mypage_header mypage_header" "mypage_menu mypage_menu" "mypage_sidebar mypage_main ";
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -166,7 +168,7 @@ const MypageContainer = styled.div`
     grid-area: mypage_menu;
     display: flex;
 
-    .menu {
+    /* .menu {
       justify-content: center;
       align-items: center;
       border: none;
@@ -185,6 +187,15 @@ const MypageContainer = styled.div`
         background-color: #4d4d4d;
       }
     }
+    .menu_select {
+      font-weight: 500;
+      background-color: #f48225;
+      color: #2d2d2d;
+      &:hover {
+        background-color: #f48225;
+        color: black;
+      }
+    } */
   }
 
   // 미니 사이드 바 css
@@ -219,18 +230,6 @@ const MypageContainer = styled.div`
   // 메인 css
   .mypage_main {
     grid-area: mypage_main;
-  }
-
-  //프로필 css
-
-  .menu_select {
-    font-weight: 500;
-    background-color: #f48225;
-    color: #2d2d2d;
-    &:hover {
-      background-color: #f48225;
-      color: black;
-    }
   }
 
   //요약 박스 css
