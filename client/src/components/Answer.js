@@ -30,8 +30,8 @@ const Answer = ({answers}) => {
       setIsChange()
       setIsEdit(!isEdit)
     })
-
   }
+  
   const onDelete = () => {
     axios({
       url:`http://localhost:3001/answer/${id}`,

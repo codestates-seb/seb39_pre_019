@@ -7,7 +7,7 @@ import {  useNavigate } from 'react-router-dom'
 
 const AskPage = () => {
 
-  const navigate = useNavigate();
+const navigate = useNavigate();
 const titleRef = useRef()
 const bodyRef = useRef()
 const [askData,setAskData] = useState({
@@ -28,16 +28,15 @@ const onSubmit = () =>{
     return bodyRef.current.focus()
   }
   axios({
-    url:`http://localhost:3001/qustions`,
+    url:`http://3.39.158.220:8080/questions/ask`,
     method:'post',
     data:{
       "title":title,
       "body":body,
-      "userid": "3"
+      "userid": "1"
     }
   })
   navigate('/')
-  
 }
 
 

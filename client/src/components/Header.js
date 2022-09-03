@@ -24,8 +24,10 @@ const {isLogin} = useStore()
           <img className="center_img" src='https://raw.githubusercontent.com/eirikmadland/notion-icons/master/v5/icon3/mi-search.svg' alt='#'></img>
         </form>
         <div className="header_right">
-          {isLogin? <><Link to={'/mypage'}><Button text={"mypage"} type={'home'}/></Link>
-          <Button text={'Logout'} type={'logout'}></Button></>:<>
+          {isLogin? <>
+          <Link to={'/mypage'}><Button text={"mypage"} type={'home'}/></Link>
+          <Button text={'Logout'} type={'logout'}></Button>
+          </>:<>
           <Link to='/login'><Button type={"login"} text={"Log in"}></Button></Link>
           <Link to='/signup'><Button  text={"Sign up"} /></Link></>}
         </div>
