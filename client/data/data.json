@@ -30,6 +30,12 @@
       "body": "dfasdf",
       "userid": "3",
       "id": 6
+    },
+    {
+      "title": "wow!!",
+      "body": "good!",
+      "userid": "3",
+      "id": 7
     }
   ],
   "answer": [
@@ -148,6 +154,11 @@
       "email": "hi@hi.com",
       "password": "ff",
       "id": 19
+    },
+    {
+      "email": "hailie@hailie.com",
+      "password": "Tjsals27",
+      "id": 20
     }
   ],
   "profileInfo": [
@@ -205,12 +216,8 @@
     }
   ],
   "user": {
-    "displayName": "hailiehhihi",
-    "email": "s@s.com",
-    "password": "Tjsals2735!",
-    "profileImg": "",
-    "location": "anyang",
-    "title": "gee",
-    "aboutMe": ""
+    "displayName": "hailie",
+    "email": "hailie@hailie.com",
+    "password": "Tjsals2735"
   }
 }

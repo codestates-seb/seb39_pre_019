@@ -60,7 +60,7 @@ const MypageHeader = () => {
           </ul>
         </div>
         <div className='user_profile_btn'>
-          <Link to='userEdit'>
+          <Link to='/userEdit'>
             <button>
               <BsPencilFill /> Edit profile
             </button>
