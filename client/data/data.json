@@ -4,7 +4,6 @@
       "id": 1,
       "title": "How to replace integer entry of a DataFrame to a string based on a range",
       "body": "I have a set of numbers that I would like to change to a "
-
     },
     {
       "id": 2,
@@ -19,7 +18,7 @@
     {
       "id": 4,
       "title": "Tkinter Window Background Color Not Working On MacOS",
-      "body": "Tkinter window background color does not work on my MacBook Air, but does work on my Windows 10 main PC. Here's my code: from tinter import * window = Tk() window.configure(bg ="
+      "body": "Tkinter window background color does not work on my MacBook Air, but does work on my Windows 10 main PC. Here's my code: from tinter import * window = Tk() window.configure(bg =fsdfdsf"
     },
     {
       "id": 5,
@@ -29,9 +28,14 @@
   ],
   "answer": [
     {
-      "answer": "asdasdasdasdzxczxczxc",
+      "answer": "what a nice question!",
       "question_id": "1",
       "id": 1
+    },
+    {
+      "answer": "good!!!!",
+      "question_id": "1",
+      "id": 2
     }
   ],
   "signup": [
@@ -40,12 +44,6 @@
       "email": "s@s.com",
       "pwd": "Happys1!",
       "id": 1
-    },
-    {
-      "displayName": "dfasdf",
-      "email": "s@s.com",
-      "password": "fdfadfF2",
-      "id": 2
     }
   ],
   "login": [
@@ -53,21 +51,6 @@
       "email": "test@test.com",
       "pwd": "11",
       "id": 1
-    },
-    {
-      "email": "dfsdfas@cone.dfd",
-      "password": "sd",
-      "id": 2
-    },
-    {
-      "email": "s@s.com",
-      "pwd": "11",
-      "id": 3
-    },
-    {
-      "email": "dfsdfas@cone.dfd",
-      "password": "sd",
-      "id": 4
     }
   ],
   "profileInfo": [
@@ -78,61 +61,15 @@
       "title": "ddd",
       "aboutMe": "ddd",
       "id": 1
-    },
-    {
-      "profileImg": "",
-      "displayName": "ddd",
-      "location": "ddd",
-      "title": "ddd",
-      "aboutMe": "ddd",
-      "id": 2
-    },
-    {
-      "inputData": {
-        "profileImg": "",
-        "displayName": "1",
-        "location": "2",
-        "title": "3",
-        "aboutMe": "4"
-      },
-      "id": 3
-    },
-    {
-      "inputData": [
-        "",
-        "1",
-        "2",
-        "3",
-        "4"
-      ],
-      "id": 4
-    },
-    {
-      "profileImg": "",
-      "displayName": "0",
-      "location": "9",
-      "title": "8",
-      "aboutMe": "7",
-      "id": 5
-    },
-    {
-      "profileImg": "",
-      "displayName": "1",
-      "location": "2",
-      "title": "3",
-      "aboutMe": "4",
-      "id": 6
     }
   ],
   "user": {
-    "displayName": "hailie",
-    "email": "s@s.com",
-    "password": "Tjdlkafj342",
+    "displayName": "hihi",
+    "email": "hailie@hailie.com",
+    "password": "Tjsals2735!",
     "profileImg": "",
     "location": "seoul",
-    "title": "good!!!!",
+    "title": "good",
     "aboutMe": ""
   }
 }
-
-

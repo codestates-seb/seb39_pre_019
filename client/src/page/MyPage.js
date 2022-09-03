@@ -1,93 +1,39 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { BsPencilFill } from "react-icons/bs";
-import { FaStackExchange } from "react-icons/fa";
 import Layout from "../components/Layout";
+import MypageHeader from "../components/MypageHeader";
+import { Link } from "react-router-dom";
 
-import { ReactComponent as CakeImg } from "../assets/Cake.svg";
-import { ReactComponent as ClockImg } from "../assets/Clock2.svg";
-import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
 import { ReactComponent as GraphImg } from "../assets/Graph.svg";
-import { ReactComponent as LocationImg } from "../assets/Location.svg";
-
 import { ReactComponent as AstronautImg } from "../assets/Astronaut.svg";
 import { ReactComponent as GoldCrownImg } from "../assets/GoldCrown.svg";
 import { ReactComponent as SilverCrownImg } from "../assets/SilverCrown.svg";
 import { ReactComponent as BronzeCrownImg } from "../assets/BronzeCrown.svg";
-
-import { Link } from "react-router-dom";
-import axios from "axios";
+import MypageMenuBtn from "../components/MypageMenuBtn";
 
 const MyPage = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:3001/user/`)
-      .then((response) => response.json())
-      .then((item) => setData(item));
-    console.log(data);
-  }, []);
-
   return (
     <Layout children={MyPage}>
       <MypageContainer>
         <div className='container'>
           <div className='mypage_header'>
-            <div className='user_profile_img'>
-              <img
-                // src={process.env.PUBLIC_URL + "/img/stackUserIcon.png"}
-                src={
-                  data.profileImg
-                    ? data.profileImg
-                    : process.env.PUBLIC_URL + "/img/stackUserIcon.png"
-                }
-                alt='user icon'
-              ></img>
-            </div>
-            <div className='user_profile_info'>
-              <div>
-                <h1 className='userName'>{data.displayName}</h1>
-                {data.title ? <h2>{data.title}</h2> : null}
-              </div>
-              <ul className='user_profile_memo'>
-                <li>
-                  <CakeImg /> Member for 4 months{" "}
-                </li>
-                <li>
-                  <ClockImg /> Last seen this week{" "}
-                </li>
-                <li>
-                  <CalendarImg /> Visited 48 days{" "}
-                </li>
-              </ul>
-              <ul className='user_profile_memo'>
-                <li>
-                  <LocationImg />
-                  {data.location}
-                </li>
-              </ul>
-            </div>
-            <div className='user_profile_btn'>
-              <Link to='userEdit'>
-                <button>
-                  <BsPencilFill /> Edit profile
-                </button>
-              </Link>
-              <button>
-                <FaStackExchange /> Network profile
-              </button>
-            </div>
+            <MypageHeader />
           </div>
           <div className='mypage_menu'>
-            <div className='menu'>Profile</div>
+            <MypageMenuBtn />
+            {/* <div className='menu'>Profile</div>
             <div className='menu menu_select'>Activity</div>
-            <div className='menu'>Settings</div>
+            <div className='menu'>Settings</div> */}
           </div>
           <div className='mypage_sidebar'>
             <ul>
               <li>Summary</li>
-              <li>Answers</li>
-              <li>Questions</li>
+              <Link to='/answerview'>
+                <li>Answers</li>
+              </Link>
+              <Link to='/questionview'>
+                <li>Questions</li>
+              </Link>
               <li>Tags</li>
               <li>Articles</li>
               <li>Badges</li>
@@ -192,9 +138,9 @@ const MypageContainer = styled.div`
 
   .container {
     display: grid;
-    grid-gap: 10px;
+    grid-gap: 0px;
     height: 100%;
-    grid-template-columns: 170px 1fr;
+    grid-template-columns: 200px 1fr;
     grid-template-rows: 200px 80px 1fr;
     grid-template-areas: "mypage_header mypage_header" "mypage_menu mypage_menu" "mypage_sidebar mypage_main ";
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -215,61 +161,6 @@ const MypageContainer = styled.div`
   .mypage_header {
     grid-area: mypage_header;
     display: flex;
-
-    .user_profile_img {
-      display: flex;
-    }
-
-    .user_profile_info {
-      margin-left: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      h1 {
-        margin-top: 0px;
-        margin-bottom: 10px;
-      }
-      h2 {
-        margin-top: 0px;
-        margin-bottom: 10px;
-      }
-    }
-
-    .user_profile_memo {
-      display: flex;
-      width: 100%;
-      margin-left: -40px;
-      margin-top: 5px;
-      margin-bottom: 10px;
-
-      & li {
-        margin-right: 10px;
-      }
-    }
-  }
-
-  // 유저 인포 edit 버튼 css
-  .user_profile_btn {
-    display: flex;
-    align-items: baseline;
-    justify-content: end;
-
-    position: absolute;
-    right: 130px;
-    top: 20px;
-
-    button {
-      background-color: #2d2d2d;
-      padding: 10px;
-      margin-right: 5px;
-      color: #c4c8cc;
-      border: 1px solid #7d858d;
-      cursor: pointer;
-      &:hover {
-        background-color: #353738;
-      }
-    }
   }
 
   // 유저 프로필 하단 버튼 css
@@ -277,7 +168,7 @@ const MypageContainer = styled.div`
     grid-area: mypage_menu;
     display: flex;
 
-    .menu {
+    /* .menu {
       justify-content: center;
       align-items: center;
       border: none;
@@ -296,6 +187,15 @@ const MypageContainer = styled.div`
         background-color: #4d4d4d;
       }
     }
+    .menu_select {
+      font-weight: 500;
+      background-color: #f48225;
+      color: #2d2d2d;
+      &:hover {
+        background-color: #f48225;
+        color: black;
+      }
+    } */
   }
 
   // 미니 사이드 바 css
@@ -330,18 +230,6 @@ const MypageContainer = styled.div`
   // 메인 css
   .mypage_main {
     grid-area: mypage_main;
-  }
-
-  //프로필 css
-
-  .menu_select {
-    font-weight: 500;
-    background-color: #f48225;
-    color: #2d2d2d;
-    &:hover {
-      background-color: #f48225;
-      color: black;
-    }
   }
 
   //요약 박스 css
@@ -453,7 +341,7 @@ const MypageContainer = styled.div`
     &:hover {
       background-color: #353738;
     }
-    buttonfirst-child {
+    & button:first-child {
       border-radius: 4px 0 0 4px;
       background-color: #404245;
       font-weight: 600;
