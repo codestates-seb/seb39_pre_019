@@ -1,8 +1,6 @@
 package com.preProject.question.domain;
 
 import com.preProject.audit.BaseTime;
-import com.preProject.member.domain.Member;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,8 +24,10 @@ public class Question extends BaseTime {
 
     @Lob
     @Column(nullable = false)
-
     private String body;
+
+//    @Column(nullable = false)
+//    private String displayName;
 
     // 질문 등록, 수정
     public Question(long id, String title, String body) {
@@ -36,12 +36,12 @@ public class Question extends BaseTime {
         this.body = body;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "userid", nullable = false)
-    private Member member;
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "memberId", nullable = false)
+//    private Member member;
+//
+//    public void setMember(Member member) {
+//        this.member = member;
+////        this.displayName = member.getDisplayName();
+//    }
 }
-

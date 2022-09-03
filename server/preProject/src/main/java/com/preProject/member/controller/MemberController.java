@@ -20,7 +20,7 @@ import javax.validation.constraints.Positive;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/members")
 @Validated
 @Slf4j
 public class MemberController {

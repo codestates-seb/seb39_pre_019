@@ -14,9 +14,15 @@ public class QuestionResponseDto {
 
 //    private List<String> tag;
 
-    private Long userId;
+    private Long memberId;
+    private String displayName;
 
-    public void setUser(Member member) {
-        this.userId = member.getId();
+    public void setId(long id) {
+        this.id = id;
     }
+    public void setMember(Member member) {
+        this.memberId = member.getId();
+        this.displayName = member.getDisplayName();
+    }
+
 }

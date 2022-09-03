@@ -51,10 +51,10 @@ public class Member extends BaseTime {
     @Column
     private Role role;
 
-    //    @OneToMany(mappedBy = "user")
+//    @OneToMany(mappedBy = "memberId")
 //    private List<Answer> answers = new ArrayList<>();
-//
-//    @OneToMany(mappedBy = "question")
+
+//    @OneToMany(mappedBy = "memberId")
 //    private List<Question> questions = new ArrayList<>();
 
 
@@ -65,6 +65,7 @@ public class Member extends BaseTime {
         this.email = email;
         this.password = password;
     }
+
     //로그인 시 사용
     public Member(String email, String password) {
         this.email = email;

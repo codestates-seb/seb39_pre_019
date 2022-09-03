@@ -1,7 +1,6 @@
 package com.preProject.question.dto;
 
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +12,7 @@ public class QuestionPatchDto {
     private String title;
     private String body;
 
-    @Builder
+//    @Builder
     public QuestionPatchDto(String title, String body) {
         this.title = title;
         this.body = body;
