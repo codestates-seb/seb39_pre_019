@@ -3,13 +3,15 @@
     {
       "id": 1,
       "title": "How to replace integer entry of a DataFrame to a string based on a range",
-      "body": "I have a set of numbers that I would like to change to a "
+      "body": "I have a set of numbers that I would like to change to a"
+      
+      
     },
     {
       "id": 2,
       "title": "create popularity algorithm with ruby",
       "body": "I need to implement a popularity algorithm using the following relevance fields:Products table  paid (identify if the product is from a specific store)updated_at (date when product was updated)The relevance formula would be: prioritize products from paid stores and more up-to-date productsI need to populate a pop field with score based on that formula. The result would be like this aasaa"
-    },
+    },  
     {
       "id": 3,
       "title": "Warning: Undefined variable $imageSource",
@@ -28,6 +30,7 @@
   ],
   "answer": [
     {
+
       "answer": "what a nice question!",
       "question_id": "1",
       "id": 1
@@ -51,6 +54,26 @@
       "email": "test@test.com",
       "pwd": "11",
       "id": 1
+    },
+    {
+      "email": "dfsdfas@cone.dfd",
+      "password": "sd",
+      "id": 2
+    },
+    {
+      "email": "s@s.com",
+      "pwd": "11",
+      "id": 3
+    },
+    {
+      "email": "dfsdfas@cone.dfd",
+      "password": "sd",
+      "id": 4
+    },
+    {
+      "email": "test@test.com",
+      "password": "11",
+      "id": 5
     }
   ],
   "profileInfo": [
@@ -64,6 +87,7 @@
     }
   ],
   "user": {
+
     "displayName": "hihi",
     "email": "hailie@hailie.com",
     "password": "Tjsals2735!",
@@ -73,3 +97,4 @@
     "aboutMe": ""
   }
 }
+

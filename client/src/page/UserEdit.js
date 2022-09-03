@@ -1,7 +1,12 @@
+
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import EditProfile from "../components/EditProfile";
+import { ReactComponent as CakeImg } from "../assets/Cake.svg";
+import { ReactComponent as ClockImg } from "../assets/Clock2.svg";
+import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
+import { ReactComponent as LocationImg } from "../assets/Location.svg";
 import MypageHeader from "../components/MypageHeader";
 import { Link } from "react-router-dom";
 import MypageMenuBtn from "../components/MypageMenuBtn";

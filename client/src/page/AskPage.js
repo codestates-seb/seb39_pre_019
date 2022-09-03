@@ -6,37 +6,41 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const AskPage = () => {
-  const navigate = useNavigate();
-  const titleRef = useRef();
-  const bodyRef = useRef();
-  const [askData, setAskData] = useState({
-    title: "",
-    body: "",
-  });
+
+
+const navigate = useNavigate();
+const titleRef = useRef()
+const bodyRef = useRef()
+const [askData,setAskData] = useState({
+  title:'',
+  body:'',
+})
+
 
   const handleInputValue = (key) => (e) => {
     setAskData({ ...askData, [key]: e.target.value });
   };
 
-  const onSubmit = () => {
-    const { title, body } = askData;
-    if (title.length === 0) {
-      return titleRef.current.focus();
+
+const onSubmit = () =>{
+  const {title,body} = askData
+  if(title.length === 0){
+   return titleRef.current.focus()
+  }
+  if(body.length === 0){
+    return bodyRef.current.focus()
+  }
+  axios({
+    url:`http://localhost:3001/qustions`,
+    method:'post',
+    data:{
+      "title":title,
+      "body":body,
+      "userid": "1"
     }
-    if (body.length === 0) {
-      return bodyRef.current.focus();
-    }
-    axios({
-      url: `http://localhost:3001/qustions`,
-      method: "post",
-      data: {
-        title: title,
-        body: body,
-        userid: "3",
-      },
-    });
-    navigate("/");
-  };
+  })
+  navigate('/')
+}
 
   return (
     <AskQuestion>
