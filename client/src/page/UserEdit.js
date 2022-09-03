@@ -4,13 +4,6 @@ import Layout from "../components/Layout";
 import EditProfile from "../components/EditProfile";
 import MypageHeader from "../components/MypageHeader";
 
-import { FaStackExchange } from "react-icons/fa";
-import { BsPencilFill } from "react-icons/bs";
-import { ReactComponent as CakeImg } from "../assets/Cake.svg";
-import { ReactComponent as ClockImg } from "../assets/Clock2.svg";
-import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
-import { ReactComponent as LocationImg } from "../assets/Location.svg";
-
 const UserEdit = () => {
   const [userData, setUserData] = useState([]);
 
@@ -33,7 +26,7 @@ const UserEdit = () => {
             <div className='menu menu_select'>Settings</div>
           </div>
           <div className='userEdit_sidebar'>
-            <ul className='userEdit_sidebar'>
+            <ul className='userEdit_sidebar_box'>
               <div className='userEdit_sidebar_title'>PERSONAL INFORMATION</div>
               <li>Edit profile</li>
               <li>Delete profile</li>
@@ -87,9 +80,46 @@ const UserEditContainer = styled.div`
     display: flex;
   }
 
+  // 유저 프로필 하단 버튼 css
   .userEdit_menu {
     grid-area: mypage_menu;
+    display: flex;
+
+    .menu {
+      justify-content: center;
+      align-items: center;
+      border: none;
+      font-size: 13px;
+      padding: 0px 10px;
+      margin-left: 3px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      border-radius: 30px;
+      color: #c4c8cc;
+
+      &:hover {
+        color: #acb4b1;
+        background-color: #4d4d4d;
+      }
+    }
+
+    .menu_select {
+      background-color: #f48225;
+      color: #2d2d2d;
+      &:hover {
+        background-color: #f48225;
+        color: black;
+      }
+    }
   }
+
+  //메인 css
+  .userEdit_main {
+    grid-area: mypage_main;
+  }
+
+  //사이드바 css
   .userEdit_sidebar {
     grid-area: mypage_sidebar;
     position: sticky;
@@ -113,89 +143,17 @@ const UserEditContainer = styled.div`
         border-radius: 20px;
       }
     }
-  }
-  .userEdit_main {
-    grid-area: mypage_main;
-  }
 
-  //프로필 css
-  .userEdit_menu {
-    display: flex;
-  }
-  .menu {
-    justify-content: center;
-    align-items: center;
-    border: none;
-    font-size: 13px;
-    padding: 0px 10px;
-    margin-left: 3px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    border-radius: 30px;
-    color: #c4c8cc;
-
-    &:hover {
-      color: #acb4b1;
-      background-color: #4d4d4d;
+    .userEdit_sidebar_box {
+      position: sticky;
+      top: 5%;
+      z-index: 10;
     }
-  }
-  .menu_select {
-    background-color: #f48225;
-    color: #2d2d2d;
-    &:hover {
-      background-color: #f48225;
-      color: black;
-    }
-  }
-  //사이드바 css
-  .userEdit_sidebar,
-  .userEdit_sidebar_title {
-    position: sticky;
-    top: 5%;
-    z-index: 10;
-
-    & li {
-      display: flex;
-      align-items: center;
+    .userEdit_sidebar_title {
       padding: 7px 0px 7px 15px;
-      border-radius: 20px;
-      cursor: pointer;
       margin-left: -40px;
-      font-size: 13px;
-      color: #e7e9eb;
-      font-weight: 500;
-
-      &:hover {
-        color: #fff;
-        background-color: #3d3d3d;
-        border-radius: 20px;
-      }
-    }
-  }
-  .userEdit_sidebar_title {
-    padding: 7px 0px 7px 15px;
-
-    margin-left: -40px;
-    font-weight: 800;
-    margin-top: 20px;
-  }
-
-  .sidebar {
-    display: flex;
-    align-items: center;
-    /* width: 200px;
-    height: 38px; */
-    padding: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-left: -40px;
-    margin-top: 0;
-
-    &:hover {
-      color: #acb4b1;
-      background-color: #3d3d3d;
-      border-radius: 20px;
+      font-weight: 800;
+      margin-top: 20px;
     }
   }
 `;
