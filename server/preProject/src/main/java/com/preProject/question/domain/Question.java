@@ -26,7 +26,6 @@ public class Question extends BaseTime {
 
     @Lob
     @Column(nullable = false)
-
     private String body;
 
     // 질문 등록, 수정
@@ -36,12 +35,12 @@ public class Question extends BaseTime {
         this.body = body;
     }
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "userid", nullable = false)
     private Member member;
 
     public void setMember(Member member) {
         this.member = member;
-    }
+    }*/
 }
 
