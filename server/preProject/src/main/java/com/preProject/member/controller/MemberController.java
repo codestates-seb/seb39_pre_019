@@ -3,6 +3,7 @@ package com.preProject.member.controller;
 import com.preProject.commonDto.MultipleResponseDto;
 import com.preProject.commonDto.SingleResponseDto;
 import com.preProject.member.domain.Member;
+import com.preProject.member.dto.MemberLoginDto;
 import com.preProject.member.dto.MemberPatchDto;
 import com.preProject.member.dto.MemberPostDto;
 import com.preProject.member.dto.MemberResponseDto;
@@ -12,15 +13,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+//@RequestMapping("/users")
 @Validated
 @Slf4j
 public class MemberController {
@@ -33,9 +38,22 @@ public class MemberController {
         this.mapper = memberMapper;
     }
 
+    //로그인
+    @PostMapping("/auth/login")
+    public String login(@AuthenticationPrincipal @RequestBody MemberLoginDto memberLoginDto) {
+        return memberService.login(memberLoginDto);
+    }
+
+
     //회원가입
-    @PostMapping("/signup")
-    public ResponseEntity postMember(@Valid @RequestBody MemberPostDto requestBody) {
+    @PostMapping("/auth/signup")
+    public ResponseEntity<Member> register(@RequestBody MemberPostDto resources) throws URISyntaxException {
+        Member member = memberService.register(resources);
+        URI url = new URI(String.format("/members/%s", member.getId()));
+        return ResponseEntity.created(url).body(member);
+    }
+
+/*    public ResponseEntity postMember(@Valid @RequestBody MemberPostDto requestBody) {
         Member member = mapper.memberPostToMember(requestBody);
 
         Member createdMember = memberService.createMember(member);
@@ -43,10 +61,11 @@ public class MemberController {
         return new ResponseEntity<>(
                 new SingleResponseDto<>(response),
                 HttpStatus.CREATED);
-    }
+    }*/
 
     //회원정보 수정
-    @PatchMapping("/edit/{id}")
+    @PatchMapping("/users/edit/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public ResponseEntity updateMember(@PathVariable("id") @Positive long id,
                                      @Valid @RequestBody MemberPatchDto requestBody) {
         requestBody.setId(id);
@@ -59,18 +78,19 @@ public class MemberController {
     }
 
     //회원 목록 정렬
-    @GetMapping("/all")
+    @GetMapping("/users/all")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public ResponseEntity getMembers(@Positive @RequestParam int page,
                                    @Positive @RequestParam int size) {
         Page<Member> pagedMembers = memberService.findMemberList(page - 1, size);
-//        Page<User> pagedUsers = userService.findUserList(PageRequest.of(page -1, size, Sort.by("id").descending()));
         List<Member> members = pagedMembers.getContent();
         return new ResponseEntity<>(
                 new MultipleResponseDto<>(mapper.membersToMemberResponses(members), pagedMembers), HttpStatus.OK);
     }
 
     //특정 회원 정보 조회
-    @GetMapping("/{id}")
+    @GetMapping("/users/info/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public ResponseEntity getMember(@PathVariable long id) {
         Member member = memberService.findMemberById(id);
         return new ResponseEntity<>(
@@ -78,7 +98,8 @@ public class MemberController {
     }
 
     //회원탈퇴
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/users/delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public ResponseEntity deleteMember(@PathVariable long id) {
         memberService.deleteMember(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

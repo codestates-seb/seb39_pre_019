@@ -3,10 +3,15 @@ package com.preProject.member.service;
 import com.preProject.member.domain.Member;
 import com.preProject.exception.BusinessLogicException;
 import com.preProject.exception.ExceptionCode;
+import com.preProject.member.dto.MemberLoginDto;
+import com.preProject.member.dto.MemberPostDto;
 import com.preProject.member.repository.MemberRepository;
+import com.preProject.security.jwt.JwtTokenProvider;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,34 +21,46 @@ import java.util.Optional;
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final PasswordEncoder passwordEncoder;
 
-    public MemberService(MemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository, JwtTokenProvider jwtTokenProvider, PasswordEncoder passwordEncoder) {
         this.memberRepository = memberRepository;
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    //로그인
+    public String login(MemberLoginDto memberLoginDto) {
+        Member member = memberRepository.findByEmail(memberLoginDto.getEmail()).orElseThrow(() ->
+                new UsernameNotFoundException(memberLoginDto.getEmail()));
+        return jwtTokenProvider.createToken(member.getEmail(), member.getRole());
     }
 
     //회원 가입
+    public Member register(MemberPostDto resources) {
+        Boolean existed = memberRepository.existsByEmail(resources.getEmail());
+        verifyExistEmail(resources.getEmail());
+        return memberRepository.save(Member.builder()
+                .displayName(resources.getDisplayName())
+                .email(resources.getEmail())
+                .password(passwordEncoder.encode(resources.getPassword()))
+                .role(Member.Role.ROLE_USER)
+                .build());
+    }
+/*
     public Member createMember(Member member) {
         member.setRole(Member.Role.ROLE_USER);
         verifyExistEmail(member.getEmail());
         Member savedMember = memberRepository.save(member);
         return savedMember;
     }
-
-    //로그인
-    public Member login(Member member) {
-        Member findMember = memberRepository.findById(member.getId()).orElseThrow(() -> {
-            return new IllegalArgumentException("Member does not exist");
-        });
-        verifyExistEmail(member.getEmail());
-        return findMember;
-    }
+*/
 
     //회원 정보 수정
     @Transactional
     public Member updateMember(Member member) {
-        Member findMember = memberRepository.findById(member.getId()).orElseThrow(() -> {
-            return new IllegalArgumentException("Member does not exist");
-        });
+        Member findMember = findVerifiedMember(member.getId());
 
         Optional.ofNullable(member.getDisplayName())
                 .ifPresent(findMember::setDisplayName);
@@ -90,14 +107,14 @@ public class MemberService {
                 memberRepository.findById(id);
         Member findMember =
                 optionalMember.orElseThrow(() ->
-                        new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
+                        new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
         return findMember;
     }
 
     private void verifyExistEmail(String email) {
         Optional<Member> member = memberRepository.findByEmail(email);
         if (member.isPresent())
-            throw new BusinessLogicException(ExceptionCode.USER_EXISTS);
+            throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
     }
 
 }
