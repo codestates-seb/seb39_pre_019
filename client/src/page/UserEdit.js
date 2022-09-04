@@ -1,14 +1,8 @@
-
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import EditProfile from "../components/EditProfile";
-import { ReactComponent as CakeImg } from "../assets/Cake.svg";
-import { ReactComponent as ClockImg } from "../assets/Clock2.svg";
-import { ReactComponent as CalendarImg } from "../assets/Calendar.svg";
-import { ReactComponent as LocationImg } from "../assets/Location.svg";
 import MypageHeader from "../components/MypageHeader";
-import { Link } from "react-router-dom";
 import MypageMenuBtn from "../components/MypageMenuBtn";
 
 const UserEdit = () => {
@@ -94,33 +88,6 @@ const UserEditContainer = styled.div`
     display: flex;
     width: 100%;
     text-align: center;
-    /* .menu {
-      justify-content: center;
-      align-items: center;
-      border: none;
-      font-size: 13px;
-      padding: 0px 10px;
-      margin-left: 3px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      border-radius: 30px;
-      color: #c4c8cc;
-
-      &:hover {
-        color: #acb4b1;
-        background-color: #4d4d4d;
-      }
-    }
-
-    .menu_select {
-      background-color: #f48225;
-      color: #2d2d2d;
-      &:hover {
-        background-color: #f48225;
-        color: black;
-      }
-    } */
   }
 
   //메인 css
@@ -148,7 +115,7 @@ const UserEditContainer = styled.div`
 
       &:hover {
         color: #fff;
-        background-color: #3d3d3d;
+        /* background-color: #3d3d3d; */
         border-radius: 20px;
       }
     }
