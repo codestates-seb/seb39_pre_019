@@ -25,7 +25,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/users")
+//@RequestMapping("/members")
 @Validated
 @Slf4j
 public class MemberController {
