@@ -4,17 +4,23 @@ import { Link } from "react-router-dom";
 
 const MypageMenuBtn = () => {
   const [btnActive, setBtnActive] = useState(false);
+  const [btnActive1, setBtnActive1] = useState(false);
+
   const toggleActive = () => {
     setBtnActive((prev) => !prev);
+    //setBtnActive1((prev) => !prev);
   };
-  console.log(btnActive);
+  const toggleActive1 = () => {
+    setBtnActive1((prev) => !prev);
+    //setBtnActive((prev) => !prev);
+  };
 
   return (
     <MypageMenuBtnContainer>
       <button className='menu'>Profile</button>
       <Link to='/mypage'>
         <button
-          className={"menu" + (btnActive ? "active" : "")}
+          className={btnActive ? "active" : "menu"}
           onClick={toggleActive}
         >
           Activity
@@ -22,8 +28,8 @@ const MypageMenuBtn = () => {
       </Link>
       <Link to='/useredit'>
         <button
-          className={"menu" + (btnActive ? "active" : "")}
-          onClick={toggleActive}
+          className={btnActive1 ? "active" : "menu"}
+          onClick={toggleActive1}
         >
           Settings
         </button>
@@ -48,16 +54,29 @@ const MypageMenuBtnContainer = styled.div`
     background-color: #2d2d2d;
     color: #c4c8cc;
 
-    & .active {
-      background-color: #f48225;
-      color: #2d2d2d;
-      padding: 8px;
-    }
-
     &:hover {
       color: #acb4b1;
       padding: 8px;
       background-color: #4d4d4d;
     }
+    /* &:focus {
+      background-color: #f48225;
+      border-radius: 30px;
+      color: #2d2d2d;
+      padding: 8px;
+    } */
+  }
+
+  .active {
+    background-color: #f48225;
+    border-radius: 30px;
+    color: #2d2d2d;
+    padding: 8px;
+
+    border: none;
+    font-size: 14px;
+    margin-left: 3px;
+    font-weight: 500;
+    border-radius: 30px;
   }
 `;

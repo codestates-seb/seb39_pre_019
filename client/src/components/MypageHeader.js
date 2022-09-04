@@ -13,7 +13,7 @@ const MypageHeader = () => {
   const [headerData, setHeaderData] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/user/`)
+    fetch(`http://localhost:3001/user`)
       .then((response) => response.json())
       .then((item) => setHeaderData(item));
     //console.log(data);

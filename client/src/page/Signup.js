@@ -51,7 +51,7 @@ const Signup = () => {
     }
 
     axios
-      .post("http://localhost:3001/user", {
+      .post("http://3.39.158.220:8080/auth/signup", {
         displayName,
         email,
         password,

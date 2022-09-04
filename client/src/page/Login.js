@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useContext } from "react";
+import { useRef, useState, useEffect } from "react";
 import Button from "../components/Button";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -34,17 +34,24 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3001/login", { email, password })
+      .post("http://3.39.158.220:8080/auth/login", { email, password })
       .then((response) => {
-        console.log(JSON.stringify(response?.data));
-        const accessToken = response?.data?.accessToken;
-        const roles = response?.data?.roles;
-        // setAuth({ email, password, accessToken, roles });
+        console.log(response.data);
         setIsLogin();
         setEmail("");
         setPassword("");
+
+        localStorage.setItem("login-token", response.data);
         navigate("/");
       })
+      // .then((result) => {
+      //   if (result.data.data) {
+      //     localStorage.setItem("login-token", result.token);
+      //     navigate("/");
+      //   } else {
+      //     alert("가입을 하셨나요?");
+      //   }
+      // })
       .catch((err) => {
         console.log(err);
         if (!err?.response) {
@@ -59,6 +66,8 @@ const Login = () => {
         errRef.current.focus(); //스크린 리더 assertive로 넘어가기
       });
   };
+
+  axios.get("http://3.39.158.220:8080/auth/login", { email, password });
 
   return (
     <LoginMain>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import MypageHeader from "../components/MypageHeader";
@@ -79,7 +79,7 @@ const MyPage = () => {
                 <div className='answers_container'>
                   <h2>Answers</h2>
                   <div className='question_button'>
-                    <button>Score</button>
+                    <button className='first'>Score</button>
                     <button>Activity</button>
                     <button className='last'>Newest</button>
                   </div>
@@ -98,7 +98,7 @@ const MyPage = () => {
                     You don’t have a gold badge yet. Write an answer that scores
                     100 or more to earn your first.
                   </h3>
-                  <button>Browse Questions</button>
+                  <button className='badges_btn'>Browse Questions</button>
                 </div>
                 <div>
                   <SilverCrownImg />
@@ -106,7 +106,7 @@ const MyPage = () => {
                     You don’t have a silver badge yet. Ask a question that
                     scores 25 or more to earn your first.
                   </h3>
-                  <button>Browse Questions</button>
+                  <button className='badges_btn'>Browse Questions</button>
                 </div>
                 <div>
                   <BronzeCrownImg />
@@ -332,7 +332,26 @@ const MypageContainer = styled.div`
     grid-area: votes_cast;
   } */
 
-  button {
+  .question_button {
+    button {
+      background-color: #2d2d2d;
+      padding: 10px;
+      color: #c4c8cc;
+      border: 1px solid #7d858d;
+      cursor: pointer;
+      &:hover {
+        background-color: #353738;
+      }
+    }
+    .first {
+      border-radius: 4px 0 0 4px;
+    }
+    .last {
+      border-radius: 0 4px 4px 0;
+    }
+  }
+
+  .badges_btn {
     background-color: #2d2d2d;
     padding: 10px;
     color: #c4c8cc;
@@ -340,14 +359,6 @@ const MypageContainer = styled.div`
     cursor: pointer;
     &:hover {
       background-color: #353738;
-    }
-    & button:first-child {
-      border-radius: 4px 0 0 4px;
-      background-color: #404245;
-      font-weight: 600;
-    }
-    .last {
-      border-radius: 0 4px 4px 0;
     }
   }
 `;

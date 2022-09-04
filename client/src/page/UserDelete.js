@@ -1,23 +1,14 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Layout from "../components/Layout";
-import EditProfile from "../components/EditProfile";
+import DeleteProfile from "../components/DeleteProfile";
 import MypageHeader from "../components/MypageHeader";
 import MypageMenuBtn from "../components/MypageMenuBtn";
 import { Link } from "react-router-dom";
 
-const UserEdit = () => {
-  const [userData, setUserData] = useState([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:3001/user/`)
-      .then((response) => response.json())
-      .then((item) => setUserData(item));
-  }, []);
-
+const UserDelete = () => {
   return (
-    <Layout children={UserEdit}>
-      <UserEditContainer>
+    <Layout children={UserDelete}>
+      <UserDeleteContainer>
         <div className='container'>
           <div className='userEdit_header'>
             <MypageHeader />
@@ -52,19 +43,19 @@ const UserEdit = () => {
           </div>
           <div className='userEdit_main'>
             <div>
-              <h1>Edit your profile</h1>
+              <h1>Delete Profile</h1>
               <hr />
             </div>
-            <EditProfile userData={userData} />
+            <DeleteProfile />
           </div>
         </div>
-      </UserEditContainer>
+      </UserDeleteContainer>
     </Layout>
   );
 };
-export default UserEdit;
+export default UserDelete;
 
-const UserEditContainer = styled.div`
+const UserDeleteContainer = styled.div`
   .container {
     display: grid;
     grid-gap: 0px;
