@@ -174,7 +174,6 @@ const AnswerViewContainer = styled.div`
       justify-content: center;
     }
     .main_content_answer {
-      /* padding-bottom: 10px; */
       color: #e1e4e6;
       text-decoration: underline;
     }

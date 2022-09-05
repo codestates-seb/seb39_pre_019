@@ -30,6 +30,12 @@
       "body": "알려주세요",
       "userid": "1",
       "id": 6
+    },
+    {
+      "title": "ㅇㄹㅇ",
+      "body": "ㅇㄹㅇㄹ",
+      "userid": "1",
+      "id": 7
     }
   ],
   "answer": [
@@ -52,10 +58,15 @@
       "answer": "날씨가 좋네요",
       "question_id": "4",
       "id": 4
+    },
+    {
+      "answer": "ㅇㄹㄴㅇ",
+      "question_id": "7",
+      "id": 5
     }
   ],
   "user": {
-    "email": "s@s.com",
-    "password": "Tjsals27"
+    "email": "hailie@hailie.com",
+    "password": "Tjsals11"
   }
 }

@@ -4,15 +4,14 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import useStore from "../store/store";
+
 import { ReactComponent as Logo } from "../assets/Loginlogo.svg";
 import { ReactComponent as Google } from "../assets/Google.svg";
 import { ReactComponent as Github } from "../assets/Github.svg";
 import { ReactComponent as Facebook } from "../assets/Facebook.svg";
-// import AuthContext from "../context/AuthProvider";
-import useStore from "../store/store";
 
 const Login = () => {
-  // const { setAuth } = useContext(AuthContext);
   const { setIsLogin } = useStore();
   const navigate = useNavigate();
   const emailRef = useRef();
@@ -36,16 +35,15 @@ const Login = () => {
     axios
       .post("http://localhost:3001/user", { email, password })
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
         setIsLogin();
         setEmail("");
         setPassword("");
-
         localStorage.setItem("login-token", response.data);
         navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        //  console.log(err);
         if (!err?.response) {
           setErrMsg("No Server Response");
         } else if (err.response.status === 400) {
@@ -59,7 +57,7 @@ const Login = () => {
       });
   };
 
-  axios.get("http://localhost:3001/user", { email, password });
+  //axios.get("http://localhost:3001/user", { email, password });
 
   return (
     <LoginMain>
