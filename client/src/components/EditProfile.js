@@ -46,7 +46,7 @@ const EditProfile = ({ userData }) => {
     e.preventDefault();
 
     axios
-      .patch("http://3.39.158.220:8080/users/edit/1", {
+      .patch(process.env.REACT_APP_DB_HOST + "/users/edit/1", {
         profileImg,
         displayName,
         location,

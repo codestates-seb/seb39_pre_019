@@ -33,7 +33,7 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3001/user", { email, password })
+      .post(process.env.REACT_APP_DB_HOST + "/auth/login ", { email, password })
       .then((response) => {
         //console.log(response.data);
         setIsLogin();

@@ -10,7 +10,7 @@ const QuestionView = () => {
   const [questionView, setQuestionView] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/qustions/`).then((response) => {
+    axios.get(process.env.REACT_APP_DB_HOST + `/questions`).then((response) => {
       setQuestionView(response.data);
     });
   }, []);

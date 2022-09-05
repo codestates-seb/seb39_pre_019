@@ -12,7 +12,7 @@ const UserEdit = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/user")
+      .get(process.env.REACT_APP_DB_HOST + "/users/edit/1")
       .then((response) => response.data)
       .then((item) => setUserData(item));
   }, []);

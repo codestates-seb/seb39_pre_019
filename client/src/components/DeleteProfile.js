@@ -16,10 +16,12 @@ const DeleteProfile = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    axios.delete("http://localhost:3001/user", { data }).then((response) => {
-      //console.log(response);
-      navigate("/");
-    });
+    axios
+      .delete(process.env.REACT_APP_DB_HOST + "/users/delete/1", { data })
+      .then((response) => {
+        //console.log(response);
+        navigate("/");
+      });
   };
 
   return (

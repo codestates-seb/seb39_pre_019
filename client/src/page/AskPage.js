@@ -6,41 +6,37 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const AskPage = () => {
-
-
-const navigate = useNavigate();
-const titleRef = useRef()
-const bodyRef = useRef()
-const [askData,setAskData] = useState({
-  title:'',
-  body:'',
-})
-
+  const navigate = useNavigate();
+  const titleRef = useRef();
+  const bodyRef = useRef();
+  const [askData, setAskData] = useState({
+    title: "",
+    body: "",
+  });
 
   const handleInputValue = (key) => (e) => {
     setAskData({ ...askData, [key]: e.target.value });
   };
 
-
-const onSubmit = () =>{
-  const {title,body} = askData
-  if(title.length === 0){
-   return titleRef.current.focus()
-  }
-  if(body.length === 0){
-    return bodyRef.current.focus()
-  }
-  axios({
-    url:`http://localhost:3001/qustions`,
-    method:'post',
-    data:{
-      "title":title,
-      "body":body,
-      "userid": "1"
+  const onSubmit = () => {
+    const { title, body } = askData;
+    if (title.length === 0) {
+      return titleRef.current.focus();
     }
-  })
-  navigate('/')
-}
+    if (body.length === 0) {
+      return bodyRef.current.focus();
+    }
+    axios({
+      url: process.env.REACT_APP_DB_HOST + "/questions/ask",
+      method: "post",
+      data: {
+        title: title,
+        body: body,
+        userid: "1",
+      },
+    });
+    navigate("/");
+  };
 
   return (
     <AskQuestion>

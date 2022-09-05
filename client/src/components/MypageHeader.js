@@ -15,7 +15,7 @@ const MypageHeader = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/user")
+      .get(process.env.REACT_APP_DB_HOST + "/users/info/1")
       .then((response) => response.data)
       .then((item) => setHeaderData(item));
   }, []);
@@ -37,7 +37,7 @@ const MypageHeader = () => {
         <div className='user_profile_info'>
           <div>
             <h1 className='userName'>{headerData.displayName}</h1>
-            {headerData.title ? <h2>{headerData.title}</h2> : null}
+            {headerData.title ? <h2>{headerData.data.title}</h2> : null}
           </div>
           <ul className='user_profile_memo'>
             <li>
@@ -55,7 +55,7 @@ const MypageHeader = () => {
             {headerData.location ? (
               <li>
                 {" "}
-                <LocationImg /> {headerData.location}{" "}
+                <LocationImg /> {headerData.data.location}{" "}
               </li>
             ) : null}
           </ul>
