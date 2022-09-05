@@ -48,7 +48,7 @@ const Signup = () => {
     }
 
     axios
-      .post("http://3.39.158.220:8080/auth/signup", {
+      .post(process.env.REACT_APP_DB_HOST + "/auth/signup", {
         displayName,
         email,
         password,
@@ -60,7 +60,6 @@ const Signup = () => {
         setPassword("");
       })
       .catch((err) => {
-        console.log(err);
         if (err.response.status === 0) {
           // 서버 껐을때
           setErrMsg("No Server Response/ Server off");
@@ -220,7 +219,6 @@ const LoginMain = styled.div`
     .socialLoginButton {
       display: flex;
       flex-direction: column;
-      /* align-items: center; */
       width: 109%;
 
       & button {

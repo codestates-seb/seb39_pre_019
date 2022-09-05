@@ -10,7 +10,7 @@ const AnswerView = () => {
   const [answerView, setAnswerView] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/answer/`).then((response) => {
+    axios.get(process.env.REACT_APP_DB_HOST + `/answers`).then((response) => {
       setAnswerView(response.data);
     });
   }, []);
@@ -174,7 +174,6 @@ const AnswerViewContainer = styled.div`
       justify-content: center;
     }
     .main_content_answer {
-      /* padding-bottom: 10px; */
       color: #e1e4e6;
       text-decoration: underline;
     }

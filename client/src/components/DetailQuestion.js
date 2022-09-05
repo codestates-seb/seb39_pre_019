@@ -1,29 +1,27 @@
-
-import axios from 'axios'
-import React,{useState,useEffect} from 'react'
-import { useParams , Link ,useNavigate} from 'react-router-dom'
-import styled from 'styled-components'
-import Layout from './Layout'
-import Button from './Button'
-import {ReactComponent as Up} from '../assets/ArrowUp.svg'
-import {ReactComponent as Down} from '../assets/ArrowDown.svg'
-import {ReactComponent as Book} from '../assets/BookMark.svg'
-import {ReactComponent as Clock} from '../assets/Clock.svg'
-import {ReactComponent as Pencil} from '../assets/Pencil.svg'
-import {ReactComponent as Star} from '../assets/Star.svg'
-import YourAnswer from './YourAnswer'
-import  useStore  from '../store/store'
-import Answer from './Answer'
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import Layout from "./Layout";
+import Button from "./Button";
+import { ReactComponent as Up } from "../assets/ArrowUp.svg";
+import { ReactComponent as Down } from "../assets/ArrowDown.svg";
+import { ReactComponent as Book } from "../assets/BookMark.svg";
+import { ReactComponent as Clock } from "../assets/Clock.svg";
+import { ReactComponent as Pencil } from "../assets/Pencil.svg";
+import { ReactComponent as Star } from "../assets/Star.svg";
+import YourAnswer from "./YourAnswer";
+import useStore from "../store/store";
+import Answer from "./Answer";
 
 const DetailQuestion = () => {
-  const navigate = useNavigate()
-  const {isChange} = useStore()
-  const {id} = useParams()
-  const [detail,setdetail] = useState([])
-  const [answers,setAnswer] = useState([])
-  const [isEdit,setIsEdit] = useState(false) 
-  const [text,setText] = useState('')
-
+  const navigate = useNavigate();
+  const { isChange } = useStore();
+  const { id } = useParams();
+  const [detail, setdetail] = useState([]);
+  const [answers, setAnswer] = useState([]);
+  const [isEdit, setIsEdit] = useState(false);
+  const [text, setText] = useState("");
 
   const handleEdit = () => {
     setIsEdit(!isEdit);
@@ -33,149 +31,166 @@ const DetailQuestion = () => {
   };
   const onSubmit = () => {
     axios({
-
-      url:`http://localhost:3001/qustions/${id}`,
-      method:'patch',
-      data:{
-        'body' : text,
-      }
-    })
-    .then((data)=>setdetail({...data.data}))
-    setIsEdit(!isEdit)
-  }
+      url: process.env.REACT_APP_DB_HOST + `questions/edit/${id}`,
+      method: "patch",
+      data: {
+        body: text,
+      },
+    }).then((data) => setdetail({ ...data.data }));
+    setIsEdit(!isEdit);
+  };
 
   const onDelete = () => {
     axios({
-      url:`http://localhost:3001/qustions/${id}`,
-      method:'delete',
-    })
-    .then(()=>{
-      navigate('/')
-    })
-  }
+      url: process.env.REACT_APP_DB_HOST + `/questions/delete/${id}`,
+      method: "delete",
+    }).then(() => {
+      navigate("/");
+    });
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     axios
-    .all([axios.get(`http://localhost:3001/qustions/${id}`),
-          axios.get(`http://localhost:3001/answer`)])
-          .then(
-            axios.spread((res1,res2)=>{
-              setdetail(res1.data)
-              setAnswer(res2.data)
-            })
-          )
-  },[isChange])
+      .all([
+        axios.get(process.env.REACT_APP_DB_HOST + `/questions/${id}`),
+        axios.get(process.env.REACT_APP_DB_HOST + `/answers/${id}`),
+      ])
+      .then(
+        axios.spread((res1, res2) => {
+          setdetail(res1.data);
+          setAnswer(res2.data);
+        })
+      );
+  }, [isChange]);
 
-
-  const {title,body,votes} = detail
+  const { title, body, votes } = detail;
   return (
-
-  <Layout children={DetailQuestion}>
-    <DetailQues>
-      <div className='detail_header'>
-        <div className='header_title'>
-          <span>{title}</span>
-          <Link to={'/askpage'}><Button type={'Ask'} text={'Ask Question'}></Button></Link>
+    <Layout children={DetailQuestion}>
+      <DetailQues>
+        <div className='detail_header'>
+          <div className='header_title'>
+            <span>{title}</span>
+            <Link to={"/askpage"}>
+              <Button type={"Ask"} text={"Ask Question"}></Button>
+            </Link>
+          </div>
+          <div className='header_info'>
+            <div>
+              <span className='info_title'>Asked</span>
+              <span className='info_sub'>today</span>
+            </div>
+            <div>
+              <span className='info_title'>Modified</span>
+              <span className='info_sub'>today</span>
+            </div>
+            <div>
+              <span className='info_title'>Viewed</span>
+              <span className='info_sub'>10 times</span>
+            </div>
+          </div>
         </div>
-        <div className='header_info'>
-          <div>
-            <span className='info_title'>Asked</span>
-            <span className='info_sub'>today</span>
-          </div>
-          <div>
-            <span className='info_title'>Modified</span>
-            <span className='info_sub'>today</span>
-          </div>
-          <div>
-            <span className='info_title'>Viewed</span>
-            <span className='info_sub'>10 times</span>
-          </div>
-        </div>
-      </div>
-      <div className='border'></div>
-      <div className='detail_main'>
-        <div className='vote_wrap'>
-          <div className='up_Down'>
-            <Up/>
+        <div className='border'></div>
+        <div className='detail_main'>
+          <div className='vote_wrap'>
+            <div className='up_Down'>
+              <Up />
               <span>{votes}</span>
-            <Down/>
+              <Down />
+            </div>
+            <div className='vote_icons'>
+              <div>
+                <Book />
+              </div>
+              <div>
+                <Clock />
+              </div>
+            </div>
           </div>
-          <div className='vote_icons'>
-           <div><Book/></div>
-           <div><Clock/></div>
-          </div>
-        </div>
-        <div className='body_container'>
-          <pre>{isEdit?<textarea onChange={handleText} className='editText'>{body}</textarea>:<>{body}</>}</pre>
-          <div className='answer_list'>
+          <div className='body_container'>
+            <pre>
+              {isEdit ? (
+                <textarea onChange={handleText} className='editText'>
+                  {body}
+                </textarea>
+              ) : (
+                <>{body}</>
+              )}
+            </pre>
+            <div className='answer_list'>
               <ul>
-                {isEdit?<>
-                <li onClick={onSubmit}>Save</li>
-                <li onClick={handleEdit}>Cancle</li>
-                </>:<><li>Share</li>
-                <li onClick={handleEdit}>Edit</li>
-                <li onClick={onDelete}>Delete</li></>}
+                {isEdit ? (
+                  <>
+                    <li onClick={onSubmit}>Save</li>
+                    <li onClick={handleEdit}>Cancle</li>
+                  </>
+                ) : (
+                  <>
+                    <li>Share</li>
+                    <li onClick={handleEdit}>Edit</li>
+                    <li onClick={onDelete}>Delete</li>
+                  </>
+                )}
               </ul>
               <span>Add a comment</span>
             </div>
-        </div>
-        <div className='box_container'>
-          <div className='box_top'>
-            <div className='box_title'>The Overflow Blog</div>
-             <div className='box_body_wrap'>
-              <ul className='box_list'>
-                <Pencil/>
-                <li>Open source and accidental innovation</li>
-              </ul>
-              <ul className='box_list'>
-                <Pencil/>
-                <li>The luckiest guy in AI (Ep. 477)</li>
-              </ul>
-            </div>
-            <div className='box_title'>Featured on Meta</div>
-            <div className='box_body_wrap'>
-              <ul className='box_list'>
-                <Star/>
-                <li>Polygon (formerly Matic) blockchain</li>
-              </ul>
-              <ul className='box_list'>
-                <Star/>
-                <li>Korean Best Man KYW</li>
-              </ul>
-              <ul className='box_list'>
-                <Star/>
-                <li>Should we burninate the [option] tag?</li>
-              </ul>
-              <ul className='box_list'>
-                <Star/>
-                <li>Staging Ground Workflow: Question</li>
-              </ul>
-            </div>
           </div>
-          <div className='box_middle'>  
+          <div className='box_container'>
+            <div className='box_top'>
+              <div className='box_title'>The Overflow Blog</div>
+              <div className='box_body_wrap'>
+                <ul className='box_list'>
+                  <Pencil />
+                  <li>Open source and accidental innovation</li>
+                </ul>
+                <ul className='box_list'>
+                  <Pencil />
+                  <li>The luckiest guy in AI (Ep. 477)</li>
+                </ul>
+              </div>
+              <div className='box_title'>Featured on Meta</div>
+              <div className='box_body_wrap'>
+                <ul className='box_list'>
+                  <Star />
+                  <li>Polygon (formerly Matic) blockchain</li>
+                </ul>
+                <ul className='box_list'>
+                  <Star />
+                  <li>Korean Best Man KYW</li>
+                </ul>
+                <ul className='box_list'>
+                  <Star />
+                  <li>Should we burninate the [option] tag?</li>
+                </ul>
+                <ul className='box_list'>
+                  <Star />
+                  <li>Staging Ground Workflow: Question</li>
+                </ul>
+              </div>
+            </div>
+            <div className='box_middle'></div>
           </div>
         </div>
-      </div>
-      <div className='detail_header'>
-        <div className='header_title'>
-          <span>Answer</span>
+        <div className='detail_header'>
+          <div className='header_title'>
+            <span>Answer</span>
+          </div>
         </div>
-      </div>
 
-{/* 앤서,유어앤서 부분 ! */}
-      <div>
-        {answers.filter((it)=>it.question_id === id).map((answers)=>(
-          <Answer answers={answers} key={answers.id}/>
-        ))}
-      </div>
-      <div className='detail_answer'>
-        <YourAnswer/>
-      </div>
-    </DetailQues>
-  </Layout>
-  )
-}
-
+        {/* 앤서,유어앤서 부분 ! */}
+        <div>
+          {answers
+            .filter((it) => it.question_id === id)
+            .map((answers) => (
+              <Answer answers={answers} key={answers.id} />
+            ))}
+        </div>
+        <div className='detail_answer'>
+          <YourAnswer />
+        </div>
+      </DetailQues>
+    </Layout>
+  );
+};
 
 export default DetailQuestion;
 
@@ -330,18 +345,14 @@ const DetailQues = styled.div`
       margin-left: 7px;
     }
   }
-AD
-  .editText{
+  AD .editText {
     background-color: transparent;
-     width: 90%;
-     height: 150px;
-     font-size: 18px;
-     padding: 10px;
-     color: #E7E9EB;
-     resize: none;
-     border-radius: 3px;
+    width: 90%;
+    height: 150px;
+    font-size: 18px;
+    padding: 10px;
+    color: #e7e9eb;
+    resize: none;
+    border-radius: 3px;
   }
-
-
 `;
-

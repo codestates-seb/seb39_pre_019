@@ -21,9 +21,6 @@ const MyPage = () => {
           </div>
           <div className='mypage_menu'>
             <MypageMenuBtn />
-            {/* <div className='menu'>Profile</div>
-            <div className='menu menu_select'>Activity</div>
-            <div className='menu'>Settings</div> */}
           </div>
           <div className='mypage_sidebar'>
             <ul>
@@ -117,12 +114,6 @@ const MyPage = () => {
                   </p>
                 </div>
               </div>
-              {/* <div className='bookmarks'>Bookmarks</div>
-              <div className='followed_posts'>Followed posts</div>
-              <div className='accounts'>Accounts</div>
-              <div className='active_bounties'>Active bounties</div>
-              <div className='articles'>Articles</div>
-              <div className='votes_cast'>Votes cast</div> */}
             </div>
           </div>
         </div>
@@ -152,9 +143,7 @@ const MypageContainer = styled.div`
   }
 
   .container > div {
-    /* background-color: pink; */
     padding: 20px;
-    /* border: 1px solid red; */
   }
 
   //유저 프로필 인포 css
@@ -167,35 +156,6 @@ const MypageContainer = styled.div`
   .mypage_menu {
     grid-area: mypage_menu;
     display: flex;
-
-    /* .menu {
-      justify-content: center;
-      align-items: center;
-      border: none;
-      font-size: 14px;
-      padding: 7px 10px;
-      margin-left: 3px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      border-radius: 30px;
-      color: #c4c8cc;
-
-      &:hover {
-        color: #acb4b1;
-        border-radius: 30px;
-        background-color: #4d4d4d;
-      }
-    }
-    .menu_select {
-      font-weight: 500;
-      background-color: #f48225;
-      color: #2d2d2d;
-      &:hover {
-        background-color: #f48225;
-        color: black;
-      }
-    } */
   }
 
   // 미니 사이드 바 css
@@ -235,9 +195,6 @@ const MypageContainer = styled.div`
   //요약 박스 css
   .user_main_container {
     border: 1px solid white;
-    /* width: 1200px; */
-    /* height: 2000px; */
-    /* border: 1px solid white; */
     width: 100%;
     height: 100%;
   }
@@ -245,16 +202,14 @@ const MypageContainer = styled.div`
 
   .main_container {
     display: grid;
-    /* grid-gap: 20px; */
+
     grid-template-columns: repeat(1, minmax(0, 1fr));
     grid-template-rows: 1fr;
     grid-template-areas: "summary" "answers" "tags" "badges" "bookmarks" "followed_posts" "accounts" "active_bounties" "articles" "votes_cast";
   }
   .main_container > div {
-    /* background-color: green; */
     padding: -10px;
     height: 100%;
-    /* border: 1px solid pink; */
   }
   .summary {
     grid-area: summary;
@@ -312,25 +267,6 @@ const MypageContainer = styled.div`
     flex-direction: column;
     align-items: center;
   }
-
-  /* .bookmarks {
-    grid-area: bookmarks;
-  }
-  .followed_posts {
-    grid-area: followed_posts;
-  }
-  .accounts {
-    grid-area: accounts;
-  }
-  .active_bounties {
-    grid-area: active_bounties;
-  }
-  .articles {
-    grid-area: articles;
-  }
-  .votes_cast {
-    grid-area: votes_cast;
-  } */
 
   .question_button {
     button {
