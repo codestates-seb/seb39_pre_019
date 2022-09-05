@@ -12,7 +12,6 @@ import Logout from "./page/Logout";
 import TestLogin from "./components/TestLogin";
 import AnswerView from "./page/AnswerView";
 import QuestionView from "./page/QuestionView";
-import LogoutModal from "./components/LogoutModal";
 import UserDelete from "./page/UserDelete";
 
 function App() {
@@ -26,11 +25,10 @@ function App() {
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/mypage' element={<MyPage />}></Route>
         <Route path='/:id' element={<DetailQuestion />}></Route>
-        <Route path='/userEdit' element={<UserEdit />}></Route>
+        <Route path='/useredit' element={<UserEdit />}></Route>
         <Route path='/askpage' element={<AskPage />}></Route>
         <Route path='/logout' element={<Logout />}></Route>
         <Route path='/test' element={<TestLogin />}></Route>
-        <Route path='/logoutModal' element={<LogoutModal />}></Route>
         <Route path='/answerview' element={<AnswerView />}></Route>
         <Route path='/questionview' element={<QuestionView />}></Route>
         <Route path='/userdelete' element={<UserDelete />}></Route>

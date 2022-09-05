@@ -34,7 +34,7 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post("http://3.39.158.220:8080/auth/login", { email, password })
+      .post("http://localhost:3001/user", { email, password })
       .then((response) => {
         console.log(response.data);
         setIsLogin();
@@ -44,14 +44,6 @@ const Login = () => {
         localStorage.setItem("login-token", response.data);
         navigate("/");
       })
-      // .then((result) => {
-      //   if (result.data.data) {
-      //     localStorage.setItem("login-token", result.token);
-      //     navigate("/");
-      //   } else {
-      //     alert("가입을 하셨나요?");
-      //   }
-      // })
       .catch((err) => {
         console.log(err);
         if (!err?.response) {
@@ -67,7 +59,7 @@ const Login = () => {
       });
   };
 
-  axios.get("http://3.39.158.220:8080/auth/login", { email, password });
+  axios.get("http://localhost:3001/user", { email, password });
 
   return (
     <LoginMain>

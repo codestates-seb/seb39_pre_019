@@ -1,8 +1,29 @@
 import styled from "styled-components";
 import Button from "./Button";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const DeleteProfile = () => {
+  const navigate = useNavigate();
+  const [data, setData] = useState();
+
+  const deleteHandler = (e) => {
+    e.preventDefault();
+
+    axios
+      .get("http://localhost:3001/user")
+      .then((response) => response.data)
+      .then((item) => setData(item));
+
+    axios.delete("http://localhost:3001/user", { data }).then((response) => {
+      console.log(response);
+      localStorage.removeItem(response.data);
+      navigate("/");
+    });
+  };
+
   return (
     <DeleteProfileContainer>
       <div className='para'>
@@ -41,7 +62,11 @@ const DeleteProfile = () => {
           </label>
         </div>
         <Link to='/'>
-          <Button type={"delete"} text={"Delete profile"}></Button>
+          <Button
+            type={"delete"}
+            text={"Delete profile"}
+            onClick={() => deleteHandler()}
+          ></Button>
         </Link>
       </form>
     </DeleteProfileContainer>

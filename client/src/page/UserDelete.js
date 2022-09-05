@@ -19,7 +19,7 @@ const UserDelete = () => {
           <div className='userEdit_sidebar'>
             <ul className='userEdit_sidebar_box'>
               <div className='userEdit_sidebar_title'>PERSONAL INFORMATION</div>
-              <Link to='/userEdit'>
+              <Link to='/useredit'>
                 <li>Edit profile</li>
               </Link>
               <Link to='/userdelete'>

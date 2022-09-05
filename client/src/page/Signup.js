@@ -1,17 +1,16 @@
 import { useRef, useState, useEffect } from "react";
-
 import Button from "../components/Button";
 import styled from "styled-components";
-import { FcGoogle } from "react-icons/fc";
-import { GoMarkGithub } from "react-icons/go";
-import { FaFacebook } from "react-icons/fa";
+import axios from "axios";
+import Login from "./Login";
+
 import { RiQuestionnaireFill } from "react-icons/ri";
 import { FaCheckDouble } from "react-icons/fa";
 import { IoIosPricetags } from "react-icons/io";
 import { BsFillTrophyFill } from "react-icons/bs";
-import axios from "axios";
-
-import Login from "./Login";
+import { ReactComponent as Google } from "../assets/Google.svg";
+import { ReactComponent as Github } from "../assets/Github.svg";
+import { ReactComponent as Facebook } from "../assets/Facebook.svg";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
 
@@ -34,8 +33,6 @@ const Signup = () => {
 
   useEffect(() => {
     const result = PWD_REGEX.test(password);
-    // console.log(result);
-    // console.log(pwd);
     setValidPwd(result);
   }, [password]);
 
@@ -57,9 +54,6 @@ const Signup = () => {
         password,
       })
       .then((response) => {
-        // console.log(response);
-        // console.log(response.accessToken);
-        // console.log(JSON.stringify(response));
         setSuccess(true);
         setDisplayName("");
         setEmail("");
@@ -109,21 +103,17 @@ const Signup = () => {
 
           <div className='container'>
             <div className='socialLoginButton'>
-              <div className='btn'>
-                <button className='btn_google'>
-                  <FcGoogle /> Log in with Google
-                </button>
-              </div>
-              <div className='btn'>
-                <button className='btn_github'>
-                  <GoMarkGithub /> Log in with GitHub
-                </button>
-              </div>
-              <div className='btn'>
-                <button className='btn_facebook'>
-                  <FaFacebook /> Log in with Facebook
-                </button>
-              </div>
+              <button className='btn btn_google'>
+                <Google /> <div>Log in with Google</div>
+              </button>
+
+              <button className='btn btn_github'>
+                <Github /> <div>Log in with GitHub</div>
+              </button>
+
+              <button className='btn btn_facebook'>
+                <Facebook /> <div>Log in with Facebook</div>
+              </button>
             </div>
 
             <section>
@@ -222,27 +212,55 @@ const LoginMain = styled.div`
   }
 
   .container {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    width: 250px;
-    padding: 20px;
-  }
-  .socialLoginButton {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 109%;
-  }
-  .btn {
-    width: 100%;
-    border: none;
-  }
-  form {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
+    width: 250px;
+    padding: 20px;
 
+    .socialLoginButton {
+      display: flex;
+      flex-direction: column;
+      /* align-items: center; */
+      width: 109%;
+
+      & button {
+        width: 100%;
+        padding: 10px 50px;
+        margin-bottom: 7px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+
+        & div {
+          margin-left: 5px;
+        }
+      }
+    }
+    .btn {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+    .btn_google {
+      color: #3b4045;
+      background-color: #fff;
+      border: 1px solid #d6d9dc;
+    }
+    .btn_github {
+      color: #fff;
+      background-color: #2f3337;
+      border: 1px solid #d6d9dc;
+      font-weight: 600;
+    }
+    .btn_facebook {
+      color: #fff;
+      background-color: #385499;
+      font-weight: 600;
+    }
+  }
+
+  form {
     background-color: #fff;
     box-shadow: 5px 5px 5px 5px gray;
     position: relative;
@@ -253,6 +271,7 @@ const LoginMain = styled.div`
     padding: 15px 10px 10px 10px;
     text-align: center;
     border-radius: 5px;
+
     input {
       margin-bottom: 10px;
     }
@@ -285,17 +304,6 @@ const LoginMain = styled.div`
     cursor: pointer;
 
     box-shadow: 0.5px 0.5px 1px 1px gray;
-  }
-  .btn_google {
-    color: #2d3032;
-    background-color: #ffffff;
-    border: none;
-  }
-  .btn_github {
-    background-color: black;
-  }
-  .btn_facebook {
-    background-color: #2b3f87;
   }
 
   .checkbox {

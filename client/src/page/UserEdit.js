@@ -5,13 +5,15 @@ import EditProfile from "../components/EditProfile";
 import MypageHeader from "../components/MypageHeader";
 import MypageMenuBtn from "../components/MypageMenuBtn";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const UserEdit = () => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/user/`)
-      .then((response) => response.json())
+    axios
+      .get("http://localhost:3001/user")
+      .then((response) => response.data)
       .then((item) => setUserData(item));
   }, []);
 
@@ -28,7 +30,7 @@ const UserEdit = () => {
           <div className='userEdit_sidebar'>
             <ul className='userEdit_sidebar_box'>
               <div className='userEdit_sidebar_title'>PERSONAL INFORMATION</div>
-              <Link to='/userEdit'>
+              <Link to='/useredit'>
                 <li>Edit profile</li>
               </Link>
               <Link to='/userdelete'>
