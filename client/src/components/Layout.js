@@ -7,7 +7,7 @@ const Layout = ({children}) => {
   return (
     <LayOut>
       <div className='wrap'>
-        <div className='layout_header'>
+        <div className='layout_top'>
           <Sidebar/>
           <div className='layout_main'>{children}</div>
         </div>
@@ -15,7 +15,7 @@ const Layout = ({children}) => {
           <Footer/>
         </div>
       </div>
-    </LayOut>
+    </LayOut> 
   )
 }
 
@@ -31,7 +31,7 @@ min-height: 100%;
   justify-content: space-between;
   height: 100vh;
 }
-.layout_header{
+.layout_top{
   display: flex;
   max-width: 1280px;
   margin: 0 auto;

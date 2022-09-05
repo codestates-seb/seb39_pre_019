@@ -50,7 +50,7 @@ const EditProfile = ({ userData }) => {
     e.preventDefault();
 
     axios
-      .patch("http://localhost:3001/user", {
+      .patch("http://3.39.158.220:8080/users/edit/1", {
         profileImg,
         displayName,
         location,
@@ -58,7 +58,7 @@ const EditProfile = ({ userData }) => {
         aboutMe,
       })
       .then((response) => {
-        console.log(JSON.stringify(response?.data));
+        //console.log(JSON.stringify(response?.data));
       })
       .catch((err) => {
         alert(err.message);

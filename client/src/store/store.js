@@ -1,19 +1,15 @@
 import create from "zustand";
-import axios from "axios";
 
 const useStore = create((set) => ({
   data: [],
   isLogin: false,
-  isChange : false,
-  displayName: "",
+  isChange: false,
   isAnswer: false,
   toggleSubmit: true,
-  setDisplayNameStore: (input) =>
-  set((state) => ({ ...(state.displayName + input) })),
-  setIsChange : () => set((state)=> ({ isChange: !state.isChange})),
+  setIsChange: () => set((state) => ({ isChange: !state.isChange })),
   setIsLogin: () => set((state) => ({ isLogin: !state.isLogin })),
   setToggleSubmit: () =>
-  set((state) => ({ toggleSubmit: !state.toggleSubmit })),
+    set((state) => ({ toggleSubmit: !state.toggleSubmit })),
   setIsAnswer: () => set((state) => ({ isAnswer: !state.isAnswer })),
 }));
 
