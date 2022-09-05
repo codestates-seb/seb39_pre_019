@@ -13,9 +13,9 @@ const Questions = () => {
 
 
   useEffect(() => {
-    fetch("http://localhost:3001/qustions",)
-      .then((json) => json.json())
-      .then((data) => setData(data));
+    axios("questions/")
+      .then((it)=>console.log(it.data))
+      .then((data) => setData(data.data));
   }, []);
 
   return (
