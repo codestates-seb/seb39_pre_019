@@ -5,11 +5,7 @@ import Resizer from "react-image-file-resizer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-//import useStore from "../store/store";
-
 const EditProfile = ({ userData }) => {
-  //const { setDisplayNameStore } = useStore();
-
   const [profileImg, setProfileImg] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [location, setLocation] = useState("");
@@ -50,7 +46,7 @@ const EditProfile = ({ userData }) => {
     e.preventDefault();
 
     axios
-      .patch("http://3.39.158.220:8080/users/edit/1", {
+      .patch(process.env.REACT_APP_DB_HOST + "/users/edit/1", {
         profileImg,
         displayName,
         location,

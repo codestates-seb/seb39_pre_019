@@ -10,7 +10,7 @@ const QuestionView = () => {
   const [questionView, setQuestionView] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://3.39.158.220:8080/qustions/`).then((response) => {
+    axios.get(process.env.REACT_APP_DB_HOST + `/questions`).then((response) => {
       setQuestionView(response.data);
     });
   }, []);
@@ -104,9 +104,7 @@ const QuestionViewContainer = styled.div`
   }
 
   .container > div {
-    /* background-color: pink; */
     padding: 20px;
-    /* border: 1px solid red; */
   }
 
   //유저 프로필 인포 css
@@ -174,7 +172,6 @@ const QuestionViewContainer = styled.div`
       justify-content: center;
     }
     .main_content_answer {
-      /* padding-bottom: 10px; */
       color: #e1e4e6;
       text-decoration: underline;
     }

@@ -8,11 +8,9 @@ const MypageMenuBtn = () => {
 
   const toggleActive = () => {
     setBtnActive((prev) => !prev);
-    //setBtnActive1((prev) => !prev);
   };
   const toggleActive1 = () => {
     setBtnActive1((prev) => !prev);
-    //setBtnActive((prev) => !prev);
   };
 
   return (

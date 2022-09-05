@@ -10,18 +10,18 @@ const DeleteProfile = () => {
   const [data, setData] = useState();
 
   const deleteHandler = (e) => {
+    localStorage.removeItem("login-token");
+  };
+
+  const submitHandler = (e) => {
     e.preventDefault();
 
     axios
-      .get("http://localhost:3001/user")
-      .then((response) => response.data)
-      .then((item) => setData(item));
-
-    axios.delete("http://localhost:3001/user", { data }).then((response) => {
-      console.log(response);
-      localStorage.removeItem(response.data);
-      navigate("/");
-    });
+      .delete(process.env.REACT_APP_DB_HOST + "/users/delete/1", { data })
+      .then((response) => {
+        //console.log(response);
+        navigate("/");
+      });
   };
 
   return (
@@ -52,7 +52,7 @@ const DeleteProfile = () => {
           profiles.
         </p>
       </div>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className='checkbox'>
           <input id='delete' type='checkbox'></input>
           <label htmlFor='delete'>
