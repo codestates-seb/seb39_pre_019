@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { BsPencilFill } from "react-icons/bs";
 import { FaStackExchange } from "react-icons/fa";
@@ -13,10 +14,10 @@ const MypageHeader = () => {
   const [headerData, setHeaderData] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/user/`)
-      .then((response) => response.json())
+    axios
+      .get("http://localhost:3001/user")
+      .then((response) => response.data)
       .then((item) => setHeaderData(item));
-    //console.log(data);
   }, []);
 
   return (
@@ -60,7 +61,7 @@ const MypageHeader = () => {
           </ul>
         </div>
         <div className='user_profile_btn'>
-          <Link to='/userEdit'>
+          <Link to='/useredit'>
             <button>
               <BsPencilFill /> Edit profile
             </button>

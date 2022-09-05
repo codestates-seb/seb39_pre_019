@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
 const Button = ({ text, type, onClick }) => {
-
-  const types = ["red", "login", "Ask", "contri", "logout", "cancel","mypage"].includes(
-    type
-  )
+  const types = [
+    "red",
+    "login",
+    "Ask",
+    "contri",
+    "logout",
+    "cancel",
+    "mypage",
+    "delete",
+  ].includes(type)
     ? type
     : "default";
   return (
@@ -37,14 +43,13 @@ const ButtonCom = styled.button`
 
   &:hover {
   }
-  &.myButton_mypage{
+  &.myButton_mypage {
     background-color: #b3d3ea;
     color: #0964aa;
-    &:hover{
+    &:hover {
       background-color: #0964aa;
       color: #fff;
     }
-    
   }
   &.myButton_Ask {
     background-color: #0964aa !important;
@@ -61,7 +66,7 @@ const ButtonCom = styled.button`
 
   &.myButton_login {
     background-color: #b3d3ea;
-    font-weight: 500;
+    font-weight: 600;
     border: 1px solid #1764aa;
     color: #1764aa;
   }
@@ -84,5 +89,8 @@ const ButtonCom = styled.button`
     &:hover {
       background-color: #7893a9;
     }
+  }
+  &.myButton_delete {
+    background-color: #c4514f;
   }
 `;

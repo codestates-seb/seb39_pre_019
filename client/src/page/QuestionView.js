@@ -4,12 +4,13 @@ import MypageHeader from "../components/MypageHeader";
 import Layout from "../components/Layout";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import MypageMenuBtn from "../components/MypageMenuBtn";
 
 const QuestionView = () => {
   const [questionView, setQuestionView] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/qustions/`).then((response) => {
+    axios.get(`http://3.39.158.220:8080/qustions/`).then((response) => {
       setQuestionView(response.data);
     });
   }, []);
@@ -22,9 +23,7 @@ const QuestionView = () => {
             <MypageHeader />
           </div>
           <div className='mypage_menu'>
-            <div className='menu'>Profile</div>
-            <div className='menu menu_select'>Activity</div>
-            <div className='menu'>Settings</div>
+            <MypageMenuBtn />
           </div>
           <div className='mypage_sidebar'>
             <ul>
@@ -120,36 +119,6 @@ const QuestionViewContainer = styled.div`
   .mypage_menu {
     grid-area: mypage_menu;
     display: flex;
-
-    .menu {
-      justify-content: center;
-      align-items: center;
-      border: none;
-      font-size: 14px;
-      padding: 7px 10px;
-      margin-left: 3px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      border-radius: 30px;
-      color: #c4c8cc;
-
-      &:hover {
-        color: #acb4b1;
-        border-radius: 30px;
-        background-color: #4d4d4d;
-      }
-    }
-
-    .menu_select {
-      font-weight: 500;
-      background-color: #f48225;
-      color: #2d2d2d;
-      &:hover {
-        background-color: #f48225;
-        color: black;
-      }
-    }
   }
 
   // 미니 사이드 바 css

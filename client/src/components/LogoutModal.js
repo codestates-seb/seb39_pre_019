@@ -65,7 +65,7 @@ const LogoutModalMain = styled.div`
   background-color: white;
   position: absolute;
   top: 47px;
-  right: 0px;
+  right: 100px;
   width: 430px;
   height: 200px;
   a {

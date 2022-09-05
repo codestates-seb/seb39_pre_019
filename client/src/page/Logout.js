@@ -15,6 +15,7 @@ const Logout = () => {
   const logoutHandler = () => {
     setIsLogin();
     navigate("/");
+    localStorage.removeItem();
   };
 
   return (
