@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://pre-19-deploy.cfjy2asebv8e.ap-northeast-2.rds.amazonaws.com:13306/test?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: admin
-    password: adminpre19
+    url: jdbc:mysql://localhost:3306/sebtest?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: stack
+    password: stack1234
   jpa:
     #open-in-view: true
     hibernate:
