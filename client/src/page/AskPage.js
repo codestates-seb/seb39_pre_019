@@ -18,10 +18,12 @@ const AskPage = () => {
     setAskData({ ...askData, [key]: e.target.value });
   };
 
+
   const onSubmit = () => {
     const { title, body } = askData;
     if (title.length === 0) {
       return titleRef.current.focus();
+
     }
     if (body.length === 0) {
       return bodyRef.current.focus();

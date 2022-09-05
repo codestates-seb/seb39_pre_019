@@ -14,6 +14,7 @@ const Questions = () => {
     fetch(process.env.REACT_APP_DB_HOST + "/questions")
       .then((json) => json.json())
       .then((data) => setData(data));
+
   }, []);
 
   return (
