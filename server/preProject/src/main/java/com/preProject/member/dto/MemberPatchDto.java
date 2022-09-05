@@ -1,13 +1,12 @@
-package com.preProject.user.dto;
+package com.preProject.member.dto;
 
-import com.preProject.audit.BaseTime;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class UserPatchDto {
+public class MemberPatchDto {
 
     private long id;
 
@@ -21,7 +20,7 @@ public class UserPatchDto {
     private String gitLink;
 
     @Builder
-    public UserPatchDto(String displayName, String location, String title, String aboutMe, String webLink, String twitLink, String gitLink) {
+    public MemberPatchDto(String displayName, String location, String title, String aboutMe, String webLink, String twitLink, String gitLink) {
         this.displayName = displayName;
         this.location = location;
         this.title = title;

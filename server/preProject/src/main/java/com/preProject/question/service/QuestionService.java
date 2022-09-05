@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,6 +30,7 @@ public class QuestionService {
         return savedQuestion;
     }
 
+
     //질문 수정
     public Question updateQuestion(Question question) {
         Question findQuestion = questionRepository.findById(question.getId()).orElseThrow(() -> {
@@ -41,20 +43,29 @@ public class QuestionService {
         return findQuestion;
     }
 
+
     //질문 삭제
     public void deleteQuestion(Long id) {
         Question findQuestion = findVerifiedQuestion(id);
         questionRepository.delete(findQuestion);
     }
 
+
     //질문글 한 개 조회
     public Question findQuestion(long id)  {
         return findVerifiedQuestion(id);
     }
 
-    //질문글 전체 조회
+
+    //질문글 페이지별 조회
     public Page<Question> findQuestions(int page, int size) {
         return questionRepository.findAll(PageRequest.of(page, size, Sort.by("id").descending()));
+    }
+
+
+    //질문글 전체 조회 - 한번에
+    public List<Question> findAllQuestions() {
+        return questionRepository.findAll();
     }
 
     @Transactional

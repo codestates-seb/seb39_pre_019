@@ -1,6 +1,5 @@
-package com.preProject.user.dto;
+package com.preProject.member.dto;
 
-import com.preProject.audit.BaseTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserPostDto {
+public class MemberPostDto {
 
     //회원가입 시 입력 데이터
     private String displayName;

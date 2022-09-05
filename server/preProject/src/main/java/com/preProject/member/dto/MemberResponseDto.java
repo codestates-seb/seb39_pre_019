@@ -1,6 +1,6 @@
-package com.preProject.user.dto;
+package com.preProject.member.dto;
 
-import com.preProject.user.domain.User;
+import com.preProject.member.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class UserResponseDto {
+public class MemberResponseDto {
 
         private long id;
         private String displayName;
@@ -19,16 +19,16 @@ public class UserResponseDto {
         private String webLink;
         private String twitLink;
         private String gitLink;
-        private User.UserStatus userStatus;
+        private Member.Role role;
 
-        public UserResponseDto() {
+        public MemberResponseDto() {
         }
 
-        public String getUserStatus() {
-            return userStatus.getStatus();
+        public String getRole() {
+            return role.name();
         }
 
-        public UserResponseDto(long id, String displayName, String email, String aboutMe, String location, String title, String webLink, String twitLink, String gitLink) {
+        public MemberResponseDto(long id, String displayName, String email, String aboutMe, String location, String title, String webLink, String twitLink, String gitLink) {
             this.id = id;
             this.displayName = displayName;
             this.email = email;

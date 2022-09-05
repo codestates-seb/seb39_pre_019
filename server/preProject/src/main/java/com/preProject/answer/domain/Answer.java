@@ -1,7 +1,7 @@
 package com.preProject.answer.domain;
 
 import com.preProject.audit.BaseTime;
-import com.preProject.user.domain.User;
+import com.preProject.member.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,12 +20,20 @@ public class Answer extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
-    private User user;
-
     @Column(nullable = false)
     @Lob
-    private String body;
+    private String answer;
 
+    //    @ManyToOne
+//    @JoinColumn(name = "questionId", nullable = false)
+//    private Question question;
+//    public void setQuestion(Question question){ this.question = question;}
+
+//    @ManyToOne
+//    @JoinColumn(name = "memberId", nullable = false)
+//    private Member member;
+//
+//    public void setMember(Member member) {
+//        this.member = member;
+//    }
 }
