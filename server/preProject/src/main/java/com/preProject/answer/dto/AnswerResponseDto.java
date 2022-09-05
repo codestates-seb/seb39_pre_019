@@ -11,10 +11,10 @@ import lombok.Setter;
 public class AnswerResponseDto {
     private Long id;
     private String answer;
-    private Long questionId;
+   /* private Long questionId;
     private String displayName;
 
     public void setMember(Member member) {
         this.displayName = member.getDisplayName();
-    }
+    }*/
 }
