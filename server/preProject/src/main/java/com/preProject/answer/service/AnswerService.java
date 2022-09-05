@@ -55,7 +55,6 @@ public class AnswerService {
         return findVerifiedAnswer(id);
     }
 
-    @TransactionScoped
     public Answer findVerifiedAnswer(long id) {
         Optional<Answer> optionalAnswer = answerRepository.findById(id);
         Answer findAnswer = optionalAnswer.orElseThrow(
