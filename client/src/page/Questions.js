@@ -9,14 +9,13 @@ import axios from "axios";
 const Questions = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
-
   useEffect(() => {
-    fetch(process.env.REACT_APP_DB_HOST + "/questions")
-      .then((json) => json.json())
-      .then((data) => setData(data));
-
+    fetch(process.env.REACT_APP_DB_HOST+"/questions")
+    .then((json) => json.json())
+    .then((data) => setData(data.questions));
+    
   }, []);
-
+  // console.log(data)
   return (
     <Layout children={Questions}>
       <QuestionContainer>

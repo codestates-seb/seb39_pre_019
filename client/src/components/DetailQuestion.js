@@ -16,13 +16,12 @@ import Answer from "./Answer";
 
 const DetailQuestion = () => {
   const navigate = useNavigate();
-  const { isChange } = useStore();
+  const { isChange ,setIsChange} = useStore();
   const { id } = useParams();
   const [detail, setdetail] = useState([]);
   const [answers, setAnswer] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
   const [text, setText] = useState("");
-
   const handleEdit = () => {
     setIsEdit(!isEdit);
   };
@@ -53,16 +52,15 @@ const DetailQuestion = () => {
     axios
       .all([
         axios.get(process.env.REACT_APP_DB_HOST + `/questions/${id}`),
-        axios.get(process.env.REACT_APP_DB_HOST + `/answers/${id}`),
+        axios.get(process.env.REACT_APP_DB_HOST + `/answers/`),
       ])
       .then(
         axios.spread((res1, res2) => {
-          setdetail(res1.data);
-          setAnswer(res2.data);
+          setdetail(res1.data.data);
+          setAnswer(res2.data.answers);
         })
       );
   }, [isChange]);
-
   const { title, body, votes } = detail;
   return (
     <Layout children={DetailQuestion}>
@@ -178,11 +176,10 @@ const DetailQuestion = () => {
 
         {/* 앤서,유어앤서 부분 ! */}
         <div>
-          {answers
-            .filter((it) => it.question_id === id)
-            .map((answers) => (
-              <Answer answers={answers} key={answers.id} />
-            ))}
+          {answers.filter((it)=>it.question_id === Number(id)).map((it)=>(
+           <Answer it={it} key={it.id}/>
+          ))
+          }
         </div>
         <div className='detail_answer'>
           <YourAnswer />
@@ -191,6 +188,12 @@ const DetailQuestion = () => {
     </Layout>
   );
 };
+// {answers
+//   .filter((it) => it.question_id === id).map((answers) => (
+//     console.log(answers),
+//     <Answer answers={answers} key={answers.id} />
+//   ))}
+
 
 export default DetailQuestion;
 

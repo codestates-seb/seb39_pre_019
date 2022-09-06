@@ -7,9 +7,9 @@ import { ReactComponent as Down } from "../assets/ArrowDown.svg";
 import { ReactComponent as Clock } from "../assets/Clock.svg";
 import useStore from "../store/store";
 
-const Answer = ({ answers }) => {
+const Answer = ({it}) => {
+  const { answer, id } = it;
   const { setIsChange } = useStore();
-  const { answer, id } = answers;
   const [text, setText] = useState("");
   const [isEdit, setIsEdit] = useState(false);
   const handleEdit = () => {
