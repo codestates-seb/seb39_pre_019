@@ -24,6 +24,9 @@ public class Answer extends BaseTime {
     @Lob
     private String answer;
 
+    @Column(nullable = false)
+    private Long question_id;
+
     //    @ManyToOne
 //    @JoinColumn(name = "questionId", nullable = false)
 //    private Question question;
