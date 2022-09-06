@@ -15,11 +15,11 @@ public class AnswerPostDto {
     private String answer;
 
     @Positive
-    private Long questionId;
+    private Long question_id;
 
     public Question getQuestion() {
         Question question = new Question();
-        question.setId(questionId);
+        question.setId(question_id);
         return question;
     }
 //    @Positive

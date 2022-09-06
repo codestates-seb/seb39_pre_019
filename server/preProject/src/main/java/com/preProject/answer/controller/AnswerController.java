@@ -1,10 +1,7 @@
 package com.preProject.answer.controller;
 
 import com.preProject.answer.domain.Answer;
-import com.preProject.answer.dto.AnswerListResponseDto;
-import com.preProject.answer.dto.AnswerPatchDto;
-import com.preProject.answer.dto.AnswerPostDto;
-import com.preProject.answer.dto.AnswerResponseDto;
+import com.preProject.answer.dto.*;
 import com.preProject.answer.mapper.AnswerMapper;
 import com.preProject.answer.service.AnswerService;
 import com.preProject.commonDto.SingleResponseDto;
@@ -39,7 +36,7 @@ public class AnswerController {
         Answer createdAnswer = answerService.createAnswer(answer);
         AnswerResponseDto response = mapper.answerToAnswerResponse(createdAnswer);
 
-        return new ResponseEntity<>( new SingleResponseDto<>(response), HttpStatus.CREATED);
+        return new ResponseEntity<>( new AnswerSingleResponseDto<>(response), HttpStatus.CREATED);
     }
 
     //답변 수정
@@ -50,7 +47,7 @@ public class AnswerController {
         Answer answer = answerService.updateAnswer(mapper.answerPatchToAnswer(answerPatchDto));
         AnswerResponseDto response = mapper.answerToAnswerResponse(answer);
 
-        return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.OK);
+        return new ResponseEntity<>(new AnswerSingleResponseDto<>(response), HttpStatus.OK);
     }
 
     //답변 삭제
@@ -67,7 +64,7 @@ public class AnswerController {
         Answer answer = answerService.findAnswer(id);
 
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.answerToAnswerResponse(answer)), HttpStatus.OK);
+                new AnswerSingleResponseDto<>(mapper.answerToAnswerResponse(answer)), HttpStatus.OK);
     }
 
     //답변 전체 조회

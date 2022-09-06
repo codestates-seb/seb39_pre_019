@@ -23,6 +23,7 @@ public class AnswerService {
     //답변 등록
     public Answer createAnswer(Answer answer) {
         Answer savedAnswer = answerRepository.save(answer);
+        savedAnswer.setQuestion_id(answer.getQuestion_id());
         return savedAnswer;
     }
 
