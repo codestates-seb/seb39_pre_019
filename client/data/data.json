@@ -26,22 +26,27 @@
       "body": "Because Personio's API won't tell me when employees are created or modified which creates scalability issues for us, I'm creating a cache where I can store the Personio with metadata including"
     }
   ],
-  "answer": [
+  "answers": [
     {
-      "answer": "what a nice question!",
-      "question_id": "1",
-      "id": 1
-    },
-    {
-      "answer": "good!!!!",
-      "question_id": "1",
-      "id": 2
-    },
-    {
-      "answer": "좋은 질문입니다. ",
-      "question_id": "2",
-      "id": 3
-    }
+      "id": 1,
+      "answer": "patch answer test 2. 0904",
+      "question_id": 1
+  },
+  {
+      "id": 2,
+      "answer": "0906.t2",
+      "question_id": 1
+  },
+  {
+      "id": 4,
+      "answer": "asdasd",
+      "question_id": 1
+  },
+  {
+      "id": 5,
+      "answer": "asdasd",
+      "question_id": 1
+  }
   ],
   "login": {
     "email": "halo@naver.com",

@@ -3,7 +3,7 @@ import create from "zustand";
 const useStore = create((set) => ({
   data: [],
   isLogin: false,
-  isChange: false,
+  isChange: true,
   isAnswer: false,
   toggleSubmit: true,
   setIsChange: () => set((state) => ({ isChange: !state.isChange })),
