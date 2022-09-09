@@ -19,12 +19,10 @@ Stack Overflow 클론코딩
 - Styled - Component
 - React
 - React-Router-Dom 6
-- React-Hooks
 - Zustand
 - html
 - css
 - JavaScript
-- TypeScript
 - Axios
 - Aws
 - Figma
@@ -35,4 +33,4 @@ Stack Overflow 클론코딩
 - Spring Boot
 - MySQL
 - JWT
-
+- Aws
