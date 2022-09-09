@@ -29,4 +29,10 @@ Stack Overflow 클론코딩
 - Aws
 - Figma
 
-**Server:** Java, Spring
+**Server:** 
+- Java 
+- Spring
+- Spring Boot
+- MySQL
+- JWT
+
