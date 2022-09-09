@@ -25,7 +25,6 @@ Stack Overflow 클론코딩
 - JavaScript
 - Axios
 - Aws
-- Figma
 
 **Server:** 
 - Java 
