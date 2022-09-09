@@ -1,0 +1,61 @@
+{
+  "qustions": [
+    {
+      "id": 1,
+      "title": "How to replace integer entry of a DataFrame to a string based on a range",
+      "body": "I have a set of numbers that I would like to change to a"
+    },
+    {
+      "id": 2,
+      "title": "create popularity algorithm with ruby",
+      "body": "I need to implement a popularity algorithm using the following relevance fields:Products table  paid (identify if the product is from a specific store)updated_at (date when product was updated)The relevance formula would be: prioritize products from paid stores and more up-to-date productsI need to populate a pop field with score based on that formula. The result would be like this aasaa"
+    },
+    {
+      "id": 3,
+      "title": "Warning: Undefined variable $imageSource",
+      "body": "I have just upgraded to PHP8 on my test server a few days ago and I am testing the referral form and it's giving me the below error message when submitting with or without an image inn the up"
+    },
+    {
+      "id": 4,
+      "title": "Tkinter Window Background Color Not Working On MacOS",
+      "body": "Tkinter window background color does not work on my MacBook Air, but does work on my Windows 10 main PC. Here's my code: from tinter import * window = Tk() window.configure(bg =fsdfdsf"
+    },
+    {
+      "id": 5,
+      "title": "In C#, using the Mongo Driver, how can I set a last modified field",
+      "body": "Because Personio's API won't tell me when employees are created or modified which creates scalability issues for us, I'm creating a cache where I can store the Personio with metadata including"
+    },
+    {
+      "title": "리액트가 궁금합니다. ",
+      "body": "알려주세요",
+      "userid": "1",
+      "id": 6
+    }
+  ],
+  "answer": [
+    {
+      "answer": "what a nice question!",
+      "question_id": "1",
+      "id": 1
+    },
+    {
+      "answer": "good!!!!",
+      "question_id": "1",
+      "id": 2
+    },
+    {
+      "answer": "좋은 질문입니다. ",
+      "question_id": "2",
+      "id": 3
+    },
+    {
+      "answer": "날씨가 좋네요",
+      "question_id": "4",
+      "id": 4
+    }
+  ],
+  "user": {
+    "email": "s@s.com",
+    "password": "Tjsals27"
+  }
+}
