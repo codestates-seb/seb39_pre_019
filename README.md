@@ -29,4 +29,4 @@ Stack Overflow 클론코딩
 - Aws
 - Figma
 
-**Server:** Java, Express
+**Server:** Java, Spring
