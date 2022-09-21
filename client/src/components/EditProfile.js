@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const EditProfile = ({ userData }) => {
+  console.log(userData)
   const [profileImg, setProfileImg] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [location, setLocation] = useState("");

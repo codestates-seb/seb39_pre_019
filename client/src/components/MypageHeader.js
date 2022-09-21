@@ -17,7 +17,7 @@ const MypageHeader = () => {
     axios
       .get(process.env.REACT_APP_DB_HOST + "/users/info/1")
       .then((response) => response.data)
-      .then((item) => setHeaderData(item));
+      .then((item) => setHeaderData(item.data));
   }, []);
 
   return (

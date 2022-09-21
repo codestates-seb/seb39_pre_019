@@ -13,8 +13,25 @@ import TestLogin from "./components/TestLogin";
 import AnswerView from "./page/AnswerView";
 import QuestionView from "./page/QuestionView";
 import UserDelete from "./page/UserDelete";
+import axios from "axios";
+import useStore from './store/store'
+import { useEffect } from "react";
+
+
+
 
 function App() {
+  const {data1,setData,setInput,inputValue} 
+  = useStore()
+  // useEffect(()=>{
+  //   setData()
+  // },[])
+  const handelTitle = (e) => {
+    setInput(e.target.value)
+  }
+  console.log(inputValue)
+
+
   return (
     <BrowserRouter>
       <GlobalStyle />
@@ -33,6 +50,7 @@ function App() {
         <Route path='/questionview' element={<QuestionView />}></Route>
         <Route path='/userdelete' element={<UserDelete />}></Route>
       </Routes>
+      <input onChange={handelTitle}/>
     </BrowserRouter>
   );
 }
