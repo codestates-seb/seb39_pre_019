@@ -12,8 +12,9 @@ const UserEdit = () => {
 
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_DB_HOST + "/users/edit/1")
+      .get(process.env.REACT_APP_DB_HOST + "/users/info/")
       .then((response) => response.data)
+      .then((it)=>console.log(it))
       .then((item) => setUserData(item));
   }, []);
 
